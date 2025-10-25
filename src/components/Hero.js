@@ -1,10 +1,11 @@
 import React from 'react';
+import Container from 'react-bootstrap/Container';
 
 const HeroInicio = () => {
     return (
-        <div>
+        <Container id="hero">
             <h1>Hero</h1>
-        </div>
+        </Container>
     );
 };
 

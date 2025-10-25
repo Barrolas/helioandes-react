@@ -1,10 +1,11 @@
 import React from 'react';
+import Container from 'react-bootstrap/Container';
 
 const FooterInicio = () => {
     return (
-        <div>
+        <Container id="footer">
             <h1>Footer</h1>
-        </div>
+        </Container>
     );
 };
 

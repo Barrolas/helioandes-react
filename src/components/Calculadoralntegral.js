@@ -1,10 +1,11 @@
 import React from 'react';
+import Container from 'react-bootstrap/Container';
 
 const Calculadoralntegral = () => {
     return (
-        <div>
-            <h1>Calculadora de Integral</h1>
-        </div>
+        <Container id="calculadora">
+                <h1>Calculadora de Integral</h1>
+        </Container>
     );
 };
 
