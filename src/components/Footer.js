@@ -8,4 +8,4 @@ const FooterInicio = () => {
     );
 };
 
-export default Footer;
+export default FooterInicio;
