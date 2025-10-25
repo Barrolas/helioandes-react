@@ -8,11 +8,11 @@ const NavbarInicio = () => {
         <Navbar expand="lg" className="bg-body-tertiary shadow-sm" sticky='top'>
             <Container id="navbar">
             
-                <Navbar.Brand href="Inicio " className="d-flex align-items-center"><img src="/helioandes-logo.png" alt="HelioAndes Logo" style={{height: '30px', marginRight: '10px'}} /> HelioAndes</Navbar.Brand>   
+                <Navbar.Brand href="Inicio" className="d-flex align-items-center"><img src="/helioandes-logo.png" alt="HelioAndes Logo" style={{height: '40px', marginRight: '10px'}} /><b> HelioAndes</b></Navbar.Brand>   
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
-                        <Nav.Link href="#">Inicio</Nav.Link>
+                        <Nav.Link href="#top">Inicio</Nav.Link>
                         <Nav.Link href="#servicios">Servicios</Nav.Link>
                         <Nav.Link href="#soluciones">Soluciones</Nav.Link>
                         <Nav.Link href="#calculadora">DEMO</Nav.Link>

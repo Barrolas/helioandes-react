@@ -1,0 +1,64 @@
+/* HelioAndes Color Palette */
+:root {
+  /* Primary Colors */
+  --helio-primary: #207E8C;
+  --helio-primary-hover: #1a6b77;
+  --helio-primary-light: #50B2B2;
+  
+  /* Background Colors */
+  --helio-bg-light: #F0F8FA;
+  --helio-bg-medium: #ddf3f3;
+  --helio-bg-dark: #132427;
+  --helio-bg-white: #ffffff;
+  
+  /* Text Colors */
+  --helio-text-dark: #212529;
+  --helio-text-medium: #6C757D;
+  --helio-text-light: #ffffff;
+  --helio-text-black: #000000;
+  
+  /* Badge Colors */
+  --helio-badge-bg: #50B2B2;
+  --helio-badge-text: #0d4750;
+  
+  /* Button Colors */
+  --helio-btn-filled-bg: var(--helio-primary);
+  --helio-btn-filled-bg-hover: var(--helio-primary-hover);
+  --helio-btn-filled-text: var(--helio-text-light);
+  --helio-btn-filled-border: var(--helio-primary);
+  --helio-btn-filled-border-hover: var(--helio-primary-hover);
+  
+  --helio-btn-outlined-bg: transparent;
+  --helio-btn-outlined-bg-hover: var(--helio-primary);
+  --helio-btn-outlined-text: var(--helio-primary);
+  --helio-btn-outlined-text-hover: var(--helio-text-light);
+  --helio-btn-outlined-border: #CED4DA;
+  --helio-btn-outlined-border-hover: var(--helio-primary);
+}
+
+/* Button Styles */
+.helio-btn-filled {
+  background-color: var(--helio-btn-filled-bg) !important;
+  border-color: var(--helio-btn-filled-border) !important;
+  color: var(--helio-btn-filled-text) !important;
+  transition: all 0.3s ease;
+}
+
+.helio-btn-filled:hover {
+  background-color: var(--helio-btn-filled-bg-hover) !important;
+  border-color: var(--helio-btn-filled-border-hover) !important;
+  color: var(--helio-btn-filled-text) !important;
+}
+
+.helio-btn-outlined {
+  background-color: var(--helio-btn-outlined-bg) !important;
+  border-color: var(--helio-btn-outlined-border) !important;
+  color: var(--helio-btn-outlined-text) !important;
+  transition: all 0.3s ease;
+}
+
+.helio-btn-outlined:hover {
+  background-color: var(--helio-btn-outlined-bg-hover) !important;
+  border-color: var(--helio-btn-outlined-border-hover) !important;
+  color: var(--helio-btn-outlined-text-hover) !important;
+}
