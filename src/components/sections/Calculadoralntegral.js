@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Section from '../ui/Section';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, Table } from 'react-bootstrap';
 
 const Calculadoralntegral = () => {
-
+    // Estados individuales para cada campo del formulario
     const [potenciaPanel, setPotenciaPanel] = useState(0);
     const [cantidadPaneles, setCantidadPaneles] = useState(0);
     const [inversorPrecio, setInversorPrecio] = useState(0);
@@ -22,7 +22,7 @@ const Calculadoralntegral = () => {
     const [tipoPie, setTipoPie] = useState('1');
     const [valorPie, setValorPie] = useState(0);
 
-    // limpiar todos los campos del formulario
+    // Función para limpiar todos los campos del formulario
     const limpiarFormulario = () => {
         setPotenciaPanel(0);
         setCantidadPaneles(0);
@@ -280,6 +280,71 @@ const Calculadoralntegral = () => {
                     </Col>
                     <Col xs={12} md={6}>
                         <h2>Resumen</h2>
+                        <Table striped bordered hover>
+                            <thead>
+                                <tr>
+                                    <th>Concepto</th>
+                                    <th className="text-end">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Potencia estimada</td>
+                                    <td className="text-end">$--</td>
+                                </tr>
+                                <tr>
+                                    <td>Subtotal equipos</td>
+                                    <td className="text-end">$--</td>
+                                </tr>
+                                <tr>
+                                    <td>Recargo techo</td>
+                                    <td className="text-end">$--</td>
+                                </tr>
+                                <tr>
+                                    <td>Subsidio</td>
+                                    <td className="text-end">$--</td>
+                                </tr>
+                                <tr>
+                                    <td>Instalación final</td>
+                                    <td className="text-end">$--</td>
+                                </tr>
+                                <tr>
+                                    <td>IVA 19%</td>
+                                    <td className="text-end">$--</td>
+                                </tr>
+                                <tr>
+                                    <td>Envío</td>
+                                    <td className="text-end">$--</td>
+                                </tr>
+                                <tr>
+                                    <td>Garantía</td>
+                                    <td className="text-end">$--</td>
+                                </tr>
+                                <tr>
+                                    <td>Total antes de financiar</td>
+                                    <td className="text-end">$--</td>
+                                </tr>
+                                <tr>
+                                    <td>Pie</td>
+                                    <td className="text-end">$--</td>
+                                </tr>
+                                <tr>
+                                    <td>Interés total</td>
+                                    <td className="text-end">$--</td>
+                                </tr>
+                                <tr>
+                                    <td>Cuota</td>
+                                    <td className="text-end">$--</td>
+                                </tr>
+                                <tr style={{backgroundColor: '#f5f5dc', fontWeight: 'bold'}}>
+                                    <td>Total</td>
+                                    <td className="text-end">$--</td>
+                                </tr>
+                            </tbody>
+                        </Table>
+                        <div style={{fontSize: '0.85rem', color: 'red', padding:'8px', marginTop: '10px', textAlign: 'center'}}>
+                            Valores referenciales para el prototipo
+                        </div>
                     </Col>
                 </Row>
             </Container>
