@@ -10,6 +10,16 @@ const Calculadoralntegral = () => {
             bgColor="var(--helio-bg-medium)"
         >
             {/* Contenido de calculadora aquí */}
+            <Container>
+                <Row>
+                    <Col xs={12} md={6}>
+                        <h2>Formulario</h2>
+                    </Col>
+                    <Col xs={12} md={6}>
+                        <h2>Resumen</h2>
+                    </Col>
+                </Row>
+            </Container>
         </Section>
     );
 };
