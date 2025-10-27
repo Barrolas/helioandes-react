@@ -1,7 +1,8 @@
 import React from 'react';
 import Section from '../ui/Section';
-import Card from 'react-bootstrap/Card';
-import CardGroup from 'react-bootstrap/CardGroup';
+import { Card, CardGroup } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHouse, faIndustry, faBatteryFull } from '@fortawesome/free-solid-svg-icons';
 
 const Soluciones = () => {
     return (
@@ -11,61 +12,77 @@ const Soluciones = () => {
             description="Kits residenciales, PyME, off-grid con baterías e híbridos"
             bgColor="var(--helio-bg-light)"
         >
-            {/* Contenido de soluciones aquí */}
             <CardGroup>
-                <Card>
-                    <Card.Img variant="top" src="holder.js/100px160" />
-                    <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content. This content is a little bit longer.
-                        </Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                        <small className="text-muted">Last updated 3 mins ago</small>
-                    </Card.Footer>
+                <Card style={{ border: 'none' }}>
+                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
+                        <div style={{ 
+                            width: '80px', 
+                            height: '80px', 
+                            backgroundColor: '#BCE0D4', 
+                            borderRadius: '12px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            marginRight: '16px',
+                            flexShrink: 0
+                        }}>
+                            <FontAwesomeIcon icon={faHouse} size="2x" style={{ color: '#FF6B35' }} />
+                        </div>
+                        <div>
+                            <Card.Title style={{ fontWeight: 'bold', marginBottom: '8px' }}>Hogar 3-5 kW</Card.Title>
+                            <Card.Text style={{ color: '#6c757d', lineHeight: '1.5' }}>
+                                Balance ideal entre costo y ahorro mensual.
+                            </Card.Text>
+                        </div>
+                    </div>
                 </Card>
-                <Card>
-                    <Card.Img variant="top" src="holder.js/100px160" />
-                    <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                            This card has supporting text below as a natural lead-in to
-                            additional content.
-                        </Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                        <small className="text-muted">Last updated 3 mins ago</small>
-                    </Card.Footer>
+                
+                <Card style={{ border: 'none' }}>
+                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
+                        <div style={{ 
+                            width: '80px', 
+                            height: '80px', 
+                            backgroundColor: '#BCE0D4', 
+                            borderRadius: '12px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            marginRight: '16px',
+                            flexShrink: 0
+                        }}>
+                            <FontAwesomeIcon icon={faIndustry} size="2x" style={{ color: '#9370DB' }} />
+                        </div>
+                        <div>
+                            <Card.Title style={{ fontWeight: 'bold', marginBottom: '8px' }}>PyME 10-20 kW</Card.Title>
+                            <Card.Text style={{ color: '#6c757d', lineHeight: '1.5' }}>
+                                Para operación diurna con buena irradiación.
+                            </Card.Text>
+                        </div>
+                    </div>
                 </Card>
-                <Card>
-                    <Card.Img variant="top" src="holder.js/100px160" />
-                    <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content. This card has even longer content than the
-                            first to show that equal height action.
-                        </Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                        <small className="text-muted">Last updated 3 mins ago</small>
-                    </Card.Footer>
-                </Card>
-                <Card>
-                    <Card.Img variant="top" src="holder.js/100px160" />
-                    <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content. This card has even longer content than the
-                            first to show that equal height action.
-                        </Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                        <small className="text-muted">Last updated 3 mins ago</small>
-                    </Card.Footer>
+                
+                <Card style={{ border: 'none' }}>
+                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
+                        <div style={{ 
+                            width: '80px', 
+                            height: '80px', 
+                            backgroundColor: '#BCE0D4', 
+                            borderRadius: '12px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            marginRight: '16px',
+                            flexShrink: 0
+                        }}>
+                            <FontAwesomeIcon icon={faBatteryFull} size="2x" style={{ color: '#00B04F' }} />
+                        </div>
+                        <div>
+                            <Card.Title style={{ fontWeight: 'bold', marginBottom: '8px' }}>Off-grid con baterías</Card.Title>
+                            <Card.Text style={{ color: '#6c757d', lineHeight: '1.5' }}>
+                                Autonomía en zonas sin red eléctrica.
+                            </Card.Text>
+                        </div>
+                    </div>
                 </Card>
             </CardGroup>
         </Section>
