@@ -67,10 +67,6 @@ const Calculadoralntegral = () => {
     if (potenciaEstimada > 7000 && cantidadBaterias == 0) {
         //alert('Recomendado considerar almacenamiento para estabilidad del sistema.');
     }
-
-
-
-
     return (
         <Section 
             id="calculadora"

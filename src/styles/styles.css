@@ -62,3 +62,12 @@
   border-color: var(--helio-btn-outlined-border-hover) !important;
   color: var(--helio-btn-outlined-text-hover) !important;
 }
+
+/* Form Styles - Override global text-align center */
+.form-label {
+  text-align: left !important;
+}
+
+.form-text {
+  text-align: left !important;
+}
