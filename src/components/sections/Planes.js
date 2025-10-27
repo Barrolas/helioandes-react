@@ -13,9 +13,9 @@ const Planes = () => {
         >
             {/* Contenido de planes aquí */}
             <Container>
-                <Row>
+                <Row className="g-4">
                     <Col xs={12} md={4}>
-                        <Card className="border-0 p-3 shadow rounded-4">
+                        <Card className="border-0 p-3 shadow rounded-4 h-100">
                             <Card.Body className="text-center justify-content-center">
                                 <span className="badge p-2 mb-2" style={{
                                 backgroundColor: 'var(--helio-badge-bg)',
@@ -26,7 +26,7 @@ const Planes = () => {
                             }}>
                                 Básico
                             </span>
-                            <h2>3-5 kW</h2>
+                            <h4><strong>3-5 kW</strong></h4>
                                 <p className="text-muted mb-1">Estudio energético</p>
                                 <p className="text-muted mb-1">Instalación estándar</p>
                                 <p className="text-muted mb-3">Monitoreo básico</p>
@@ -35,7 +35,7 @@ const Planes = () => {
                         </Card>
                     </Col>
                     <Col xs={12} md={4}>
-                        <Card className="border-0 p-3 shadow rounded-4">
+                        <Card className="border-0 p-3 shadow rounded-4 h-100">
                             <Card.Body className="text-center justify-content-center">
                             <span className="badge p-2 mb-2" style={{
                                 backgroundColor: 'var(--helio-badge-bg)',
@@ -46,7 +46,7 @@ const Planes = () => {
                             }}>
                                 Optimizado
                             </span>
-                            <h2>10-15 kW</h2>
+                            <h4><strong>10-15 kW</strong></h4>
                                     <p className="text-muted mb-1">Estudio avanzado</p>
                                     <p className="text-muted mb-1">Instalación optimizada</p>
                                     <p className="text-muted mb-3">Monitoreo avanzado</p>    
@@ -55,7 +55,7 @@ const Planes = () => {
                         </Card>
                     </Col>
                     <Col xs={12} md={4}>
-                        <Card className="border-0 p-3 shadow rounded-4">
+                        <Card className="border-0 p-3 shadow rounded-4 h-100">
                             <Card.Body className="text-center justify-content-center">
                                 <span className="badge p-2 mb-2" style={{
                                 backgroundColor: 'var(--helio-badge-bg)',
@@ -66,7 +66,7 @@ const Planes = () => {
                             }}>
                                 Autónomo
                             </span>
-                            <h2>Híbrido + Baterías</h2>
+                            <h4><strong>Híbrido + Baterías</strong></h4>
                                 <p className="text-muted mb-1">Diseño off-grid</p>
                                 <p className="text-muted mb-1">Almacenamiento</p>
                                 <p className="text-muted mb-3">Soporte preferente</p>
