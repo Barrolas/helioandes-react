@@ -1,5 +1,7 @@
 import React from 'react';
 import Section from '../ui/Section';
+import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+
 
 const Planes = () => {
     return (
@@ -10,6 +12,71 @@ const Planes = () => {
             bgColor="var(--helio-bg-light)"
         >
             {/* Contenido de planes aquí */}
+            <Container>
+                <Row>
+                    <Col xs={12} md={4}>
+                        <Card className="border-0 p-3 shadow rounded-4">
+                            <Card.Body className="text-center justify-content-center">
+                                <span className="badge p-2 mb-2" style={{
+                                backgroundColor: 'var(--helio-badge-bg)',
+                                color: 'var(--helio-badge-text)',
+                                fontSize: '14px', 
+                                borderRadius: '64px',
+                                fontWeight: '500'
+                            }}>
+                                Básico
+                            </span>
+                            <h2>3-5 kW</h2>
+                                <p className="text-muted mb-1">Estudio energético</p>
+                                <p className="text-muted mb-1">Instalación estándar</p>
+                                <p className="text-muted mb-3">Monitoreo básico</p>
+                                <Button variant="primary" className="w-100 helio-btn-filled p-3 rounded-4">Solicitar Evaluación</Button>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                    <Col xs={12} md={4}>
+                        <Card className="border-0 p-3 shadow rounded-4">
+                            <Card.Body className="text-center justify-content-center">
+                            <span className="badge p-2 mb-2" style={{
+                                backgroundColor: 'var(--helio-badge-bg)',
+                                color: 'var(--helio-badge-text)',
+                                fontSize: '14px', 
+                                borderRadius: '64px',
+                                fontWeight: '500'
+                            }}>
+                                Optimizado
+                            </span>
+                            <h2>10-15 kW</h2>
+                                    <p className="text-muted mb-1">Estudio avanzado</p>
+                                    <p className="text-muted mb-1">Instalación optimizada</p>
+                                    <p className="text-muted mb-3">Monitoreo avanzado</p>    
+                                    <Button variant="primary" className="w-100 helio-btn-filled p-3 rounded-4">Solicitar Evaluación</Button>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                    <Col xs={12} md={4}>
+                        <Card className="border-0 p-3 shadow rounded-4">
+                            <Card.Body className="text-center justify-content-center">
+                                <span className="badge p-2 mb-2" style={{
+                                backgroundColor: 'var(--helio-badge-bg)',
+                                color: 'var(--helio-badge-text)',
+                                fontSize: '14px', 
+                                borderRadius: '64px',
+                                fontWeight: '500'
+                            }}>
+                                Autónomo
+                            </span>
+                            <h2>Híbrido + Baterías</h2>
+                                <p className="text-muted mb-1">Diseño off-grid</p>
+                                <p className="text-muted mb-1">Almacenamiento</p>
+                                <p className="text-muted mb-3">Soporte preferente</p>
+                                <Button variant="primary" className="w-100 helio-btn-filled p-3 rounded-4">Solicitar Evaluación</Button>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+
+            </Container>
         </Section>
     );
 };
