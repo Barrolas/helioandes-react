@@ -83,12 +83,49 @@ const Calculadoralntegral = () => {
     // 9. Total antes de financiar
     const totalAntesFinanciar = Math.round(subtotalEquipos + recargoTechoAplicado - subsidioAplicado + instalacionFinal + ivaAplicado + valorEnvio + garantiaAplicada);
     
+    // 10. Calcular pie
+    let pieCalculado = 0;
+    if (tipoPie === '1') {
+        // Porcentaje
+        pieCalculado = Math.round(totalAntesFinanciar * (valorPie / 100));
+    } else if (tipoPie === '2') {
+        // Monto fijo
+        pieCalculado = Math.round(valorPie);
+    }
+    
+// 11 Interes 
+
+
+
+
+    // Limitar pie para no exceder el total
+    const pie = Math.min(Math.round(pieCalculado), totalAntesFinanciar);
+    
+    // 11. Monto a financiar
+    const montoFinanciar = totalAntesFinanciar - pie;
+    
+    // 12. Calcular interés y cuota según plan de pago
+    const nCuotas = planPago === '1' ? 0 : planPago === '2' ? 6 : planPago === '3' ? 12 : 24;
+    const tasaMensual = planPago === '1' ? 0 : planPago === '2' ? 0.012 : planPago === '3' ? 0.011 : 0.010;
+    
+    const interesTotal = Math.round(montoFinanciar * tasaMensual * nCuotas);
+    
+    let cuota = 0;
+    if (nCuotas > 1) {
+        cuota = Math.round((montoFinanciar + interesTotal) / nCuotas);
+    }
+    
+    // Total final
+    const total = totalAntesFinanciar + interesTotal;
+
+
+
     //1. Validar potencia estimada
     if (potenciaEstimada > 7 && cantidadBaterias == 0) {
         //alert('Recomendado considerar almacenamiento para estabilidad del sistema.');
     }
 
-    const total = Math.round(subtotalEquipos + recargoTechoAplicado - subsidioAplicado + instalacionFinal + ivaAplicado + valorEnvio);
+    
     return (
         <Section 
             id="calculadora"
@@ -367,15 +404,15 @@ const Calculadoralntegral = () => {
                                 </tr>
                                 <tr>
                                     <td>Pie</td>
-                                    <td className="text-end">$--</td>
+                                    <td className="text-end">${pieCalculado.toLocaleString('es-CL')}</td>
                                 </tr>
                                 <tr>
                                     <td>Interés total</td>
-                                    <td className="text-end">$--</td>
+                                    <td className="text-end">${interesTotal.toLocaleString('es-CL')}</td>
                                 </tr>
                                 <tr>
                                     <td>Cuota</td>
-                                    <td className="text-end">$--</td>
+                                    <td className="text-end">${cuota.toLocaleString('es-CL')}</td>
                                 </tr>
                                 <tr style={{backgroundColor: '#f5f5dc', fontWeight: 'bold'}}>
                                     <td>Total</td>
