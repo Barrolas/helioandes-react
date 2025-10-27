@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import Section from '../ui/Section';
 import { Container, Row, Col, Form, Button, Table } from 'react-bootstrap';
+import Swal from 'sweetalert2';
 
 const Calculadoralntegral = () => {
-    // Estados individuales para cada campo del formulario
+    
     const [potenciaPanel, setPotenciaPanel] = useState(0);
     const [cantidadPaneles, setCantidadPaneles] = useState(0);
     const [inversorPrecio, setInversorPrecio] = useState(0);
@@ -21,8 +22,11 @@ const Calculadoralntegral = () => {
     const [planPago, setPlanPago] = useState('1');
     const [tipoPie, setTipoPie] = useState('1');
     const [valorPie, setValorPie] = useState(0);
+    
+    // para controlar si ya se mostró el warning de potencia
+    const [warningPotenciaMostrado, setWarningPotenciaMostrado] = useState(false);
 
-    // Función para limpiar todos los campos del formulario
+    // limpiar todos los campos del formulario
     const limpiarFormulario = () => {
         setPotenciaPanel(0);
         setCantidadPaneles(0);
@@ -40,12 +44,58 @@ const Calculadoralntegral = () => {
         setGarantia('1');
         setPlanPago('1');
         setTipoPie('1');
-        setValorPie(0);
+        setValorPie(0); 
+        setWarningPotenciaMostrado(false);
     };
 
-    const handleCopySummary = () => {
-        // Función para copiar resumen (por implementar)
-        console.log('Copiar resumen');
+    const handleCopySummary = async () => {
+        try {
+            // generar texto del resumen con formato legible
+            const resumenTexto = `
+                    RESUMEN CALCULADORA HELIOANDES
+                    ===============================
+
+                    Potencia estimada: ${potenciaEstimada.toFixed(2)} kW
+                    Subtotal equipos: $${subtotalEquipos.toLocaleString('es-CL')}
+                    Recargo techo: $${recargoTechoAplicado.toLocaleString('es-CL')}
+                    Subsidio: -$${subsidioAplicado.toLocaleString('es-CL')}
+                    Instalación final: $${instalacionFinal.toLocaleString('es-CL')}
+                    IVA 19%: $${ivaAplicado.toLocaleString('es-CL')}
+                    Envío: $${valorEnvio.toLocaleString('es-CL')}
+                    Garantía: $${garantiaAplicada.toLocaleString('es-CL')}
+                    Total antes de financiar: $${totalAntesFinanciar.toLocaleString('es-CL')}
+                    Pie: $${pieCalculado.toLocaleString('es-CL')}
+                    Interés total: $${interesTotal.toLocaleString('es-CL')}
+                    Cuota: $${cuota.toLocaleString('es-CL')}
+                    TOTAL FINAL: $${total.toLocaleString('es-CL')}
+
+                    ===============================
+                    Valores referenciales para el prototipo
+                    Generado el: ${new Date().toLocaleDateString('es-CL')}
+                                `.trim();
+
+            // Copiar al portapapeles
+            await navigator.clipboard.writeText(resumenTexto);
+
+            // Mostrar alert de confirmación
+            Swal.fire({
+                title: '¡Éxito!',
+                text: 'Resumen copiado al portapapeles',
+                icon: 'success',
+                confirmButtonText: 'Entendido',
+                confirmButtonColor: 'var(--helio-primary)'
+            });
+
+        } catch (error) {
+            console.error('Error al copiar:', error);
+            Swal.fire({
+                title: 'Error',
+                text: 'Error al copiar el resumen. Intenta nuevamente.',
+                icon: 'error',
+                confirmButtonText: 'Entendido',
+                confirmButtonColor: 'var(--helio-primary)'
+            });
+        }
     };
 
     //Reglas de negocio
@@ -59,23 +109,23 @@ const Calculadoralntegral = () => {
     const subtotalEquipos = Math.round(inversorPrecio + (bateriaPrecio * cantidadBaterias) + estructuraCableado);
 
     // 3. Recargo por techo (sobre subtotal equipos)
-    const recargoTecho = tipoTecho == '1' ? 0.05 : tipoTecho == '2' ? 0.02 : 0.07;
+    const recargoTecho = tipoTecho === '1' ? 0.05 : tipoTecho === '2' ? 0.02 : 0.07;
     const recargoTechoAplicado = Math.round(subtotalEquipos * recargoTecho);
 
     // 4. Garantía (sobre subtotal equipos, ANTES del subsidio)
-    const garantiaAplicada = Math.round(garantia == '1' ? subtotalEquipos * 0.02 : garantia == '2' ? subtotalEquipos * 0.04 : subtotalEquipos * 0.06);
+    const garantiaAplicada = Math.round(garantia === '1' ? subtotalEquipos * 0.02 : garantia === '2' ? subtotalEquipos * 0.04 : subtotalEquipos * 0.06);
 
     // 5. Subsidio (sobre subtotal equipos + recargo techo)
-    const subsidioAplicado = subsidio == '1' ? (subtotalEquipos + recargoTechoAplicado) * 0.08 : subsidio == '2' ? (subtotalEquipos + recargoTechoAplicado) * 0.05 : 0;
+    const subsidioAplicado = subsidio === '1' ? (subtotalEquipos + recargoTechoAplicado) * 0.08 : subsidio === '2' ? (subtotalEquipos + recargoTechoAplicado) * 0.05 : 0;
 
     // 6. Instalación final (instalación base + % por complejidad)
-    const instalacionFinal = complejidadInstalacion == '1' ? instalacionBase : complejidadInstalacion == '2' ? instalacionBase + (instalacionBase * 0.08) : instalacionBase + (instalacionBase * 0.15);
+    const instalacionFinal = complejidadInstalacion === '1' ? instalacionBase : complejidadInstalacion === '2' ? instalacionBase + (instalacionBase * 0.08) : instalacionBase + (instalacionBase * 0.15);
 
     // 7. IVA (sobre equipos con recargos - subsidios + instalación final)
     const ivaAplicado = Math.round((subtotalEquipos + recargoTechoAplicado - subsidioAplicado + instalacionFinal) * 0.19);
 
     // 8. Envío (base por región + pesoKg * 700; método exprés multiplica por 1.2)
-    const valorEnvioRegion = region == '1' ? 5000 : region == '2' ? 9000 : region == '3' ? 10000 : 15000;
+    const valorEnvioRegion = region === '1' ? 5000 : region === '2' ? 9000 : region === '3' ? 10000 : 15000;
     const costoBaseEnvio = valorEnvioRegion + (pesoEnvio * 700);
     const multiplicadorEnvio = metodoEnvio === '1' ? 1.00 : 1.20;
     const valorEnvio = Math.round(costoBaseEnvio * multiplicadorEnvio);
@@ -83,28 +133,26 @@ const Calculadoralntegral = () => {
     // 9. Total antes de financiar
     const totalAntesFinanciar = Math.round(subtotalEquipos + recargoTechoAplicado - subsidioAplicado + instalacionFinal + ivaAplicado + valorEnvio + garantiaAplicada);
 
-    // 10. Calcular pie
+    // 10. Calcular pie con validaciones
     let pieCalculado = 0;
     if (tipoPie === '1') {
-        // Porcentaje
-        pieCalculado = Math.round(totalAntesFinanciar * (valorPie / 100));
+        // Porcentaje - limitar entre 0% y 95% (dejar al menos 5% para financiar)
+        const porcentajeLimitado = Math.min(Math.max(valorPie, 0), 95);
+        pieCalculado = Math.round(totalAntesFinanciar * (porcentajeLimitado / 100));
     } else if (tipoPie === '2') {
-        // Monto fijo
-        pieCalculado = Math.round(valorPie);
+        // Monto fijo - limitar entre 0 y 95% del total
+        const montoMaximo = Math.round(totalAntesFinanciar * 0.95);
+        const montoLimitado = Math.min(Math.max(valorPie, 0), montoMaximo);
+        pieCalculado = Math.round(montoLimitado);
     }
 
-    // 11 Interes 
+    // 11. Pie final (asegurar que no exceda el total)
+    const pie = Math.min(pieCalculado, totalAntesFinanciar);
 
-
-
-
-    // Limitar pie para no exceder el total
-    const pie = Math.min(Math.round(pieCalculado), totalAntesFinanciar);
-
-    // 11. Monto a financiar
+    // 12. Monto a financiar
     const montoFinanciar = totalAntesFinanciar - pie;
 
-    // 12. Calcular interés y cuota según plan de pago
+    // 13. Calcular interés y cuota según plan de pago
     const nCuotas = planPago === '1' ? 0 : planPago === '2' ? 6 : planPago === '3' ? 12 : 24;
     const tasaMensual = planPago === '1' ? 0 : planPago === '2' ? 0.012 : planPago === '3' ? 0.011 : 0.010;
 
@@ -115,14 +163,21 @@ const Calculadoralntegral = () => {
         cuota = Math.round((montoFinanciar + interesTotal) / nCuotas);
     }
 
-    // Total final
+    // 14. Total final
     const total = totalAntesFinanciar + interesTotal;
 
 
 
     //1. Validar potencia estimada
-    if (potenciaEstimada > 7 && cantidadBaterias == 0) {
-        //alert('Recomendado considerar almacenamiento para estabilidad del sistema.');
+    if (potenciaEstimada > 7 && cantidadBaterias === 0 && !warningPotenciaMostrado) {
+        setWarningPotenciaMostrado(true); // para que no aparezca a cada rato
+        Swal.fire({
+            title: 'Recomendación',
+            text: 'Recomendado considerar almacenamiento para estabilidad del sistema.',
+            icon: 'warning',
+            confirmButtonText: 'Entendido',
+            confirmButtonColor: 'var(--helio-primary)'
+        });
     }
 
 
@@ -238,12 +293,26 @@ const Calculadoralntegral = () => {
                                             <Form.Control
                                                 type="number"
                                                 value={valorPie}
-                                                onChange={(e) => setValorPie(Number(e.target.value) || 0)}
+                                                onChange={(e) => {
+                                                    const valor = Number(e.target.value) || 0;
+                                                    if (tipoPie === '1') {
+                                                        // Porcentaje: limitar entre 0 y 95
+                                                        setValorPie(Math.min(Math.max(valor, 0), 95));
+                                                    } else {
+                                                        // Monto fijo: limitar entre 0 y 95% del total estimado
+                                                        const montoMaximo = Math.round(totalAntesFinanciar * 0.95);
+                                                        setValorPie(Math.min(Math.max(valor, 0), montoMaximo));
+                                                    }
+                                                }}
                                                 min="0"
-                                                placeholder="Ej: 10"
+                                                max={tipoPie === '1' ? "95" : Math.round(totalAntesFinanciar * 0.95)}
+                                                placeholder={tipoPie === '1' ? "Ej: 10" : "Ej: 500000"}
                                             />
                                             <Form.Text className="text-muted">
-                                                Si es porcentaje, 10 = 10%.
+                                                {tipoPie === '1'
+                                                    ? "Porcentaje (máximo 95%): 10 = 10%"
+                                                    : `Monto fijo (máximo $${Math.round(totalAntesFinanciar * 0.95).toLocaleString('es-CL')})`
+                                                }
                                             </Form.Text>
                                         </Form.Group>
                                     </Col>

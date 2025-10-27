@@ -62,8 +62,8 @@ const FAQ = () => {
                                 </Accordion.Header>
                                 <Accordion.Body className="bg-white">
                                     Sí, aunque con menor eficiencia. Los paneles modernos pueden generar electricidad incluso con luz difusa. En días nublados producen aproximadamente 10-25% de su capacidad máxima, y en días soleados alcanzan el 100%.
-                                </Accordion.Body>
-                            </Accordion.Item>
+        </Accordion.Body>
+      </Accordion.Item>
                             
                             <Accordion.Item eventKey="5" className="border-0 mb-3 shadow-sm" style={{borderRadius: '12px', overflow: 'hidden'}}>
                                 <Accordion.Header className="border-0 bg-white">
@@ -71,9 +71,9 @@ const FAQ = () => {
                                 </Accordion.Header>
                                 <Accordion.Body className="bg-white">
                                     Los paneles solares requieren muy poco mantenimiento. Solo necesitas limpiarlos 2-3 veces al año para remover polvo y hojas. La mayoría de sistemas incluyen monitoreo automático y garantías de 20-25 años en los paneles.
-                                </Accordion.Body>
-                            </Accordion.Item>
-                        </Accordion>
+        </Accordion.Body>
+      </Accordion.Item>
+    </Accordion>
                     </Col>
                 </Row>
             </Container>

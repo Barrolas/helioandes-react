@@ -7,6 +7,7 @@
   
   /* Background Colors */
   --helio-bg-light: #F0F8FA;
+  --helio-bg-light-medium: #f5ffff;
   --helio-bg-medium: #ddf3f3;
   --helio-bg-dark: #132427;
   --helio-bg-white: #ffffff;
@@ -70,4 +71,18 @@
 
 .form-text {
   text-align: left !important;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler:focus-visible {
+  border-color: var(--helio-primary-light) !important;
+  background-color: transparent !important;
+  box-shadow: 0 0 0 0.25rem rgba(80, 178, 178, 0.25) !important;
+}
+
+.navbar-toggler:focus svg,
+.navbar-toggler:active svg,
+.navbar-toggler:focus-visible svg {
+  color: var(--helio-primary-light) !important;
 }

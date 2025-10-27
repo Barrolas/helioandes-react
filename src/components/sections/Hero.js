@@ -7,9 +7,10 @@ const HeroInicio = () => {
             backgroundColor: 'var(--helio-bg-light)', 
             minHeight: '50vh'
         }}>
-            <Container>
+            <Container className="px-4 px-md-5">
                 <Row className="align-items-center" style={{minHeight: '50vh'}}>
-                    <Col xs={12} md={6} className="pe-md-5 mb-4 mb-md-0">
+                    {/* Contenido de texto - siempre primera columna */}
+                    <Col xs={12} md={6} className="pe-md-5 mb-4 mb-md-0 order-1 order-md-1">
                         <div className="mb-3 mb-md-1 text-start">
                             <span className="badge p-2" style={{
                                 backgroundColor: 'var(--helio-badge-bg)',
@@ -38,6 +39,18 @@ const HeroInicio = () => {
                         }}>
                             Dimensiona tu sistema, conoce el costo estimado y solicita asesoría en minutos. La DEMO te guía con valores referenciales.
                         </p>
+                        
+                        {/* Imagen - solo visible en móvil/tablet, después de descripción */}
+                        <div className="d-md-none mb-4 text-center">
+                            <Image 
+                                src="/hero-image.png" 
+                                fluid 
+                                alt="Sistema de energía solar HelioAndes"
+                                style={{maxHeight: '300px', width: 'auto'}}
+                                className="img-fluid"
+                            />
+                        </div>
+                        
                         <div className="d-flex flex-column flex-md-row gap-3">
                             <Button 
                                 href="#calculadora" 
@@ -72,7 +85,9 @@ const HeroInicio = () => {
                             </Button>
                         </div>
                     </Col>
-                    <Col xs={12} md={6} className="ps-md-4">
+                    
+                    {/* Imagen - solo visible en desktop */}
+                    <Col xs={12} md={6} className="ps-md-4 order-2 order-md-2 d-none d-md-block">
                         <div className="d-flex justify-content-center justify-content-md-start align-items-center" style={{height: '100%'}}>
                             <Image 
                                 src="/hero-image.png" 

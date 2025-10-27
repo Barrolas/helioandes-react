@@ -15,7 +15,7 @@ const Planes = () => {
             <Container>
                 <Row className="g-4">
                     <Col xs={12} md={4}>
-                        <Card className="border-0 p-3 shadow rounded-4 h-100">
+                        <Card className="border-0 p-3 shadow-sm rounded-4 h-100">
                             <Card.Body className="text-center justify-content-center">
                                 <span className="badge p-2 mb-2" style={{
                                 backgroundColor: 'var(--helio-badge-bg)',
@@ -35,7 +35,7 @@ const Planes = () => {
                         </Card>
                     </Col>
                     <Col xs={12} md={4}>
-                        <Card className="border-0 p-3 shadow rounded-4 h-100">
+                        <Card className="border-0 p-3 shadow-sm rounded-4 h-100">
                             <Card.Body className="text-center justify-content-center">
                             <span className="badge p-2 mb-2" style={{
                                 backgroundColor: 'var(--helio-badge-bg)',
@@ -55,7 +55,7 @@ const Planes = () => {
                         </Card>
                     </Col>
                     <Col xs={12} md={4}>
-                        <Card className="border-0 p-3 shadow rounded-4 h-100">
+                        <Card className="border-0 p-3 shadow-sm rounded-4 h-100">
                             <Card.Body className="text-center justify-content-center">
                                 <span className="badge p-2 mb-2" style={{
                                 backgroundColor: 'var(--helio-badge-bg)',

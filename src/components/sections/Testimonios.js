@@ -17,7 +17,7 @@ const Testimonios = () => {
             <Container>
                 <Row className="g-4">
                     <Col xs={12} md={4}>
-                        <Card className="border-0 p-3 shadow rounded-4 h-100">
+                        <Card className="border-0 p-3 shadow-sm rounded-4 h-100">
                             <Card.Body className="d-flex flex-column">
                                 <Card.Title className="mb-3"><FontAwesomeIcon icon={faUserCircle} className="me-2" size="xl" color="var(--helio-primary)"/><strong>María, Las Condes</strong></Card.Title>
                                 <Card.Text className="text-muted flex-grow-1">
@@ -27,7 +27,7 @@ const Testimonios = () => {
                         </Card>
                     </Col>
                     <Col xs={12} md={4}>
-                        <Card className="border-0 p-3 shadow rounded-4 h-100">
+                        <Card className="border-0 p-3 shadow-sm rounded-4 h-100">
                             <Card.Body className="d-flex flex-column">
                                 <Card.Title className="mb-3"><FontAwesomeIcon icon={faUserCircle} className="me-2" size="xl" color="var(--helio-primary)"/><strong>Carlos, Maipú</strong></Card.Title>
                                 <Card.Text className="text-muted flex-grow-1">
@@ -37,7 +37,7 @@ const Testimonios = () => {
                         </Card>
                     </Col>
                     <Col xs={12} md={4}>
-                        <Card className="border-0 p-3 shadow rounded-4 h-100">
+                        <Card className="border-0 p-3 shadow-sm rounded-4 h-100">
                             <Card.Body className="d-flex flex-column">
                                 <Card.Title className="mb-3"><FontAwesomeIcon icon={faUserCircle} className="me-2" size="xl" color="var(--helio-primary)"/><strong>Ana, Providencia</strong></Card.Title>
                                 <Card.Text className="text-muted flex-grow-1">
