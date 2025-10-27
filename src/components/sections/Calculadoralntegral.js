@@ -50,23 +50,45 @@ const Calculadoralntegral = () => {
 
     //Reglas de negocio
 
-    //Variables para el resumen
-    const potenciaEstimada = potenciaPanel * cantidadPaneles;
+    //Variables para el resumen - ORDEN CORRECTO DE APLICACIÓN
     
-    // Calcular subtotal de equipos
-    // Los paneles tienen el costo embebido en estructura, por lo que solo sumamos:
-    // Inversor + Baterías + Estructura/Cableado
-    const subtotalEquipos = inversorPrecio + (bateriaPrecio * cantidadBaterias) + estructuraCableado;
+    // 1. Potencia estimada (referencia en kW)
+    const potenciaEstimada = (potenciaPanel * cantidadPaneles) / 1000;
+    
+    // 2. Subtotal equipos (Inversor + Baterías + Estructura/Cableado)
+    const subtotalEquipos = Math.round(inversorPrecio + (bateriaPrecio * cantidadBaterias) + estructuraCableado);
+    
+    // 3. Recargo por techo (sobre subtotal equipos)
     const recargoTecho = tipoTecho == '1' ? 0.05 : tipoTecho == '2' ? 0.02 : 0.07;
-    const recargoTechoAplicado = subtotalEquipos * recargoTecho;
+    const recargoTechoAplicado = Math.round(subtotalEquipos * recargoTecho);
+    
+    // 4. Garantía (sobre subtotal equipos, ANTES del subsidio)
+    const garantiaAplicada = Math.round(garantia == '1' ? subtotalEquipos * 0.02 : garantia == '2' ? subtotalEquipos * 0.04 : subtotalEquipos * 0.06);
+    
+    // 5. Subsidio (sobre subtotal equipos + recargo techo)
+    const subsidioAplicado = subsidio == '1' ? (subtotalEquipos + recargoTechoAplicado) * 0.08 : subsidio == '2' ? (subtotalEquipos + recargoTechoAplicado) * 0.05 : 0;
+    
+    // 6. Instalación final (instalación base + % por complejidad)
     const instalacionFinal = complejidadInstalacion == '1' ? instalacionBase : complejidadInstalacion == '2' ? instalacionBase + (instalacionBase * 0.08) : instalacionBase + (instalacionBase * 0.15);
-    const subsidioAplicado = subsidio == '1' ? subtotalEquipos * 0.08 : subsidio == '2' ? subtotalEquipos * 0.05 : 0;
-    const ivaAplicado = (subtotalEquipos + recargoTechoAplicado - subsidioAplicado + instalacionFinal) * 0.19;
-
+    
+    // 7. IVA (sobre equipos con recargos - subsidios + instalación final)
+    const ivaAplicado = Math.round((subtotalEquipos + recargoTechoAplicado - subsidioAplicado + instalacionFinal) * 0.19);
+    
+    // 8. Envío (base por región + pesoKg * 700; método exprés multiplica por 1.2)
+    const valorEnvioRegion = region == '1' ? 5000 : region == '2' ? 9000 : region == '3' ? 10000 : 15000;
+    const costoBaseEnvio = valorEnvioRegion + (pesoEnvio * 700);
+    const multiplicadorEnvio = metodoEnvio === '1' ? 1.00 : 1.20;
+    const valorEnvio = Math.round(costoBaseEnvio * multiplicadorEnvio);
+    
+    // 9. Total antes de financiar
+    const totalAntesFinanciar = Math.round(subtotalEquipos + recargoTechoAplicado - subsidioAplicado + instalacionFinal + ivaAplicado + valorEnvio + garantiaAplicada);
+    
     //1. Validar potencia estimada
-    if (potenciaEstimada > 7000 && cantidadBaterias == 0) {
+    if (potenciaEstimada > 7 && cantidadBaterias == 0) {
         //alert('Recomendado considerar almacenamiento para estabilidad del sistema.');
     }
+
+    const total = Math.round(subtotalEquipos + recargoTechoAplicado - subsidioAplicado + instalacionFinal + ivaAplicado + valorEnvio);
     return (
         <Section 
             id="calculadora"
@@ -309,7 +331,7 @@ const Calculadoralntegral = () => {
                             <tbody>
                                 <tr>
                                     <td>Potencia estimada</td>
-                                    <td className="text-end">{potenciaEstimada} W</td>
+                                    <td className="text-end">{potenciaEstimada.toFixed(2)} kW</td>
                                 </tr>
                                 <tr>
                                     <td>Subtotal equipos</td>
@@ -333,15 +355,15 @@ const Calculadoralntegral = () => {
                                 </tr>
                                 <tr>
                                     <td>Envío</td>
-                                    <td className="text-end">$--</td>
+                                    <td className="text-end">${valorEnvio.toLocaleString('es-CL')}</td>
                                 </tr>
                                 <tr>
                                     <td>Garantía</td>
-                                    <td className="text-end">$--</td>
+                                    <td className="text-end">${garantiaAplicada.toLocaleString('es-CL')}</td>
                                 </tr>
                                 <tr>
                                     <td>Total antes de financiar</td>
-                                    <td className="text-end">$--</td>
+                                    <td className="text-end">${totalAntesFinanciar.toLocaleString('es-CL')}</td>
                                 </tr>
                                 <tr>
                                     <td>Pie</td>
@@ -357,7 +379,7 @@ const Calculadoralntegral = () => {
                                 </tr>
                                 <tr style={{backgroundColor: '#f5f5dc', fontWeight: 'bold'}}>
                                     <td>Total</td>
-                                    <td className="text-end">$--</td>
+                                    <td className="text-end">${total.toLocaleString('es-CL')}</td>
                                 </tr>
                             </tbody>
                         </Table>
