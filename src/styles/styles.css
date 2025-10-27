@@ -4,6 +4,7 @@
   --helio-primary: #207E8C;
   --helio-primary-hover: #1a6b77;
   --helio-primary-light: #50B2B2;
+  --helio-primary-green: #BCE0D4;
   
   /* Background Colors */
   --helio-bg-light: #F0F8FA;
@@ -101,4 +102,15 @@
 .navbar-toggler:active svg,
 .navbar-toggler:focus-visible svg {
   color: var(--helio-primary-light) !important;
+}
+
+/* Service Cards Styles */
+.service-icon {
+  width: 80px;
+  height: 80px;
+  background-color: var(--helio-primary-green);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
