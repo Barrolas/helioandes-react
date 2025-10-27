@@ -10,7 +10,7 @@ const NavbarInicio = () => {
         <Navbar expand="lg" className="bg-body-tertiary shadow-sm" sticky='top'>
             <Container id="navbar">
             
-                <Navbar.Brand href="Inicio" className="d-flex align-items-center"><img src="/helioandes-logo.png" alt="HelioAndes Logo" style={{height: '40px', marginRight: '10px'}} /><b> HelioAndes</b></Navbar.Brand>   
+                <Navbar.Brand href="Inicio" className="d-flex align-items-center"><img src={process.env.PUBLIC_URL + "/helioandes-logo.png"} alt="HelioAndes Logo" style={{height: '40px', marginRight: '10px'}} /><b> HelioAndes</b></Navbar.Brand>   
                 <Navbar.Toggle 
                     aria-controls="basic-navbar-nav" 
                     style={{
