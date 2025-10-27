@@ -191,7 +191,7 @@ Generado el: ${new Date().toLocaleDateString('es-CL')} a las ${new Date().toLoca
         >
             <Container>
                 <Row className="g-4">
-                    <Col xs={12} md={6}>
+                    <Col xs={12} lg={6}>
                         <div className="bg-white p-4 rounded-4 shadow-sm h-100">
                             <h4 className="text-start mb-4 fw-bold">Formulario</h4>
                             <Form>
@@ -428,7 +428,7 @@ Generado el: ${new Date().toLocaleDateString('es-CL')} a las ${new Date().toLoca
                             </Form>
                         </div>
                     </Col>
-                    <Col xs={12} md={6}>
+                    <Col xs={12} lg={6}>
                         <div className="bg-white p-4 rounded-4 shadow-sm h-100">
                             <h4 className="mb-4 fw-bold">Resumen</h4>
                             <Table bordered hover>

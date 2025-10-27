@@ -11,7 +11,7 @@ const BasicCardGrid = ({
     return (
         <Row className={gapClass}>
             {cards.map((card, index) => (
-                <Col key={index} lg={gridConfig.lg} xl={gridConfig.xl} className="mb-4">
+                <Col key={index} lg={gridConfig.lg} xl={gridConfig.xl}>
                     <BasicCard 
                         {...card} 
                         className={cardClassName}

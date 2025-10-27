@@ -7,8 +7,8 @@ const FooterInicio = () => {
             <Container>
                 <Row className="align-items-center justify-content-between">
                     <Col xs={12} md={6} className="text-center text-md-start mb-3 mb-md-0">
-                        <p className="mb-0 text-light fs-6">
-                            © 2025 HelioAndes Energía. Todos los derechos reservados.
+                        <p className="mb-0 text-light fs-6" style={{ whiteSpace: 'nowrap' }}>
+                            © 2025 HelioAndes Energía
                         </p>
                     </Col>
                     

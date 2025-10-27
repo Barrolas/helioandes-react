@@ -11,7 +11,7 @@ const HeroInicio = () => {
             <Container className="px-4 px-md-5">
                 <Row className="align-items-center" style={{minHeight: '50vh'}}>
                     {/* Contenido de texto - siempre primera columna */}
-                    <Col xs={12} md={6} className="pe-md-5 mb-4 mb-md-0 order-1 order-md-1">
+                    <Col xs={12} lg={6} className="pe-lg-5 mb-4 mb-lg-0 order-1 order-lg-1">
                         <div className="mb-3 mb-md-1 text-start">
                             <span className="badge p-2" style={{
                                 backgroundColor: 'var(--helio-badge-bg)',
@@ -41,8 +41,8 @@ const HeroInicio = () => {
                             Dimensiona tu sistema, conoce el costo estimado y solicita asesoría en minutos. La DEMO te guía con valores referenciales.
                         </p>
                         
-                        {/* Imagen - solo visible en móvil/tablet, después de descripción */}
-                        <div className="d-md-none mb-4 text-center">
+                        {/* Imagen - visible en móvil y tablet, después de descripción */}
+                        <div className="d-lg-none mb-4 text-center">
                             <Image 
                                 src="/hero-image.png" 
                                 fluid 
@@ -52,12 +52,12 @@ const HeroInicio = () => {
                             />
                         </div>
                         
-                        <div className="d-flex flex-column flex-md-row gap-3">
+                        <div className="d-flex flex-column flex-lg-row gap-3">
                             <Button 
                                 href="#calculadora" 
                                 variant="primary" 
                                 size="lg" 
-                                className="flex-fill flex-md-fill-0"
+                                className="flex-fill flex-lg-fill-0"
                                 helioStyle="filled"
                                 style={{
                                     padding: '12px 24px',
@@ -74,7 +74,7 @@ const HeroInicio = () => {
                                 target="_blank" 
                                 variant="outline-primary" 
                                 size="lg"
-                                className="flex-fill flex-md-fill-0"
+                                className="flex-fill flex-lg-fill-0"
                                 helioStyle="outlined"
                                 style={{
                                     padding: '12px 24px',
@@ -90,7 +90,7 @@ const HeroInicio = () => {
                     </Col>
                     
                     {/* Imagen - solo visible en desktop */}
-                    <Col xs={12} md={6} className="ps-md-4 order-2 order-md-2 d-none d-md-block">
+                    <Col xs={12} lg={6} className="ps-lg-4 order-2 order-lg-2 d-none d-lg-block">
                         <div className="d-flex justify-content-center justify-content-md-start align-items-center" style={{height: '100%'}}>
                             <Image 
                                 src="/hero-image.png" 

@@ -125,22 +125,22 @@ const Contacto = () => {
                                     </Col>
                                 </Row>
                                 
-                                <Row>
-                                    <Col xs={2}>
+                                <Row className="g-3">
+                                    <Col xs={12} sm={2}>
                                         <Button 
                                             type="submit"
                                             variant="primary" 
-                                            className="w-100" 
+                                            className="w-100 py-2" 
                                             helioStyle="filled"
                                         >
                                             Enviar
                                         </Button>
                                     </Col>
-                                    <Col xs={2}>
+                                    <Col xs={12} sm={2}>
                                         <Button 
                                             type="button"
                                             variant="secondary" 
-                                            className="w-100" 
+                                            className="w-100 py-2" 
                                             helioStyle="secondary"
                                             onClick={limpiarFormulario}
                                         >
