@@ -1,6 +1,6 @@
 import React from 'react';
 import Section from '../ui/Section';
-import { Card, CardGroup } from 'react-bootstrap';
+import { Card, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBolt, faWrench, faChartLine, faBriefcase } from '@fortawesome/free-solid-svg-icons';
 
@@ -12,103 +12,55 @@ const Servicios = () => {
             description="Estudio energético, instalación certificada, monitoreo y mantención"
             bgColor="var(--helio-bg-light)"
         >
-            <CardGroup>
-                <Card style={{ border: 'none' }}>
-                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
-                        <div style={{ 
-                            width: '80px', 
-                            height: '80px', 
-                            backgroundColor: '#BCE0D4', 
-                            borderRadius: '12px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            marginRight: '16px',
-                            flexShrink: 0
-                        }}>
+            <Row className="g-4">
+                <Col lg={6} xl={3} className="mb-4">
+                    <Card className="bg-white border-0 shadow-sm rounded-4 h-100 p-4 d-flex flex-column">
+                        <div className="service-icon mb-3">
                             <FontAwesomeIcon icon={faBolt} size="2x" style={{ color: '#FF6B35', transform: 'rotate(-10deg)' }} />
                         </div>
-                        <div>
-                            <Card.Title style={{ fontWeight: 'bold', marginBottom: '8px' }}>Estudio energético</Card.Title>
-                            <Card.Text style={{ color: '#6c757d', lineHeight: '1.5' }}>
-                                Análisis de consumo y propuesta ajustada a tu perfil.
-                            </Card.Text>
-                        </div>
-                    </div>
-                </Card>
+                        <Card.Title className="fw-bold mb-2">Estudio energético</Card.Title>
+                        <Card.Text className="text-muted lh-base">
+                            Análisis de consumo y propuesta ajustada a tu perfil.
+                        </Card.Text>
+                    </Card>
+                </Col>
                 
-                <Card style={{ border: 'none' }}>
-                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
-                        <div style={{ 
-                            width: '80px', 
-                            height: '80px', 
-                            backgroundColor: '#BCE0D4', 
-                            borderRadius: '12px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            marginRight: '16px',
-                            flexShrink: 0
-                        }}>
+                <Col lg={6} xl={3} className="mb-4">
+                    <Card className="bg-white border-0 shadow-sm rounded-4 h-100 p-4 d-flex flex-column">
+                        <div className="service-icon mb-3">
                             <FontAwesomeIcon icon={faWrench} size="2x" style={{ color: '#8B4513', transform: 'rotate(10deg)' }} />
                         </div>
-                        <div>
-                            <Card.Title style={{ fontWeight: 'bold', marginBottom: '8px' }}>Instalación certificada</Card.Title>
-                            <Card.Text style={{ color: '#6c757d', lineHeight: '1.5' }}>
-                                Ejecutada por personal acreditado y normativa vigente.
-                            </Card.Text>
-                        </div>
-                    </div>
-                </Card>
+                        <Card.Title className="fw-bold mb-2">Instalación certificada</Card.Title>
+                        <Card.Text className="text-muted lh-base">
+                            Ejecutada por personal acreditado y normativa vigente.
+                        </Card.Text>
+                    </Card>
+                </Col>
                 
-                <Card style={{ border: 'none' }}>
-                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
-                        <div style={{ 
-                            width: '80px', 
-                            height: '80px', 
-                            backgroundColor: '#BCE0D4', 
-                            borderRadius: '12px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            marginRight: '16px',
-                            flexShrink: 0
-                        }}>
+                <Col lg={6} xl={3} className="mb-4">
+                    <Card className="bg-white border-0 shadow-sm rounded-4 h-100 p-4 d-flex flex-column">
+                        <div className="service-icon mb-3">
                             <FontAwesomeIcon icon={faChartLine} size="2x" style={{ color: '#9370DB' }} />
                         </div>
-                        <div>
-                            <Card.Title style={{ fontWeight: 'bold', marginBottom: '8px' }}>Monitoreo</Card.Title>
-                            <Card.Text style={{ color: '#6c757d', lineHeight: '1.5' }}>
-                                Seguimiento de rendimiento y alertas preventivas.
-                            </Card.Text>
-                        </div>
-                    </div>
-                </Card>
+                        <Card.Title className="fw-bold mb-2">Monitoreo</Card.Title>
+                        <Card.Text className="text-muted lh-base">
+                            Seguimiento de rendimiento y alertas preventivas.
+                        </Card.Text>
+                    </Card>
+                </Col>
                 
-                <Card style={{ border: 'none' }}>
-                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
-                        <div style={{ 
-                            width: '80px', 
-                            height: '80px', 
-                            backgroundColor: '#BCE0D4', 
-                            borderRadius: '12px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            marginRight: '16px',
-                            flexShrink: 0
-                        }}>
+                <Col lg={6} xl={3} className="mb-4">
+                    <Card className="bg-white border-0 shadow-sm rounded-4 h-100 p-4 d-flex flex-column">
+                        <div className="service-icon mb-3">
                             <FontAwesomeIcon icon={faBriefcase} size="2x" style={{ color: '#FF69B4' }} />
                         </div>
-                        <div>
-                            <Card.Title style={{ fontWeight: 'bold', marginBottom: '8px' }}>Mantención</Card.Title>
-                            <Card.Text style={{ color: '#6c757d', lineHeight: '1.5' }}>
-                                Planes periódicos para extender la vida útil del sistema.
-                            </Card.Text>
-                        </div>
-                    </div>
-                </Card>
-            </CardGroup>
+                        <Card.Title className="fw-bold mb-2">Mantención</Card.Title>
+                        <Card.Text className="text-muted lh-base">
+                            Planes periódicos para extender la vida útil del sistema.
+                        </Card.Text>
+                    </Card>
+                </Col>
+            </Row>
         </Section>
     );
 };
