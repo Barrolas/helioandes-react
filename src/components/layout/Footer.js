@@ -1,29 +1,42 @@
 import React from 'react';
 import { Container, Row, Col, Nav } from 'react-bootstrap';
 
-// Clases principales:
-// - bg-dark (fondo)
-// - text-white (texto)
-// - py-3 (espaciado)
-// - text-start y text-end (alineación)
-// - text-decoration-underline (subrayado)
-
 const FooterInicio = () => {
     return (
-        <footer className="bg-dark text-white py-3">
+        <footer className="py-4" style={{ backgroundColor: 'var(--helio-bg-dark)' }}>
             <Container>
-                <Row className="align-items-center">
-                    <Col className="text-start">
-                        <p className="mb-0">© 2025 HelioAndes Energía</p>
+                <Row className="align-items-center justify-content-between">
+                    <Col xs={12} md={6} className="text-center text-md-start mb-3 mb-md-0">
+                        <p className="mb-0 text-light fs-6">
+                            © 2025 HelioAndes Energía. Todos los derechos reservados.
+                        </p>
                     </Col>
                     
-                    <Col className="text-end">
-                        <Nav>
-                            <Nav.Link href="/privacidad" className="text-white text-decoration-underline">
+                    <Col xs={12} md={6} className="text-center text-md-end">
+                        <Nav className="justify-content-center justify-content-md-end align-items-center">
+                            <Nav.Link 
+                                href="/privacidad" 
+                                className="text-light text-decoration-none px-2 py-1 d-flex align-items-center"
+                                style={{ 
+                                    color: 'var(--helio-text-light) !important',
+                                    transition: 'color 0.3s ease'
+                                }}
+                                onMouseEnter={(e) => e.target.style.color = 'var(--helio-primary-light)'}
+                                onMouseLeave={(e) => e.target.style.color = 'var(--helio-text-light)'}
+                            >
                                 Privacidad
                             </Nav.Link>
-                            <span className="mx-2">•</span>
-                            <Nav.Link href="/terminos" className="text-white text-decoration-underline">
+                            <span className="text-light mx-2 d-flex align-items-center">•</span>
+                            <Nav.Link 
+                                href="/terminos" 
+                                className="text-light text-decoration-none px-2 py-1 d-flex align-items-center"
+                                style={{ 
+                                    color: 'var(--helio-text-light) !important',
+                                    transition: 'color 0.3s ease'
+                                }}
+                                onMouseEnter={(e) => e.target.style.color = 'var(--helio-primary-light)'}
+                                onMouseLeave={(e) => e.target.style.color = 'var(--helio-text-light)'}
+                            >
                                 Términos
                             </Nav.Link>
                         </Nav>
