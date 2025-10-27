@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/helioandes-react/static/css/main.35536cef.css",
-    "main.js": "/helioandes-react/static/js/main.34fd9961.js",
+    "main.js": "/helioandes-react/static/js/main.6c9605de.js",
     "static/js/453.fb27eabc.chunk.js": "/helioandes-react/static/js/453.fb27eabc.chunk.js",
     "static/media/fa-solid-900.woff2": "/helioandes-react/static/media/fa-solid-900.8ae0d37556ff1e685de2.woff2",
     "static/media/fa-brands-400.woff2": "/helioandes-react/static/media/fa-brands-400.1c5c7716b05754cb4eab.woff2",
@@ -9,11 +9,11 @@
     "static/media/fa-v4compatibility.woff2": "/helioandes-react/static/media/fa-v4compatibility.e4340c52a50e727c6afa.woff2",
     "index.html": "/helioandes-react/index.html",
     "main.35536cef.css.map": "/helioandes-react/static/css/main.35536cef.css.map",
-    "main.34fd9961.js.map": "/helioandes-react/static/js/main.34fd9961.js.map",
+    "main.6c9605de.js.map": "/helioandes-react/static/js/main.6c9605de.js.map",
     "453.fb27eabc.chunk.js.map": "/helioandes-react/static/js/453.fb27eabc.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.35536cef.css",
-    "static/js/main.34fd9961.js"
+    "static/js/main.6c9605de.js"
   ]
 }
