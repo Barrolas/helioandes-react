@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Row, Col, Button, Image } from 'react-bootstrap';
+import { Container, Row, Col, Image } from 'react-bootstrap';
+import Button from '../ui/Button';
 
 const HeroInicio = () => {
     return (
@@ -56,7 +57,8 @@ const HeroInicio = () => {
                                 href="#calculadora" 
                                 variant="primary" 
                                 size="lg" 
-                                className="flex-fill flex-md-fill-0 helio-btn-filled"
+                                className="flex-fill flex-md-fill-0"
+                                helioStyle="filled"
                                 style={{
                                     padding: '12px 24px',
                                     fontSize: '16px',
@@ -72,7 +74,8 @@ const HeroInicio = () => {
                                 target="_blank" 
                                 variant="outline-primary" 
                                 size="lg"
-                                className="flex-fill flex-md-fill-0 helio-btn-outlined"
+                                className="flex-fill flex-md-fill-0"
+                                helioStyle="outlined"
                                 style={{
                                     padding: '12px 24px',
                                     fontSize: '16px',

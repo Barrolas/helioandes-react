@@ -1,6 +1,7 @@
 import React from 'react';
 import Section from '../ui/Section';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { Container, Row, Col, Card } from 'react-bootstrap';
+import Button from '../ui/Button';
 
 
 const Planes = () => {
@@ -30,7 +31,7 @@ const Planes = () => {
                                 <p className="text-muted mb-1">Estudio energético</p>
                                 <p className="text-muted mb-1">Instalación estándar</p>
                                 <p className="text-muted mb-3">Monitoreo básico</p>
-                                <Button variant="primary" className="w-100 helio-btn-filled p-3 rounded-4">Solicitar Evaluación</Button>
+                                <Button variant="primary" className="w-100 p-3 rounded-4" helioStyle="filled" href="#contacto">Solicitar Evaluación</Button>
                             </Card.Body>
                         </Card>
                     </Col>
@@ -50,7 +51,7 @@ const Planes = () => {
                                     <p className="text-muted mb-1">Estudio avanzado</p>
                                     <p className="text-muted mb-1">Instalación optimizada</p>
                                     <p className="text-muted mb-3">Monitoreo avanzado</p>    
-                                    <Button variant="primary" className="w-100 helio-btn-filled p-3 rounded-4">Solicitar Evaluación</Button>
+                                    <Button variant="primary" className="w-100 p-3 rounded-4" helioStyle="filled" href="#contacto">Solicitar Evaluación</Button>
                             </Card.Body>
                         </Card>
                     </Col>
@@ -70,7 +71,7 @@ const Planes = () => {
                                 <p className="text-muted mb-1">Diseño off-grid</p>
                                 <p className="text-muted mb-1">Almacenamiento</p>
                                 <p className="text-muted mb-3">Soporte preferente</p>
-                                <Button variant="primary" className="w-100 helio-btn-filled p-3 rounded-4">Solicitar Evaluación</Button>
+                                <Button variant="primary" className="w-100 p-3 rounded-4" helioStyle="filled" href="#contacto">Solicitar Evaluación</Button>
                             </Card.Body>
                         </Card>
                     </Col>

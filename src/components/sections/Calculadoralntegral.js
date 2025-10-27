@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Section from '../ui/Section';
-import { Container, Row, Col, Form, Button, Table } from 'react-bootstrap';
+import { Container, Row, Col, Form, Table } from 'react-bootstrap';
+import Button from '../ui/Button';
 import Swal from 'sweetalert2';
 
 const Calculadoralntegral = () => {
@@ -52,27 +53,27 @@ const Calculadoralntegral = () => {
         try {
             // generar texto del resumen con formato legible
             const resumenTexto = `
-                    RESUMEN CALCULADORA HELIOANDES
-                    ===============================
+RESUMEN CALCULADORA HELIOANDES
+==================================
 
-                    Potencia estimada: ${potenciaEstimada.toFixed(2)} kW
-                    Subtotal equipos: $${subtotalEquipos.toLocaleString('es-CL')}
-                    Recargo techo: $${recargoTechoAplicado.toLocaleString('es-CL')}
-                    Subsidio: -$${subsidioAplicado.toLocaleString('es-CL')}
-                    Instalación final: $${instalacionFinal.toLocaleString('es-CL')}
-                    IVA 19%: $${ivaAplicado.toLocaleString('es-CL')}
-                    Envío: $${valorEnvio.toLocaleString('es-CL')}
-                    Garantía: $${garantiaAplicada.toLocaleString('es-CL')}
-                    Total antes de financiar: $${totalAntesFinanciar.toLocaleString('es-CL')}
-                    Pie: $${pieCalculado.toLocaleString('es-CL')}
-                    Interés total: $${interesTotal.toLocaleString('es-CL')}
-                    Cuota: $${cuota.toLocaleString('es-CL')}
-                    TOTAL FINAL: $${total.toLocaleString('es-CL')}
+Potencia estimada: ${potenciaEstimada.toFixed(2)} kW
+Subtotal equipos: $${subtotalEquipos.toLocaleString('es-CL')}
+Recargo techo: $${recargoTechoAplicado.toLocaleString('es-CL')}
+Subsidio: -$${subsidioAplicado.toLocaleString('es-CL')}
+Instalación final: $${instalacionFinal.toLocaleString('es-CL')}
+IVA 19%: $${ivaAplicado.toLocaleString('es-CL')}
+Envío: $${valorEnvio.toLocaleString('es-CL')}
+Garantía: $${garantiaAplicada.toLocaleString('es-CL')}
+Total antes de financiar: $${totalAntesFinanciar.toLocaleString('es-CL')}
+Pie: $${pieCalculado.toLocaleString('es-CL')}
+Interés total: $${interesTotal.toLocaleString('es-CL')}
+Cuota: $${cuota.toLocaleString('es-CL')}
+TOTAL FINAL: $${total.toLocaleString('es-CL')}
 
-                    ===============================
-                    Valores referenciales para el prototipo
-                    Generado el: ${new Date().toLocaleDateString('es-CL')}
-                                `.trim();
+==================================
+Valores referenciales para el prototipo
+Generado el: ${new Date().toLocaleDateString('es-CL')} a las ${new Date().toLocaleTimeString('es-CL')}
+            `.trim();
 
             // Copiar al portapapeles
             await navigator.clipboard.writeText(resumenTexto);
@@ -185,7 +186,7 @@ const Calculadoralntegral = () => {
         <Section 
             id="calculadora"
             title="DEMO Calculadora" 
-            description="Maquetado de formulario y resumen."
+            description="Calcula aquí el costo de tu sistema de energía solar"
             bgColor="var(--helio-bg-medium)"
         >
             <Container>
@@ -414,12 +415,12 @@ const Calculadoralntegral = () => {
 
                                 <Row className="mt-4">
                                     <Col xs={6}>
-                                        <Button variant="secondary" onClick={limpiarFormulario} className="w-100">
-                                            Limpiar
+                                        <Button variant="secondary" onClick={limpiarFormulario} className="w-100" helioStyle="secondary">
+                                            Reiniciar
                                         </Button>
                                     </Col>
                                     <Col xs={6}>
-                                        <Button variant="primary" onClick={handleCopySummary} className="w-100 helio-btn-filled">
+                                        <Button variant="primary" onClick={handleCopySummary} className="w-100" helioStyle="filled">
                                             Copiar resumen
                                         </Button>
                                     </Col>
@@ -486,11 +487,7 @@ const Calculadoralntegral = () => {
                                     </tr>
                                 </tbody>
                             </Table>
-                            <span className="badge p-2 bg-warning text-dark mt-1" style={{
-                                fontSize: '14px',
-                                borderRadius: '64px',
-                                fontWeight: '500'
-                            }}>
+                            <span className="badge p-2 px-3 bg-warning text-dark mt-1 rounded-pill">
                                 Valores referenciales para el prototipo
                             </span>
                         </div>

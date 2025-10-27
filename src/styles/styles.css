@@ -11,6 +11,7 @@
   --helio-bg-medium: #ddf3f3;
   --helio-bg-dark: #132427;
   --helio-bg-white: #ffffff;
+  --helio-bg-secondary: #b1d1d1;
   
   /* Text Colors */
   --helio-text-dark: #212529;
@@ -53,15 +54,30 @@
 
 .helio-btn-outlined {
   background-color: var(--helio-btn-outlined-bg) !important;
-  border-color: var(--helio-btn-outlined-border) !important;
-  color: var(--helio-btn-outlined-text) !important;
+  border-color: var(--helio-primary) !important;
+  border-width: 2px !important;
+  color: var(--helio-primary) !important;
   transition: all 0.3s ease;
 }
 
 .helio-btn-outlined:hover {
-  background-color: var(--helio-btn-outlined-bg-hover) !important;
-  border-color: var(--helio-btn-outlined-border-hover) !important;
-  color: var(--helio-btn-outlined-text-hover) !important;
+  background-color: var(--helio-primary) !important;
+  border-color: var(--helio-primary) !important;
+  border-width: 2px !important;
+  color: var(--helio-text-light) !important;
+}
+
+.helio-btn-secondary {
+  background-color: var(--helio-bg-secondary) !important;
+  border-color: var(--helio-bg-secondary) !important;
+  color: var(--helio-text-dark) !important;
+  transition: all 0.3s ease;
+}
+
+.helio-btn-secondary:hover {
+  background-color: var(--helio-primary) !important;
+  border-color: var(--helio-primary) !important;
+  color: var(--helio-text-light) !important;
 }
 
 /* Form Styles - Override global text-align center */
