@@ -3,10 +3,14 @@ import { Container, Row, Col, Image } from 'react-bootstrap';
 import Button from '../ui/Button';
 
 const HeroInicio = () => {
-    // Configuración condicional para las rutas de imágenes
+    // Configuración condicional para las rutas de imágenes y archivos
     const imagePath = process.env.NODE_ENV === 'production' 
         ? './hero-image.png'  // Para GitHub Pages
         : '/hero-image.png';  // Para desarrollo local
+    
+    const catalogPath = process.env.NODE_ENV === 'production' 
+        ? './catalogo-helioandes.pdf'  // Para GitHub Pages
+        : '/catalogo-helioandes.pdf';  // Para desarrollo local
 
     return (
         <div as="section" id="inicio" className="py-5" style={{
@@ -75,7 +79,7 @@ const HeroInicio = () => {
                                 Ver DEMO
                             </Button>
                             <Button 
-                                href="/catalogo-helioandes.pdf" 
+                                href={catalogPath}
                                 target="_blank" 
                                 variant="outline-primary" 
                                 size="lg"
