@@ -1,70 +1,441 @@
-# Getting Started with Create React App
+# 🌞 HelioAndes - Sistema de Energía Solar
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Una aplicación web React para dimensionar sistemas de energía solar, calcular costos y solicitar asesoría para hogares y PyMEs.
 
-## Available Scripts
+## 📋 Tabla de Contenidos
 
-In the project directory, you can run:
+- [🌐 URLs y Entornos](#-urls-y-entornos)
+- [🚀 Instalación y Configuración](#-instalación-y-configuración)
+- [📁 Estructura del Proyecto](#-estructura-del-proyecto)
+- [⚡ Funcionalidades Principales](#-funcionalidades-principales)
+- [🧮 Calculadora Integral](#-calculadora-integral)
+- [📝 Formulario de Contacto](#-formulario-de-contacto)
+- [🎨 Componentes UI](#-componentes-ui)
+- [📱 Responsividad](#-responsividad)
+- [🔧 Scripts Disponibles](#-scripts-disponibles)
+- [🚀 Deployment](#-deployment)
+- [🛠️ Tecnologías Utilizadas](#️-tecnologías-utilizadas)
 
-### `npm start`
+## 🌐 URLs y Entornos
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### **Desarrollo Local**
+- **URL**: `http://localhost:3000`
+- **Comando**: `npm start`
+- **Configuración**: Rutas absolutas (`/imagen.png`)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### **Producción (GitHub Pages)**
+- **URL**: `https://barrolas.github.io/helioandes-react`
+- **Comando**: `npm run deploy`
+- **Configuración**: Rutas relativas (`./imagen.png`)
 
-### `npm test`
+### **Repositorio**
+- **GitHub**: `https://github.com/Barrolas/helioandes-react`
+- **Rama principal**: `master` (código fuente)
+- **Rama deploy**: `gh-pages` (archivos compilados - automática)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Instalación y Configuración
 
-### `npm run build`
+### Prerrequisitos
+- Node.js (versión 14 o superior)
+- npm o yarn
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Instalación
+```bash
+# Clonar el repositorio
+git clone https://github.com/Barrolas/helioandes-react.git
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Navegar al directorio
+cd helioandes-react
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Instalar dependencias
+npm install
 
-### `npm run eject`
+# Iniciar servidor de desarrollo
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 📁 Estructura del Proyecto
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+helioandes-react/
+├── public/                     # Archivos estáticos
+│   ├── catalogo-helioandes.pdf # Catálogo descargable
+│   ├── helioandes-logo.png     # Logo de la empresa
+│   ├── hero-image.png          # Imagen principal
+│   └── index.html              # HTML base
+├── src/
+│   ├── components/
+│   │   ├── layout/             # Componentes de layout
+│   │   │   ├── Navbar.js       # Barra de navegación
+│   │   │   └── Footer.js       # Pie de página
+│   │   ├── sections/           # Secciones principales
+│   │   │   ├── Hero.js         # Sección principal
+│   │   │   ├── Servicios.js    # Tarjetas de servicios
+│   │   │   ├── Soluciones.js   # Tarjetas de soluciones
+│   │   │   ├── Calculadoralntegral.js # Calculadora principal
+│   │   │   ├── Planes.js       # Planes de financiamiento
+│   │   │   ├── Testimonios.js  # Testimonios de clientes
+│   │   │   ├── FAQ.js          # Preguntas frecuentes
+│   │   │   └── Contacto.js     # Formulario de contacto
+│   │   └── ui/                 # Componentes reutilizables
+│   │       ├── Button.js       # Botón personalizado
+│   │       ├── Section.js      # Contenedor de sección
+│   │       ├── SectionHeader.js # Encabezado de sección
+│   │       ├── BasicCard.js    # Tarjeta básica
+│   │       └── BasicCardGrid.js # Grid de tarjetas
+│   ├── styles/
+│   │   └── styles.css          # Estilos globales y variables CSS
+│   └── App.js                  # Componente principal
+└── package.json                # Configuración del proyecto
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## ⚡ Funcionalidades Principales
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 🏠 **Sección Hero**
+- Presentación principal de la empresa
+- Botones de acción (DEMO y Descargar catálogo)
+- Imagen responsiva (móvil/tablet: columna única, desktop: lado a lado)
 
-## Learn More
+### 🔧 **Servicios**
+- **Estudio energético**: Análisis de consumo y propuesta
+- **Instalación certificada**: Personal acreditado y normativa vigente
+- **Monitoreo**: Seguimiento de rendimiento y alertas
+- **Mantención**: Planes periódicos para extender vida útil
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 💡 **Soluciones**
+- **Hogar 3-5 kW**: Balance ideal entre costo y ahorro
+- **PyME 10-20 kW**: Para operación diurna con buena irradiación
+- **Off-grid con baterías**: Autonomía en zonas sin red eléctrica
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 💰 **Planes de Financiamiento**
+- **Contado**: Descuento por pago al contado
+- **Financiamiento**: Opciones de pago a plazos
+- **Leasing**: Modalidad de arrendamiento
 
-### Code Splitting
+### 💬 **Testimonios**
+- Experiencias reales de clientes
+- Casos de éxito en diferentes comunas
+- Validación social del servicio
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### ❓ **FAQ**
+- Preguntas frecuentes sobre energía solar
+- Información técnica y comercial
+- Resolución de dudas comunes
 
-### Analyzing the Bundle Size
+## 🧮 Calculadora Integral
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### **Funcionalidades**
+La calculadora permite dimensionar sistemas de energía solar con cálculos detallados de costos y financiamiento.
 
-### Making a Progressive Web App
+### **Campos de Entrada**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+#### **Configuración del Sistema**
+- `potenciaPanel`: Potencia individual de cada panel (W)
+- `cantidadPaneles`: Número de paneles solares
+- `inversorPrecio`: Costo del inversor
+- `bateriaPrecio`: Costo por batería
+- `cantidadBaterias`: Número de baterías
+- `estructuraCableado`: Costo de estructura y cableado
 
-### Advanced Configuration
+#### **Instalación y Envío**
+- `instalacionBase`: Costo base de instalación
+- `pesoEnvio`: Peso total para cálculo de envío
+- `tipoTecho`: Tipo de techo (1: Tejado, 2: Losa, 3: Metálico)
+- `region`: Región de instalación (1: Metropolitana, 2: Norte, 3: Sur)
+- `complejidadInstalacion`: Nivel de complejidad (1: Simple, 2: Media, 3: Compleja)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+#### **Financiamiento**
+- `subsidio`: Tipo de subsidio aplicable
+- `metodoEnvio`: Método de envío (1: Estándar, 2: Express)
+- `garantia`: Tipo de garantía (1: Estándar, 2: Extendida)
+- `planPago`: Modalidad de pago (1: Contado, 2: Financiado)
+- `tipoPie`: Tipo de pie inicial
+- `valorPie`: Valor del pie inicial
 
-### Deployment
+### **Métodos de Cálculo**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+#### **Cálculo de Potencia Total**
+```javascript
+const potenciaTotal = potenciaPanel * cantidadPaneles;
+```
 
-### `npm run build` fails to minify
+#### **Cálculo de Costos Base**
+```javascript
+const costoPaneles = potenciaPanel * cantidadPaneles * precioPorWatt;
+const costoInversor = inversorPrecio;
+const costoBaterias = bateriaPrecio * cantidadBaterias;
+const costoEstructura = estructuraCableado;
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### **Cálculo de Instalación**
+```javascript
+// Factor por tipo de techo
+const factoresTecho = { '1': 1.0, '2': 1.2, '3': 1.5 };
+const factorTecho = factoresTecho[tipoTecho];
+
+// Factor por región
+const factoresRegion = { '1': 1.0, '2': 1.1, '3': 1.15 };
+const factorRegion = factoresRegion[region];
+
+// Factor por complejidad
+const factoresComplejidad = { '1': 1.0, '2': 1.3, '3': 1.6 };
+const factorComplejidad = factoresComplejidad[complejidadInstalacion];
+
+const costoInstalacion = instalacionBase * factorTecho * factorRegion * factorComplejidad;
+```
+
+#### **Cálculo de Envío**
+```javascript
+// Factor por método de envío
+const factoresEnvio = { '1': 1.0, '2': 1.5 };
+const factorEnvio = factoresEnvio[metodoEnvio];
+
+const costoEnvio = pesoEnvio * precioPorKg * factorEnvio;
+```
+
+#### **Cálculo de Financiamiento**
+```javascript
+// Cálculo de pie inicial
+const pieInicial = tipoPie === '1' ? valorPie : (costoTotal * porcentajePie);
+
+// Cálculo de saldo a financiar
+const saldoFinanciar = costoTotal - pieInicial;
+
+// Cálculo de cuotas (si aplica)
+const cuotas = planPago === '2' ? calcularCuotas(saldoFinanciar, tasaInteres, plazo) : 0;
+```
+
+### **Validaciones**
+- **Potencia mínima**: Sistema debe generar al menos 1kW
+- **Cantidad de paneles**: Mínimo 1 panel
+- **Valores positivos**: Todos los costos deben ser mayores a 0
+
+### **Resumen de Resultados**
+La calculadora genera un resumen detallado que incluye:
+- Costo total del sistema
+- Desglose por componentes
+- Costos de instalación y envío
+- Opciones de financiamiento
+- Ahorro estimado mensual
+- Tiempo de retorno de inversión
+
+## 📝 Formulario de Contacto
+
+### **Funcionalidades**
+Formulario de contacto con validaciones y feedback visual para solicitar asesoría personalizada.
+
+### **Campos del Formulario**
+- **Nombre**: Campo obligatorio, mínimo 2 caracteres
+- **Correo electrónico**: Campo obligatorio, validación con regex
+- **Mensaje**: Campo opcional, mínimo 10 caracteres si se completa
+
+### **Validaciones Implementadas**
+
+#### **Validación de Nombre**
+```javascript
+if (nombre.trim().length < 2) {
+    errores.nombre = 'El nombre debe tener al menos 2 caracteres';
+}
+```
+
+#### **Validación de Email**
+```javascript
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+if (!correo.trim()) {
+    errores.correo = 'El correo electrónico es obligatorio';
+} else if (!emailRegex.test(correo)) {
+    errores.correo = 'Ingresa un correo electrónico válido';
+}
+```
+
+#### **Validación de Mensaje**
+```javascript
+if (mensaje.trim() && mensaje.trim().length < 10) {
+    errores.mensaje = 'El mensaje debe tener al menos 10 caracteres';
+}
+```
+
+### **Funcionalidades Adicionales**
+- **Botón Limpiar**: Resetea todos los campos y errores
+- **Feedback Visual**: Campos inválidos se marcan en rojo
+- **SweetAlert**: Notificación de éxito al enviar
+- **Responsive**: Botones adaptados para móvil y desktop
+
+## 🎨 Componentes UI
+
+### **Button Component**
+Botón personalizado con múltiples variantes y estilos corporativos.
+
+```javascript
+<Button 
+    variant="primary" 
+    helioStyle="filled"
+    size="lg"
+    className="custom-class"
+>
+    Texto del botón
+</Button>
+```
+
+**Props disponibles:**
+- `variant`: primary, secondary, outline-primary
+- `helioStyle`: filled, outlined, secondary
+- `size`: sm, md, lg
+- `className`: clases CSS adicionales
+
+### **Section Component**
+Contenedor estandarizado para todas las secciones.
+
+```javascript
+<Section 
+    id="servicios"
+    title="Servicios" 
+    description="Descripción de la sección"
+    bgColor="var(--helio-bg-light)"
+>
+    Contenido de la sección
+</Section>
+```
+
+### **BasicCard Component**
+Tarjeta reutilizable para servicios y soluciones.
+
+```javascript
+<BasicCard 
+    icon={faBolt}
+    title="Título de la tarjeta"
+    description="Descripción detallada"
+    iconColor="#FF6B35"
+    iconTransform="rotate(-10deg)"
+/>
+```
+
+### **BasicCardGrid Component**
+Grid responsivo para múltiples tarjetas.
+
+```javascript
+<BasicCardGrid 
+    cards={serviciosData} 
+    gridConfig={{ lg: 6, xl: 3 }} 
+    gapClass="g-4"
+/>
+```
+
+## 📱 Responsividad
+
+### **Breakpoints Bootstrap**
+- **xs**: < 576px (Móvil)
+- **sm**: ≥ 576px (Móvil grande)
+- **md**: ≥ 768px (Tablet)
+- **lg**: ≥ 992px (Desktop)
+- **xl**: ≥ 1200px (Desktop grande)
+
+### **Comportamiento por Dispositivo**
+
+#### **Móvil (< 768px)**
+- Navegación colapsable
+- Imágenes en columna única
+- Botones de ancho completo
+- Formularios en columna única
+
+#### **Tablet (768px - 991px)**
+- Layout similar a móvil
+- Formulario calculadora en columna única
+- Tarjetas en columna única
+- Imágenes centradas
+
+#### **Desktop (≥ 992px)**
+- Layout de dos columnas
+- Imágenes lado a lado
+- Botones tamaño normal
+- Formularios en múltiples columnas
+
+### **Configuración de Rutas de Imágenes**
+```javascript
+// Configuración condicional según entorno
+const imagePath = process.env.NODE_ENV === 'production' 
+    ? './hero-image.png'  // GitHub Pages
+    : '/hero-image.png';  // Desarrollo local
+```
+
+## 🔧 Scripts Disponibles
+
+### **Desarrollo**
+```bash
+npm start          # Inicia servidor de desarrollo en http://localhost:3000
+npm test           # Ejecuta tests en modo interactivo
+npm run build      # Construye la aplicación para producción
+```
+
+### **Deployment**
+```bash
+npm run predeploy  # Ejecuta npm run build automáticamente
+npm run deploy     # Despliega a GitHub Pages (rama gh-pages)
+```
+
+### **Utilidades**
+```bash
+npm run eject      # Expone configuración de webpack (irreversible)
+```
+
+## 🚀 Deployment
+
+### **Flujo de Deployment**
+1. **Desarrollo**: Trabajar en rama `master`
+2. **Commit**: Hacer commit de cambios
+3. **Push**: Subir cambios a GitHub
+4. **Deploy**: Ejecutar `npm run deploy`
+5. **Propagación**: Esperar 2-10 minutos para que GitHub Pages actualice
+
+### **Configuración de GitHub Pages**
+- **Rama fuente**: `gh-pages` (generada automáticamente)
+- **Directorio**: `/` (raíz)
+- **URL**: `https://barrolas.github.io/helioandes-react`
+
+### **Variables de Entorno**
+El proyecto usa configuración condicional para manejar diferentes entornos:
+
+```javascript
+// En Hero.js y Navbar.js
+const imagePath = process.env.NODE_ENV === 'production' 
+    ? './hero-image.png'  // Para GitHub Pages
+    : '/hero-image.png';  // Para desarrollo local
+```
+
+## 🛠️ Tecnologías Utilizadas
+
+### **Frontend**
+- **React 19.2.0**: Biblioteca principal
+- **React Bootstrap 2.10.10**: Componentes UI
+- **Bootstrap 5.3.8**: Framework CSS
+- **FontAwesome**: Iconografía
+
+### **Herramientas de Desarrollo**
+- **Create React App**: Configuración base
+- **React Scripts 5.0.1**: Scripts de build y desarrollo
+- **ESLint**: Linting de código
+- **Webpack**: Bundling (configurado por CRA)
+
+### **Librerías Adicionales**
+- **SweetAlert2 11.26.3**: Notificaciones y alertas
+- **gh-pages 6.3.0**: Deployment a GitHub Pages
+- **cross-env 10.1.0**: Variables de entorno multiplataforma
+
+### **Testing**
+- **React Testing Library**: Testing de componentes
+- **Jest**: Framework de testing
+- **Jest DOM**: Matchers adicionales para DOM
+
+## 📞 Soporte y Contacto
+
+Para soporte técnico o consultas sobre el proyecto:
+- **GitHub Issues**: [Crear issue](https://github.com/Barrolas/helioandes-react/issues)
+- **Email**: [Contacto a través del formulario web](https://barrolas.github.io/helioandes-react#contacto)
+
+## 📄 Licencia
+
+Este proyecto está desarrollado para fines educativos y de presentación académica.
+
+---
+
+**Desarrollado con ❤️ para HelioAndes Energía**
