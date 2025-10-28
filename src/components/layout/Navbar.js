@@ -6,11 +6,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 const NavbarInicio = () => {
+    // Configuración condicional para las rutas de imágenes
+    const logoPath = process.env.NODE_ENV === 'production' 
+        ? './helioandes-logo.png'  // Para GitHub Pages
+        : '/helioandes-logo.png';  // Para desarrollo local
+
     return (
         <Navbar expand="lg" className="bg-body-tertiary shadow-sm" sticky='top'>
             <Container id="navbar">
             
-                <Navbar.Brand href="Inicio" className="d-flex align-items-center"><img src={`${process.env.PUBLIC_URL}/helioandes-logo.png`} alt="HelioAndes Logo" style={{height: '40px', marginRight: '10px'}} /><b> HelioAndes</b></Navbar.Brand>   
+                <Navbar.Brand href="Inicio" className="d-flex align-items-center"><img src={logoPath} alt="HelioAndes Logo" style={{height: '40px', marginRight: '10px'}} /><b> HelioAndes</b></Navbar.Brand>   
                 <Navbar.Toggle 
                     aria-controls="basic-navbar-nav" 
                     style={{

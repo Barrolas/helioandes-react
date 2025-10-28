@@ -3,6 +3,11 @@ import { Container, Row, Col, Image } from 'react-bootstrap';
 import Button from '../ui/Button';
 
 const HeroInicio = () => {
+    // Configuración condicional para las rutas de imágenes
+    const imagePath = process.env.NODE_ENV === 'production' 
+        ? './hero-image.png'  // Para GitHub Pages
+        : '/hero-image.png';  // Para desarrollo local
+
     return (
         <div as="section" id="inicio" className="py-5" style={{
             backgroundColor: 'var(--helio-bg-light)', 
@@ -44,7 +49,7 @@ const HeroInicio = () => {
                         {/* Imagen - visible en móvil y tablet, después de descripción */}
                         <div className="d-lg-none mb-4 text-center">
                             <Image 
-                                src={`${process.env.PUBLIC_URL}/hero-image.png`}
+                                src={imagePath}
                                 fluid 
                                 alt="Sistema de energía solar HelioAndes"
                                 style={{maxHeight: '300px', width: 'auto'}}
@@ -93,7 +98,7 @@ const HeroInicio = () => {
                     <Col xs={12} lg={6} className="ps-lg-4 order-2 order-lg-2 d-none d-lg-block">
                         <div className="d-flex justify-content-center justify-content-md-start align-items-center" style={{height: '100%'}}>
                             <Image 
-                                src={`${process.env.PUBLIC_URL}/hero-image.png`}
+                                src={imagePath}
                                 fluid 
                                 alt="Sistema de energía solar HelioAndes"
                                 style={{maxHeight: '400px', width: 'auto'}}
