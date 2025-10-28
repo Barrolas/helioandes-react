@@ -22,8 +22,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "set PUBLIC_URL= && npm start",
-    "build": "set PUBLIC_URL=https://barrolas.github.io/helioandes-react && npm run build",
+    "start": "cross-env PUBLIC_URL= npm start",
+    "build": "cross-env PUBLIC_URL=https://barrolas.github.io/helioandes-react npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
@@ -48,6 +48,7 @@
     ]
   },
   "devDependencies": {
+    "cross-env": "^10.1.0",
     "gh-pages": "^6.3.0"
   }
 }
