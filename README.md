@@ -124,6 +124,13 @@ helioandes-react/
 
 ## 🧮 Calculadora Integral
 
+### **📋 Índice de la Calculadora**
+- [Funcionalidades](#funcionalidades)
+- [Campos de Entrada](#campos-de-entrada)
+- [Flujo de Cálculo - Orden Crítico](#-flujo-de-cálculo---orden-crítico)
+- [Validaciones](#validaciones)
+- [Resumen de Resultados](#resumen-de-resultados)
+
 ### **Funcionalidades**
 La calculadora permite dimensionar sistemas de energía solar con cálculos detallados de costos y financiamiento.
 
