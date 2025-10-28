@@ -404,33 +404,52 @@ const imagePath = process.env.NODE_ENV === 'production'
 
 ## 🛠️ Tecnologías Utilizadas
 
-### **Frontend**
-- **React 19.2.0**: Biblioteca principal
-- **React Bootstrap 2.10.10**: Componentes UI
-- **Bootstrap 5.3.8**: Framework CSS
-- **FontAwesome**: Iconografía
+### **Frontend Core**
+- **React 19.2.0**: Biblioteca principal para la interfaz de usuario
+- **React DOM 19.2.0**: Renderizado de React en el DOM
+- **React Scripts 5.0.1**: Scripts de build, desarrollo y testing
+
+### **UI Framework y Componentes**
+- **Bootstrap 5.3.8**: Framework CSS para diseño responsivo
+- **React Bootstrap 2.10.10**: Componentes React basados en Bootstrap
+- **FontAwesome**: Librería completa de iconografía
+  - **@fortawesome/fontawesome-free 7.1.0**: Iconos gratuitos base
+  - **@fortawesome/free-solid-svg-icons 7.1.0**: Iconos sólidos
+  - **@fortawesome/free-regular-svg-icons 7.1.0**: Iconos regulares
+  - **@fortawesome/free-brands-svg-icons 7.1.0**: Iconos de marcas
+  - **@fortawesome/react-fontawesome 3.1.0**: Componente React para FontAwesome
+
+### **Notificaciones y Alertas**
+- **SweetAlert2 11.26.3**: Librería para alertas y notificaciones elegantes
 
 ### **Herramientas de Desarrollo**
-- **Create React App**: Configuración base
-- **React Scripts 5.0.1**: Scripts de build y desarrollo
-- **ESLint**: Linting de código
-- **Webpack**: Bundling (configurado por CRA)
-
-### **Librerías Adicionales**
-- **SweetAlert2 11.26.3**: Notificaciones y alertas
-- **gh-pages 6.3.0**: Deployment a GitHub Pages
-- **cross-env 10.1.0**: Variables de entorno multiplataforma
+- **Create React App**: Configuración base del proyecto
+- **ESLint**: Linting de código JavaScript/React
+- **Webpack**: Bundling y optimización (configurado por CRA)
+- **Babel**: Transpilación de JavaScript moderno
 
 ### **Testing**
-- **React Testing Library**: Testing de componentes
-- **Jest**: Framework de testing
-- **Jest DOM**: Matchers adicionales para DOM
+- **Jest**: Framework de testing principal
+- **React Testing Library 16.3.0**: Testing de componentes React
+- **@testing-library/dom 10.4.1**: Utilidades para testing del DOM
+- **@testing-library/jest-dom 6.9.1**: Matchers adicionales para Jest
+- **@testing-library/user-event 13.5.0**: Simulación de eventos de usuario
 
-## 📞 Soporte y Contacto
+### **Deployment y Build**
+- **gh-pages 6.3.0**: Deployment automático a GitHub Pages
+- **cross-env 10.1.0**: Variables de entorno multiplataforma
+- **web-vitals 2.1.4**: Métricas de rendimiento web
 
-Para soporte técnico o consultas sobre el proyecto:
-- **GitHub Issues**: [Crear issue](https://github.com/Barrolas/helioandes-react/issues)
-- **Email**: [Contacto a través del formulario web](https://barrolas.github.io/helioandes-react#contacto)
+### **Configuración del Proyecto**
+- **Node.js**: Entorno de ejecución JavaScript
+- **npm**: Gestor de paquetes
+- **Git**: Control de versiones
+- **GitHub Pages**: Hosting estático
+
+### **Compatibilidad de Navegadores**
+El proyecto está configurado para soportar:
+- **Producción**: Navegadores con >0.2% de uso, no obsoletos
+- **Desarrollo**: Últimas versiones de Chrome, Firefox y Safari
 
 ## 📄 Licencia
 
@@ -438,4 +457,4 @@ Este proyecto está desarrollado para fines educativos y de presentación acadé
 
 ---
 
-**Desarrollado con ❤️ para HelioAndes Energía**
+**Desarrollado por Nicolás Barra || Nicole Chávez**
