@@ -428,13 +428,6 @@ const imagePath = process.env.NODE_ENV === 'production'
 - **Webpack**: Bundling y optimización (configurado por CRA)
 - **Babel**: Transpilación de JavaScript moderno
 
-### **Testing**
-- **Jest**: Framework de testing principal
-- **React Testing Library 16.3.0**: Testing de componentes React
-- **@testing-library/dom 10.4.1**: Utilidades para testing del DOM
-- **@testing-library/jest-dom 6.9.1**: Matchers adicionales para Jest
-- **@testing-library/user-event 13.5.0**: Simulación de eventos de usuario
-
 ### **Deployment y Build**
 - **gh-pages 6.3.0**: Deployment automático a GitHub Pages
 - **cross-env 10.1.0**: Variables de entorno multiplataforma
@@ -445,11 +438,6 @@ const imagePath = process.env.NODE_ENV === 'production'
 - **npm**: Gestor de paquetes
 - **Git**: Control de versiones
 - **GitHub Pages**: Hosting estático
-
-### **Compatibilidad de Navegadores**
-El proyecto está configurado para soportar:
-- **Producción**: Navegadores con >0.2% de uso, no obsoletos
-- **Desarrollo**: Últimas versiones de Chrome, Firefox y Safari
 
 ## 📄 Licencia
 
