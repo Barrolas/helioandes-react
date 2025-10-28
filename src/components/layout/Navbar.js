@@ -9,7 +9,7 @@ const NavbarInicio = () => {
     // Configuración condicional para las rutas de imágenes
     const logoPath = process.env.NODE_ENV === 'production' 
         ? './helioandes-logo.png'  // Para GitHub Pages
-        : '/helioandes-logo.png';  // Para desarrollo local
+        : `${process.env.PUBLIC_URL}/helioandes-logo.png`;  // Para desarrollo local
 
     return (
         <Navbar expand="lg" className="bg-body-tertiary shadow-sm" sticky='top'>

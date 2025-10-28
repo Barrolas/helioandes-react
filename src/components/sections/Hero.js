@@ -6,11 +6,11 @@ const HeroInicio = () => {
     // Configuración condicional para las rutas de imágenes y archivos
     const imagePath = process.env.NODE_ENV === 'production' 
         ? './hero-image.png'  // Para GitHub Pages
-        : '/hero-image.png';  // Para desarrollo local
+        : `${process.env.PUBLIC_URL}/hero-image.png`;  // Para desarrollo local
     
     const catalogPath = process.env.NODE_ENV === 'production' 
         ? './catalogo-helioandes.pdf'  // Para GitHub Pages
-        : '/catalogo-helioandes.pdf';  // Para desarrollo local
+        : `${process.env.PUBLIC_URL}/catalogo-helioandes.pdf`;  // Para desarrollo local
 
     return (
         <div as="section" id="inicio" className="py-5" style={{
