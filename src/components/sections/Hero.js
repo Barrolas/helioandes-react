@@ -44,7 +44,7 @@ const HeroInicio = () => {
                         {/* Imagen - visible en móvil y tablet, después de descripción */}
                         <div className="d-lg-none mb-4 text-center">
                             <Image 
-                                src="./hero-image.png" 
+                                src={`${process.env.PUBLIC_URL}/hero-image.png`}
                                 fluid 
                                 alt="Sistema de energía solar HelioAndes"
                                 style={{maxHeight: '300px', width: 'auto'}}
@@ -93,7 +93,7 @@ const HeroInicio = () => {
                     <Col xs={12} lg={6} className="ps-lg-4 order-2 order-lg-2 d-none d-lg-block">
                         <div className="d-flex justify-content-center justify-content-md-start align-items-center" style={{height: '100%'}}>
                             <Image 
-                                src="./hero-image.png" 
+                                src={`${process.env.PUBLIC_URL}/hero-image.png`}
                                 fluid 
                                 alt="Sistema de energía solar HelioAndes"
                                 style={{maxHeight: '400px', width: 'auto'}}
