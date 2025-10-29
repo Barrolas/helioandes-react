@@ -6,7 +6,14 @@ const BasicCardGrid = ({
     cards, 
     gridConfig = { lg: 6, xl: 3 }, 
     cardClassName = "",
-    gapClass = "g-4"
+    gapClass = "g-4",
+    // Props del botón
+    buttonText,
+    buttonVariant,
+    buttonHelioStyle,
+    buttonOnClick,
+    buttonHref,
+    buttonTarget
 }) => {
     return (
         <Row className={gapClass}>
@@ -15,6 +22,12 @@ const BasicCardGrid = ({
                     <BasicCard 
                         {...card} 
                         className={cardClassName}
+                        buttonText={buttonText}
+                        buttonVariant={buttonVariant}
+                        buttonHelioStyle={buttonHelioStyle}
+                        buttonOnClick={buttonOnClick}
+                        buttonHref={buttonHref}
+                        buttonTarget={buttonTarget}
                     />
                 </Col>
             ))}

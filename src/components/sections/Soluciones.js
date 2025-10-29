@@ -35,9 +35,15 @@ const Soluciones = () => {
             <BasicCardGrid 
                 cards={solucionesData} 
                 gridConfig={{ lg: 4 }} 
+                buttonText="Solicitar Asesoría"
+                buttonVariant="primary"
+                buttonHelioStyle="filled"
+                buttonOnClick={() => window.location.href = '#contacto'}
+                buttonHref="#contacto"
+                buttonTarget="_self"
             />
         </Section>
     );
 };
-   
+
 export default Soluciones;

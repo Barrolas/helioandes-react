@@ -2,13 +2,15 @@ import React from 'react';
 import { Container, Row, Col, Nav } from 'react-bootstrap';
 
 const FooterInicio = () => {
+    const currentYear = new Date().getFullYear();
+    
     return (
         <footer className="py-4" style={{ backgroundColor: 'var(--helio-bg-dark)' }}>
             <Container>
                 <Row className="align-items-center justify-content-between">
                     <Col xs={12} md={6} className="text-center text-md-start mb-3 mb-md-0">
                         <p className="mb-0 text-light fs-6" style={{ whiteSpace: 'nowrap' }}>
-                            © 2025 HelioAndes Energía
+                            © {currentYear} HelioAndes Energía
                         </p>
                     </Col>
                     
