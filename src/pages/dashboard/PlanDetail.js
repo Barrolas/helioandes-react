@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Container, Card, Spinner, Alert, Badge, Button, Row, Col, ListGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { getPlanById } from '../../services/api';
+import axios from 'axios';
 
 const PlanDetail = () => {
     const { id } = useParams();
@@ -13,24 +13,17 @@ const PlanDetail = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchPlan = async () => {
-            try {
-                setLoading(true);
-                setError(null);
-                
-                // Llamada a la API
-                const planData = await getPlanById(id);
-                setPlan(planData);
-            } catch (err) {
-                console.error('Error al cargar plan:', err);
-                setError(err.message || 'Error al cargar el plan');
-            } finally {
-                setLoading(false);
-            }
-        };
-
         if (id) {
-            fetchPlan();
+            axios.get(`http://localhost:3001/api/plans/${id}`)
+                .then(response => {
+                    setPlan(response.data);
+                    setLoading(false);
+                })
+                .catch(error => {
+                    console.error('Error al obtener el plan:', error);
+                    setError('Error al cargar el plan');
+                    setLoading(false);
+                });
         }
     }, [id]);
 

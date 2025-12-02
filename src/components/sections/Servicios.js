@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Section from '../ui/Section';
 import { BasicCardGrid } from '../ui';
-import { getActiveServices } from '../../services/api';
+import axios from 'axios';
 import { mapServicesWithIcons } from '../../utils/iconMapper';
 import { Spinner, Alert } from 'react-bootstrap';
 
@@ -11,13 +11,12 @@ const Servicios = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchServices = async () => {
-            try {
-                setLoading(true);
-                setError(null);
-                const services = await getActiveServices();
+        axios.get('http://localhost:3001/api/services')
+            .then(response => {
+                // Filtrar solo servicios activos
+                const activeServices = response.data.filter(service => service.estado === 'activo');
                 // Mapear servicios con iconos de FontAwesome
-                const servicesWithIcons = mapServicesWithIcons(services);
+                const servicesWithIcons = mapServicesWithIcons(activeServices);
                 // Transformar datos para que coincidan con la estructura esperada por BasicCardGrid
                 const formattedServices = servicesWithIcons.map(service => ({
                     icon: service.icon,
@@ -27,15 +26,13 @@ const Servicios = () => {
                     iconTransform: service.iconTransform || null,
                 }));
                 setServiciosData(formattedServices);
-            } catch (err) {
-                console.error('Error al cargar servicios:', err);
-                setError(err.message || 'Error al cargar los servicios');
-            } finally {
                 setLoading(false);
-            }
-        };
-
-        fetchServices();
+            })
+            .catch(error => {
+                console.error('Error al obtener los servicios:', error);
+                setError('Error al cargar los servicios');
+                setLoading(false);
+            });
     }, []);
 
     return (

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Section from '../ui/Section';
 import { Container, Row, Col, Card, Spinner, Alert } from 'react-bootstrap';
 import Button from '../ui/Button';
-import { getActivePlans } from '../../services/api';
+import axios from 'axios';
 
 const Planes = () => {
     const [planesData, setPlanesData] = useState([]);
@@ -10,21 +10,18 @@ const Planes = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchPlans = async () => {
-            try {
-                setLoading(true);
-                setError(null);
-                const plans = await getActivePlans();
-                setPlanesData(plans);
-            } catch (err) {
-                console.error('Error al cargar planes:', err);
-                setError(err.message || 'Error al cargar los planes');
-            } finally {
+        axios.get('http://localhost:3001/api/plans')
+            .then(response => {
+                // Filtrar solo planes activos
+                const activePlans = response.data.filter(plan => plan.estado === 'activo');
+                setPlanesData(activePlans);
                 setLoading(false);
-            }
-        };
-
-        fetchPlans();
+            })
+            .catch(error => {
+                console.error('Error al obtener los planes:', error);
+                setError('Error al cargar los planes');
+                setLoading(false);
+            });
     }, []);
 
     return (

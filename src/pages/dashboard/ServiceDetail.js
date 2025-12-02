@@ -3,8 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Container, Card, Spinner, Alert, Badge, Button, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 import { getIconByName } from '../../utils/iconMapper';
-import { getServiceById } from '../../services/api';
 
 const ServiceDetail = () => {
     const { id } = useParams();
@@ -14,24 +14,17 @@ const ServiceDetail = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchService = async () => {
-            try {
-                setLoading(true);
-                setError(null);
-                
-                // Llamada a la API
-                const serviceData = await getServiceById(id);
-                setService(serviceData);
-            } catch (err) {
-                console.error('Error al cargar servicio:', err);
-                setError(err.message || 'Error al cargar el servicio');
-            } finally {
-                setLoading(false);
-            }
-        };
-
         if (id) {
-            fetchService();
+            axios.get(`http://localhost:3001/api/services/${id}`)
+                .then(response => {
+                    setService(response.data);
+                    setLoading(false);
+                })
+                .catch(error => {
+                    console.error('Error al obtener el servicio:', error);
+                    setError('Error al cargar el servicio');
+                    setLoading(false);
+                });
         }
     }, [id]);
 

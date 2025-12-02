@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Card, Spinner, Alert, Badge } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import axios from 'axios';
 import { getIconByName } from '../../utils/iconMapper';
-import { getServices } from '../../services/api';
 
 const ServiceList = () => {
     const [services, setServices] = useState([]);
@@ -12,23 +12,16 @@ const ServiceList = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchServices = async () => {
-            try {
-                setLoading(true);
-                setError(null);
-                
-                // Llamada a la API
-                const servicesData = await getServices();
-                setServices(servicesData);
-            } catch (err) {
-                console.error('Error al cargar servicios:', err);
-                setError(err.message || 'Error al cargar los servicios');
-            } finally {
+        axios.get('http://localhost:3001/api/services')
+            .then(response => {
+                setServices(response.data);
                 setLoading(false);
-            }
-        };
-
-        fetchServices();
+            })
+            .catch(error => {
+                console.error('Error al obtener los servicios:', error);
+                setError('Error al cargar los servicios');
+                setLoading(false);
+            });
     }, []);
 
     const handleViewDetails = (serviceId) => {

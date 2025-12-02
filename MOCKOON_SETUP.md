@@ -1,6 +1,6 @@
 # Guía de Configuración de Mockoon para HelioAndes
 
-Esta guía explica cómo configurar Mockoon para simular la API de servicios y planes.
+Esta guía explica cómo configurar Mockoon para simular la API de servicios y planes de forma simple.
 
 ## 📋 Prerrequisitos
 
@@ -21,7 +21,7 @@ Esta guía explica cómo configurar Mockoon para simular la API de servicios y p
 1. Abrir Mockoon
 2. Click en **"New environment"** o **"Nuevo entorno"**
 3. Nombrar el entorno: `HelioAndes API`
-4. Configurar el puerto: `3001` (o el que prefieras)
+4. Configurar el puerto: `3001`
 
 ### Paso 2: Crear Rutas para Servicios
 
@@ -36,7 +36,7 @@ Esta guía explica cómo configurar Mockoon para simular la API de servicios y p
      - `Content-Type: application/json`
 3. En el body de la respuesta:
    - Seleccionar **"JSON"**
-   - Copiar y pegar el contenido de `src/data/mockServices.json`
+   - Copiar y pegar el contenido completo de `src/data/mockServices.json`
 
 #### Ruta 2: GET /api/services/:id (Servicio por ID)
 
@@ -47,23 +47,9 @@ Esta guía explica cómo configurar Mockoon para simular la API de servicios y p
    - **Status**: `200`
    - **Headers**: 
      - `Content-Type: application/json`
-3. En el body de la respuesta, usar una función para buscar por ID:
+3. En el body de la respuesta, copiar uno de los servicios de `mockServices.json` (por ejemplo, el servicio con id: 1)
 
-```json
-{
-  "id": {{ params 'id' }},
-  "nombre": "Estudio energético",
-  "descripcion": "Análisis de consumo y propuesta ajustada a tu perfil.",
-  "precio": 150000,
-  "estado": "activo",
-  "iconName": "bolt",
-  "iconColor": "#FF6B35",
-  "categoria": "consultoria",
-  "duracion": "2-3 semanas"
-}
-```
-
-**Nota**: Para una implementación más realista, puedes usar el contenido completo de `mockServices.json` y filtrar por ID usando reglas de Mockoon.
+**Nota**: Para una implementación más completa, puedes crear múltiples respuestas con reglas para cada ID, pero para desarrollo simple, puedes usar el mismo servicio para todos los IDs.
 
 ### Paso 3: Crear Rutas para Planes
 
@@ -78,7 +64,7 @@ Esta guía explica cómo configurar Mockoon para simular la API de servicios y p
      - `Content-Type: application/json`
 3. En el body de la respuesta:
    - Seleccionar **"JSON"**
-   - Copiar y pegar el contenido de `src/data/mockPlans.json`
+   - Copiar y pegar el contenido completo de `src/data/mockPlans.json`
 
 #### Ruta 4: GET /api/plans/:id (Plan por ID)
 
@@ -89,35 +75,7 @@ Esta guía explica cómo configurar Mockoon para simular la API de servicios y p
    - **Status**: `200`
    - **Headers**: 
      - `Content-Type: application/json`
-3. En el body de la respuesta, usar una función similar a la de servicios.
-
----
-
-## 🔧 Configuración Avanzada (Opcional)
-
-### Usar Reglas para Filtrar por ID
-
-Para hacer que la ruta `/api/services/:id` retorne el servicio correcto:
-
-1. En la ruta `GET /api/services/:id`
-2. Click en **"Rules"** o **"Reglas"**
-3. Agregar una regla:
-   - **Condition**: `{{ params 'id' }} equals '1'`
-   - **Response**: Seleccionar una respuesta específica con el servicio ID 1
-4. Repetir para cada ID
-
-**Alternativa más simple**: Usar el array completo y filtrar en el frontend, o crear múltiples respuestas con diferentes IDs.
-
-### Configurar CORS (si es necesario)
-
-Si tienes problemas de CORS:
-
-1. En la configuración del entorno
-2. Habilitar **"Enable CORS"**
-3. O agregar headers manualmente:
-   - `Access-Control-Allow-Origin: *`
-   - `Access-Control-Allow-Methods: GET, POST, PUT, DELETE`
-   - `Access-Control-Allow-Headers: Content-Type`
+3. En el body de la respuesta, copiar uno de los planes de `mockPlans.json` (por ejemplo, el plan con id: 1)
 
 ---
 
@@ -138,32 +96,26 @@ Si tienes problemas de CORS:
 
 ### Opción 1: Desde el navegador
 Abrir en el navegador:
-- `http://localhost:3001/api/services`
-- `http://localhost:3001/api/plans`
-- `http://localhost:3001/api/services/1`
-- `http://localhost:3001/api/plans/1`
-
-Deberías ver los datos JSON.
+- `http://localhost:3001/api/services` → Debe mostrar array de servicios
+- `http://localhost:3001/api/plans` → Debe mostrar array de planes
+- `http://localhost:3001/api/services/1` → Debe mostrar un servicio
+- `http://localhost:3001/api/plans/1` → Debe mostrar un plan
 
 ### Opción 2: Desde la aplicación React
-1. Asegurarse de que la variable de entorno esté configurada:
-   - En desarrollo, por defecto usa `http://localhost:3001`
-   - O crear un archivo `.env` con:
-     ```
-     REACT_APP_API_BASE_URL=http://localhost:3001
-     ```
+1. Asegurarse de que Mockoon esté corriendo en el puerto 3001
 2. Iniciar la aplicación React: `npm start`
-3. Navegar al dashboard y verificar que los datos se carguen
+3. Navegar al dashboard (`/dashboard/services` o `/dashboard/plans`)
+4. Verificar que los datos se carguen correctamente
 
 ---
 
 ## 📝 Estructura de Rutas Requeridas
 
 ```
-GET /api/services          → Retorna array de servicios
-GET /api/services/:id      → Retorna un servicio específico
-GET /api/plans             → Retorna array de planes
-GET /api/plans/:id         → Retorna un plan específico
+GET /api/services          → Retorna array de servicios (JSON)
+GET /api/services/:id      → Retorna un servicio específico (JSON)
+GET /api/plans             → Retorna array de planes (JSON)
+GET /api/plans/:id         → Retorna un plan específico (JSON)
 ```
 
 ---
@@ -185,29 +137,36 @@ GET /api/plans/:id         → Retorna un plan específico
 
 ### Error: "Port already in use"
 - Cambiar el puerto en Mockoon a otro (ej: 3002)
-- Actualizar `src/config/api.js` con el nuevo puerto
+- Actualizar las URLs en los componentes de `http://localhost:3001` a `http://localhost:3002`
 
 ### Error: CORS
-- Habilitar CORS en la configuración del entorno
-- O agregar los headers manualmente
+- Habilitar CORS en la configuración del entorno de Mockoon
+- O agregar headers manualmente:
+  - `Access-Control-Allow-Origin: *`
+  - `Access-Control-Allow-Methods: GET, POST, PUT, DELETE`
+  - `Access-Control-Allow-Headers: Content-Type`
 
 ### Los datos no se cargan en React
 - Verificar que Mockoon esté corriendo
-- Verificar la URL en `src/config/api.js`
+- Verificar que el puerto sea 3001
 - Revisar la consola del navegador para errores
 - Verificar que las rutas en Mockoon coincidan exactamente con las del código
 
 ---
 
-## 📚 Recursos Adicionales
+## 📚 Archivos de Referencia
 
-- Documentación oficial de Mockoon: https://mockoon.com/docs/
-- Archivos de datos mock: `src/data/mockServices.json` y `src/data/mockPlans.json`
-- Configuración de API: `src/config/api.js`
+- Datos mock: `src/data/mockServices.json` y `src/data/mockPlans.json`
+- Componentes que usan la API:
+  - `src/pages/dashboard/ServiceList.js`
+  - `src/pages/dashboard/ServiceDetail.js`
+  - `src/pages/dashboard/PlanList.js`
+  - `src/pages/dashboard/PlanDetail.js`
+  - `src/components/sections/Servicios.js`
+  - `src/components/sections/Planes.js`
 
 ---
 
 ## 🎉 ¡Listo!
 
 Una vez configurado Mockoon, tu aplicación React podrá consumir los datos mock como si fuera una API real. Esto es perfecto para desarrollo y testing antes de tener el backend real.
-

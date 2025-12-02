@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Card, Spinner, Alert, Badge, Button } from 'react-bootstrap';
-import { getPlans } from '../../services/api';
+import axios from 'axios';
 
 const PlanList = () => {
     const [plans, setPlans] = useState([]);
@@ -10,23 +10,16 @@ const PlanList = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchPlans = async () => {
-            try {
-                setLoading(true);
-                setError(null);
-                
-                // Llamada a la API
-                const plansData = await getPlans();
-                setPlans(plansData);
-            } catch (err) {
-                console.error('Error al cargar planes:', err);
-                setError(err.message || 'Error al cargar los planes');
-            } finally {
+        axios.get('http://localhost:3001/api/plans')
+            .then(response => {
+                setPlans(response.data);
                 setLoading(false);
-            }
-        };
-
-        fetchPlans();
+            })
+            .catch(error => {
+                console.error('Error al obtener los planes:', error);
+                setError('Error al cargar los planes');
+                setLoading(false);
+            });
     }, []);
 
     const handleViewDetails = (planId) => {
