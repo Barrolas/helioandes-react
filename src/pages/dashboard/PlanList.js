@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Container, Row, Col, Card, Spinner, Alert, Badge, Button } from 'react-bootstrap';
 import axios from 'axios';
 
 const PlanList = () => {
@@ -33,103 +32,96 @@ const PlanList = () => {
         }).format(price);
     };
 
-    if (loading) {
-        return (
-            <Container className="py-5">
-                <div className="text-center">
-                    <Spinner animation="border" role="status" style={{ color: 'var(--helio-primary)' }}>
-                        <span className="visually-hidden">Cargando planes...</span>
-                    </Spinner>
-                    <p className="mt-3 text-muted">Cargando planes...</p>
+    const renderContent = () => {
+        if (loading) {
+            return (
+                <div className="dashboard-loading">
+                    <div className="dashboard-spinner"></div>
+                    <p>Cargando planes...</p>
                 </div>
-            </Container>
-        );
-    }
+            );
+        }
 
-    if (error) {
-        return (
-            <Container className="py-5">
-                <Alert variant="danger">
-                    <Alert.Heading>Error al cargar planes</Alert.Heading>
+        if (error) {
+            return (
+                <div className="dashboard-error">
+                    <h4>Error al cargar planes</h4>
                     <p>{error}</p>
-                </Alert>
-            </Container>
+                </div>
+            );
+        }
+
+        if (plans.length === 0) {
+            return (
+                <div className="dashboard-error" style={{ backgroundColor: '#d1ecf1', borderColor: '#17a2b8', color: '#0c5460' }}>
+                    <h4 style={{ color: '#0c5460' }}>No hay planes disponibles</h4>
+                    <p>No se encontraron planes en el sistema.</p>
+                </div>
+            );
+        }
+
+        return (
+            <div className="dashboard-cards-grid">
+                {plans.map((plan) => (
+                    <div key={plan.id} className="dashboard-card">
+                        <div className="dashboard-card-header">
+                            <h3 className="dashboard-card-title">{plan.nombre}</h3>
+                            <p style={{ margin: 0, color: 'var(--helio-text-medium)', fontSize: '0.9rem' }}>
+                                {plan.potencia}
+                            </p>
+                        </div>
+                        <div className="dashboard-card-body">
+                            <p className="dashboard-card-description">{plan.descripcion}</p>
+                            <div style={{ marginTop: '1rem' }}>
+                                <h4 style={{ color: 'var(--helio-primary)', marginBottom: '1rem' }}>
+                                    {formatPrice(plan.precioContado)}
+                                </h4>
+                                {plan.caracteristicas && plan.caracteristicas.length > 0 && (
+                                    <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                                        {plan.caracteristicas.slice(0, 4).map((caracteristica, index) => (
+                                            <li key={index} style={{ 
+                                                padding: '0.5rem 0',
+                                                borderBottom: index < 3 ? '1px solid var(--helio-bg-light)' : 'none',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '0.5rem',
+                                                fontSize: '0.9rem',
+                                                color: 'var(--helio-text-medium)'
+                                            }}>
+                                                <span style={{ color: 'var(--helio-primary)' }}>✓</span>
+                                                {caracteristica}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </div>
+                        </div>
+                        <div className="dashboard-card-footer">
+                            <span className={`dashboard-badge ${plan.estado === 'activo' ? 'dashboard-badge-success' : 'dashboard-badge-secondary'}`}>
+                                {plan.estado}
+                            </span>
+                            <button
+                                className="dashboard-btn"
+                                onClick={() => handleViewDetails(plan.id)}
+                            >
+                                Ver Detalles
+                            </button>
+                        </div>
+                    </div>
+                ))}
+            </div>
         );
-    }
+    };
 
     return (
-        <Container fluid className="py-4">
-            <div className="d-flex justify-content-between align-items-center mb-4">
-                <h2>Gestión de Planes</h2>
-                <Badge bg="info" className="fs-6">
-                    {plans.length} {plans.length === 1 ? 'plan' : 'planes'}
-                </Badge>
+        <>
+            <div className="dashboard-page-header">
+                <h1 className="dashboard-page-title">Gestión de Planes</h1>
+                <p className="dashboard-page-subtitle">Administra los planes de energía solar disponibles</p>
             </div>
 
-            {plans.length === 0 ? (
-                <Alert variant="info">
-                    <p className="mb-0">No hay planes disponibles.</p>
-                </Alert>
-            ) : (
-                <Row className="g-4">
-                    {plans.map((plan) => (
-                        <Col key={plan.id} xs={12} md={6} lg={4}>
-                            <Card className="h-100 shadow-sm border-0">
-                                <Card.Body className="d-flex flex-column">
-                                    <div className="text-center mb-3">
-                                        <Badge 
-                                            bg="primary" 
-                                            className="p-2 mb-2"
-                                            style={{
-                                                fontSize: '14px',
-                                                borderRadius: '64px',
-                                                fontWeight: '500'
-                                            }}
-                                        >
-                                            {plan.badge || plan.nombre}
-                                        </Badge>
-                                        <h4 className="mt-2"><strong>{plan.potencia}</strong></h4>
-                                    </div>
-                                    <Card.Text className="text-muted text-center mb-3">
-                                        {plan.descripcion}
-                                    </Card.Text>
-                                    <div className="mb-3">
-                                        <h5 className="text-center">
-                                            {formatPrice(plan.precioContado)}
-                                        </h5>
-                                    </div>
-                                    <div className="mb-3 flex-grow-1">
-                                        <h6>Características:</h6>
-                                        <ul className="list-unstyled">
-                                            {plan.caracteristicas && plan.caracteristicas.map((caracteristica, index) => (
-                                                <li key={index} className="mb-1">
-                                                    <small className="text-muted">• {caracteristica}</small>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                    <div className="mt-auto">
-                                        <Badge 
-                                            bg={plan.estado === 'activo' ? 'success' : 'secondary'}
-                                            className="mb-3 d-block text-center"
-                                        >
-                                            {plan.estado}
-                                        </Badge>
-                                        <Button
-                                            variant="primary"
-                                            className="w-100"
-                                            onClick={() => handleViewDetails(plan.id)}
-                                        >
-                                            Ver Detalles
-                                        </Button>
-                                    </div>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                    ))}
-                </Row>
-            )}
-        </Container>
+            {renderContent()}
+        </>
     );
 };
 

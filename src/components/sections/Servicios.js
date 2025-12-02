@@ -30,7 +30,16 @@ const Servicios = () => {
             })
             .catch(error => {
                 console.error('Error al obtener los servicios:', error);
-                setError('Error al cargar los servicios');
+                if (error.response) {
+                    // El servidor respondió con un código de error
+                    setError(`Error ${error.response.status}: No se pudo conectar con el servidor. Verifica que Mockoon esté corriendo en el puerto 3001.`);
+                } else if (error.request) {
+                    // La petición se hizo pero no hubo respuesta
+                    setError('No se pudo conectar con el servidor. Verifica que Mockoon esté corriendo en http://localhost:3001');
+                } else {
+                    // Algo más causó el error
+                    setError('Error al cargar los servicios. Por favor, intenta nuevamente.');
+                }
                 setLoading(false);
             });
     }, []);

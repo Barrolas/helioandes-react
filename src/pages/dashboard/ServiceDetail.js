@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Container, Card, Spinner, Alert, Badge, Button, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faDollarSign, faClock } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import { getIconByName } from '../../utils/iconMapper';
 
@@ -38,119 +37,94 @@ const ServiceDetail = () => {
 
     if (loading) {
         return (
-            <Container className="py-5">
-                <div className="text-center">
-                    <Spinner animation="border" role="status" style={{ color: 'var(--helio-primary)' }}>
-                        <span className="visually-hidden">Cargando servicio...</span>
-                    </Spinner>
-                    <p className="mt-3 text-muted">Cargando detalles del servicio...</p>
-                </div>
-            </Container>
+            <div className="dashboard-loading">
+                <div className="dashboard-spinner"></div>
+                <p>Cargando detalles del servicio...</p>
+            </div>
         );
     }
 
     if (error) {
         return (
-            <Container className="py-5">
-                <Alert variant="danger">
-                    <Alert.Heading>Error</Alert.Heading>
-                    <p>{error}</p>
-                    <Button variant="outline-primary" onClick={() => navigate('/dashboard/services')}>
-                        Volver a la lista
-                    </Button>
-                </Alert>
-            </Container>
+            <div className="dashboard-error">
+                <h4>Error</h4>
+                <p>{error}</p>
+                <button className="dashboard-btn" onClick={() => navigate('/dashboard/services')}>
+                    Volver a la lista
+                </button>
+            </div>
         );
     }
 
     if (!service) {
         return (
-            <Container className="py-5">
-                <Alert variant="warning">
-                    <Alert.Heading>Servicio no encontrado</Alert.Heading>
-                    <p>El servicio solicitado no existe.</p>
-                    <Button variant="outline-primary" onClick={() => navigate('/dashboard/services')}>
-                        Volver a la lista
-                    </Button>
-                </Alert>
-            </Container>
+            <div className="dashboard-error" style={{ backgroundColor: '#fff3cd', borderColor: '#ffc107', color: '#856404' }}>
+                <h4 style={{ color: '#856404' }}>Servicio no encontrado</h4>
+                <p>El servicio solicitado no existe.</p>
+                <button className="dashboard-btn" onClick={() => navigate('/dashboard/services')}>
+                    Volver a la lista
+                </button>
+            </div>
         );
     }
 
     const icon = getIconByName(service.iconName);
 
     return (
-        <Container fluid className="py-4">
-            <Button 
-                variant="outline-secondary" 
-                className="mb-4"
-                onClick={() => navigate('/dashboard/services')}
-            >
-                <FontAwesomeIcon icon={faArrowLeft} className="me-2" />
-                Volver a la lista
-            </Button>
-
-            <Card className="shadow-sm">
-                <Card.Header className="bg-white">
-                    <div className="d-flex align-items-center">
-                        {icon && (
-                            <FontAwesomeIcon 
-                                icon={icon} 
-                                size="2x" 
-                                className="me-3"
-                                style={{ color: service.iconColor || '#007bff' }} 
-                            />
-                        )}
-                        <div>
-                            <h3 className="mb-0">{service.nombre}</h3>
-                            <Badge 
-                                bg={service.estado === 'activo' ? 'success' : 'secondary'}
-                                className="mt-2"
-                            >
+        <div className="dashboard-detail-card">
+            <div className="dashboard-detail-header">
+                {icon && (
+                    <div className="dashboard-detail-icon">
+                        <FontAwesomeIcon 
+                            icon={icon} 
+                            style={{ color: 'var(--helio-primary)' }} 
+                        />
+                    </div>
+                )}
+                <div className="dashboard-detail-info">
+                    <h2 className="dashboard-detail-title">{service.nombre}</h2>
+                    <div className="dashboard-detail-meta">
+                        <div className="dashboard-detail-meta-item">
+                            <span className="dashboard-detail-meta-label">Estado</span>
+                            <span className={`dashboard-badge ${service.estado === 'activo' ? 'dashboard-badge-success' : 'dashboard-badge-secondary'}`}>
                                 {service.estado}
-                            </Badge>
+                            </span>
+                        </div>
+                        <div className="dashboard-detail-meta-item">
+                            <span className="dashboard-detail-meta-label">Categoría</span>
+                            <span className="dashboard-badge dashboard-badge-success">
+                                {service.categoria}
+                            </span>
                         </div>
                     </div>
-                </Card.Header>
-                <Card.Body>
-                    <Row className="g-4">
-                        <Col md={6}>
-                            <h5>Descripción</h5>
-                            <p className="text-muted">{service.descripcion}</p>
-                        </Col>
-                        <Col md={6}>
-                            <h5>Información del Servicio</h5>
-                            <table className="table">
-                                <tbody>
-                                    <tr>
-                                        <td><strong>Precio:</strong></td>
-                                        <td>{formatPrice(service.precio)}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Duración:</strong></td>
-                                        <td>{service.duracion}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Categoría:</strong></td>
-                                        <td>
-                                            <Badge bg="info">{service.categoria}</Badge>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Estado:</strong></td>
-                                        <td>
-                                            <Badge bg={service.estado === 'activo' ? 'success' : 'secondary'}>
-                                                {service.estado}
-                                            </Badge>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </Col>
-                    </Row>
-                </Card.Body>
-            </Card>
-        </Container>
+                </div>
+            </div>
+
+            <div className="dashboard-detail-section">
+                <h3 className="dashboard-detail-section-title">Descripción</h3>
+                <p style={{ color: 'var(--helio-text-medium)', lineHeight: '1.8', fontSize: '1.05rem' }}>
+                    {service.descripcion}
+                </p>
+            </div>
+
+            <div className="dashboard-detail-section">
+                <h3 className="dashboard-detail-section-title">Información del Servicio</h3>
+                <ul className="dashboard-detail-list">
+                    <li className="dashboard-detail-list-item">
+                        <FontAwesomeIcon icon={faDollarSign} />
+                        <div>
+                            <strong>Precio:</strong> {formatPrice(service.precio)}
+                        </div>
+                    </li>
+                    <li className="dashboard-detail-list-item">
+                        <FontAwesomeIcon icon={faClock} />
+                        <div>
+                            <strong>Duración:</strong> {service.duracion}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
     );
 };
 

@@ -1,0 +1,15 @@
+{
+  "id": 1,
+  "nombre": "Estudio energético",
+  "descripcion": "Análisis de consumo y propuesta ajustada a tu perfil.",
+  "precio": 150000,
+  "estado": "activo",
+  "iconName": "bolt",
+  "iconColor": "#FF6B35",
+  "iconTransform": "rotate(-10deg)",
+  "categoria": "consultoria",
+  "duracion": "2-3 semanas",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}
+

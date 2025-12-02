@@ -10,8 +10,14 @@ import PlanDetail from './pages/dashboard/PlanDetail';
 import './App.css';
 
 function App() {
+  // Configurar basename solo para producción (GitHub Pages)
+  // En desarrollo, basename será undefined (usa "/")
+  const basename = process.env.NODE_ENV === 'production' 
+    ? '/helioandes-react' 
+    : undefined;
+
   return (
-    <Router>
+    <Router basename={basename}>
       <Routes>
         <Route path="/" element={<LandingPage />} />
 

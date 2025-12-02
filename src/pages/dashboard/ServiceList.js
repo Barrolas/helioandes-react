@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Container, Row, Col, Card, Spinner, Alert, Badge } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import { getIconByName } from '../../utils/iconMapper';
@@ -36,94 +35,115 @@ const ServiceList = () => {
         }).format(price);
     };
 
-    if (loading) {
-        return (
-            <Container className="py-5">
-                <div className="text-center">
-                    <Spinner animation="border" role="status" style={{ color: 'var(--helio-primary)' }}>
-                        <span className="visually-hidden">Cargando servicios...</span>
-                    </Spinner>
-                    <p className="mt-3 text-muted">Cargando servicios...</p>
+    const renderContent = () => {
+        if (loading) {
+            return (
+                <div className="dashboard-loading">
+                    <div className="dashboard-spinner"></div>
+                    <p>Cargando servicios...</p>
                 </div>
-            </Container>
-        );
-    }
+            );
+        }
 
-    if (error) {
-        return (
-            <Container className="py-5">
-                <Alert variant="danger">
-                    <Alert.Heading>Error al cargar servicios</Alert.Heading>
+        if (error) {
+            return (
+                <div className="dashboard-error">
+                    <h4>Error al cargar servicios</h4>
                     <p>{error}</p>
-                </Alert>
-            </Container>
+                </div>
+            );
+        }
+
+        if (services.length === 0) {
+            return (
+                <div className="dashboard-error" style={{ backgroundColor: '#d1ecf1', borderColor: '#17a2b8', color: '#0c5460' }}>
+                    <h4 style={{ color: '#0c5460' }}>No hay servicios disponibles</h4>
+                    <p>No se encontraron servicios en el sistema.</p>
+                </div>
+            );
+        }
+
+        return (
+            <div className="dashboard-cards-grid">
+                {services.map((service) => {
+                    const icon = getIconByName(service.iconName);
+                    return (
+                        <div key={service.id} className="dashboard-card">
+                            <div className="dashboard-card-header">
+                                {icon && (
+                                    <div style={{ 
+                                        display: 'flex', 
+                                        alignItems: 'center', 
+                                        gap: '1rem',
+                                        marginBottom: '0.5rem'
+                                    }}>
+                                        <FontAwesomeIcon 
+                                            icon={icon} 
+                                            size="2x" 
+                                            style={{ color: service.iconColor || 'var(--helio-primary)' }} 
+                                        />
+                                        <h3 className="dashboard-card-title">{service.nombre}</h3>
+                                    </div>
+                                )}
+                                {!icon && <h3 className="dashboard-card-title">{service.nombre}</h3>}
+                            </div>
+                            <div className="dashboard-card-body">
+                                <p className="dashboard-card-description">{service.descripcion}</p>
+                                <div style={{ marginTop: '1rem' }}>
+                                    <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                                        <li style={{ 
+                                            padding: '0.5rem 0',
+                                            borderBottom: '1px solid var(--helio-bg-light)',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '0.5rem',
+                                            fontSize: '0.9rem',
+                                            color: 'var(--helio-text-medium)'
+                                        }}>
+                                            <span style={{ color: 'var(--helio-primary)' }}>$</span>
+                                            <strong>Precio:</strong> {formatPrice(service.precio)}
+                                        </li>
+                                        <li style={{ 
+                                            padding: '0.5rem 0',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '0.5rem',
+                                            fontSize: '0.9rem',
+                                            color: 'var(--helio-text-medium)'
+                                        }}>
+                                            <span style={{ color: 'var(--helio-primary)' }}>⏱</span>
+                                            <strong>Duración:</strong> {service.duracion}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div className="dashboard-card-footer">
+                                <span className={`dashboard-badge ${service.estado === 'activo' ? 'dashboard-badge-success' : 'dashboard-badge-secondary'}`}>
+                                    {service.estado}
+                                </span>
+                                <button
+                                    className="dashboard-btn"
+                                    onClick={() => handleViewDetails(service.id)}
+                                >
+                                    Ver Detalles
+                                </button>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
         );
-    }
+    };
 
     return (
-        <Container fluid className="py-4">
-            <div className="d-flex justify-content-between align-items-center mb-4">
-                <h2>Gestión de Servicios</h2>
-                <Badge bg="info" className="fs-6">
-                    {services.length} {services.length === 1 ? 'servicio' : 'servicios'}
-                </Badge>
+        <>
+            <div className="dashboard-page-header">
+                <h1 className="dashboard-page-title">Gestión de Servicios</h1>
+                <p className="dashboard-page-subtitle">Administra los servicios disponibles en el sistema</p>
             </div>
 
-            {services.length === 0 ? (
-                <Alert variant="info">
-                    <p className="mb-0">No hay servicios disponibles.</p>
-                </Alert>
-            ) : (
-                <Row className="g-4">
-                    {services.map((service) => {
-                        const icon = getIconByName(service.iconName);
-                        return (
-                            <Col key={service.id} xs={12} md={6} lg={4} xl={3}>
-                                <Card className="h-100 shadow-sm border-0">
-                                    <Card.Body className="d-flex flex-column">
-                                        <div className="mb-3">
-                                            {icon && (
-                                                <FontAwesomeIcon 
-                                                    icon={icon} 
-                                                    size="3x" 
-                                                    style={{ color: service.iconColor || '#007bff' }} 
-                                                />
-                                            )}
-                                        </div>
-                                        <Card.Title className="fw-bold">{service.nombre}</Card.Title>
-                                        <Card.Text className="text-muted flex-grow-1">
-                                            {service.descripcion}
-                                        </Card.Text>
-                                        <div className="mt-auto">
-                                            <div className="mb-2">
-                                                <small className="text-muted">Precio: </small>
-                                                <strong>{formatPrice(service.precio)}</strong>
-                                            </div>
-                                            <div className="mb-2">
-                                                <small className="text-muted">Duración: </small>
-                                                <span>{service.duracion}</span>
-                                            </div>
-                                            <Badge 
-                                                bg={service.estado === 'activo' ? 'success' : 'secondary'}
-                                                className="mb-3"
-                                            >
-                                                {service.estado}
-                                            </Badge>
-                                            <button
-                                                className="btn btn-primary w-100"
-                                                onClick={() => handleViewDetails(service.id)}
-                                            >
-                                                Ver Detalles
-                                            </button>
-                                        </div>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                        );
-                    })}
-                </Row>
-            )}
-        </Container>
+            {renderContent()}
+        </>
     );
 };
 
