@@ -1,0 +1,15 @@
+{
+  "id": 6,
+  "nombre": "Reparación de emergencia",
+  "descripcion": "Servicio de reparación urgente disponible 24/7.",
+  "precio": 200000,
+  "estado": "inactivo",
+  "iconName": "tools",
+  "iconColor": "#DC143C",
+  "iconTransform": null,
+  "categoria": "reparacion",
+  "duracion": "24 horas",
+  "createdAt": "2024-01-25T00:00:00Z",
+  "updatedAt": "2024-01-25T00:00:00Z"
+}
+
