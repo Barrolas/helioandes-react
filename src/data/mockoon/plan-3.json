@@ -1,0 +1,33 @@
+{
+  "id": 3,
+  "nombre": "Autónomo",
+  "potencia": "Híbrido + Baterías",
+  "badge": "Autónomo",
+  "descripcion": "Sistema completo con almacenamiento para máxima independencia energética",
+  "precioMensual": 0,
+  "precioAnual": 0,
+  "precioContado": 12000000,
+  "estado": "activo",
+  "caracteristicas": [
+    "Diseño off-grid",
+    "Almacenamiento",
+    "Soporte preferente",
+    "Garantía 15 años"
+  ],
+  "incluye": [
+    "Paneles solares configurables",
+    "Sistema de baterías",
+    "Inversor híbrido",
+    "Instalación especializada",
+    "Sistema de monitoreo premium",
+    "Mantención bianual incluida",
+    "Soporte técnico preferente"
+  ],
+  "noIncluye": [
+    "Instalación en ubicaciones remotas (costo adicional)"
+  ],
+  "duracionContrato": "Sin contrato",
+  "createdAt": "2024-01-15T00:00:00Z",
+  "updatedAt": "2024-01-15T00:00:00Z"
+}
+

@@ -1,9 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Button from 'react-bootstrap/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faCog } from '@fortawesome/free-solid-svg-icons';
 
 const NavbarInicio = () => {
     // Configuración condicional para las rutas de imágenes
@@ -27,7 +29,7 @@ const NavbarInicio = () => {
                     <FontAwesomeIcon icon={faBars} style={{ color: 'var(--helio-primary)' }} />
                 </Navbar.Toggle>
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="ms-auto">
+                    <Nav className="ms-auto align-items-center">
                         <Nav.Link href="#top">Inicio</Nav.Link>
                         <Nav.Link href="#servicios">Servicios</Nav.Link>
                         <Nav.Link href="#soluciones">Soluciones</Nav.Link>
@@ -36,6 +38,15 @@ const NavbarInicio = () => {
                         <Nav.Link href="#testimonios">Testimonios</Nav.Link>
                         <Nav.Link href="#faq">FAQ</Nav.Link>
                         <Nav.Link href="#contacto">Contacto</Nav.Link>
+                        <Nav.Link as={Link} to="/dashboard" className="ms-2">
+                            <Button 
+                                className="helio-btn-outlined"
+                                size="sm"
+                            >
+                                <FontAwesomeIcon icon={faCog} className="me-1" />
+                                Admin
+                            </Button>
+                        </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
