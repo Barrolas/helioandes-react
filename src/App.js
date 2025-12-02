@@ -1,20 +1,16 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import LandingPage from './pages/LandingPage';
 import './App.css';
-import {NavbarInicio, HeroInicio, Servicios, Soluciones, Calculadoralntegral, Planes, Testimonios, FAQ, Contacto, FooterInicio} from './components/index.js';
 
 function App() {
   return (
-    <div className="App" id="top">
-      <NavbarInicio />
-      <HeroInicio />
-      <Servicios />
-      <Soluciones />
-      <Calculadoralntegral />
-      <Planes />
-      <Testimonios />
-      <FAQ />
-      <Contacto />
-      <FooterInicio />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        {/* Dashboard route will be added later */}
+      </Routes>
+    </Router>
   );
 }
 
