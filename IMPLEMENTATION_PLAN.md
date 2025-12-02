@@ -35,7 +35,7 @@ Este documento detalla los pasos para implementar un dashboard administrativo pa
     - Vista detallada de un plan seleccionado con modal.
     - Botón para volver a la lista.
 
-## 6. Integración y Rutas 
+## 6. Integración y Rutas - Nicole
 - [ ] Definir las rutas en `App.js`:
     - `/` -> Landing Page
     - `/dashboard` -> Dashboard Home (Resumen o redirección a Servicios)
