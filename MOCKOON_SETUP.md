@@ -71,6 +71,12 @@ Esta guía te ayudará a configurar Mockoon paso a paso para simular la API de s
 
 ### Paso 3: Crear Ruta GET /api/services/:id (Servicio por ID)
 
+⚠️ **IMPORTANTE**: Esta ruta retorna **UN SOLO servicio** (un objeto), NO la lista completa.
+
+Para que funcione correctamente con diferentes IDs (1, 2, 3, etc.), necesitas configurar **reglas** en Mockoon.
+
+#### Opción A: Configurar Reglas (Recomendado) - Retorna diferentes servicios según el ID
+
 1. Click en **"Add route"**
 2. Configurar:
    - **Method**: `GET`
@@ -78,29 +84,72 @@ Esta guía te ayudará a configurar Mockoon paso a paso para simular la API de s
    - **Status Code**: `200`
 3. En **Headers**:
    - `Content-Type: application/json`
-4. En **Body**:
-   - Seleccionar tipo: **"JSON"**
-   - Copiar y pegar **UN servicio** de `mockServices.json` (por ejemplo, el servicio con `id: 1`):
+4. **Configurar múltiples respuestas con reglas:**
+   
+   En Mockoon, puedes agregar múltiples respuestas a la misma ruta. Para cada servicio:
+   
+   a. Click en **"Add response"** o **"Agregar respuesta"**
+   
+   b. **Para el servicio con id: 1:**
+      - Click en **"Rules"** o **"Reglas"**
+      - Agregar regla: `{{params 'id'}} equals '1'`
+      - En el **Body** (JSON), pegar:
+      ```json
+      {
+        "id": 1,
+        "nombre": "Estudio energético",
+        "descripcion": "Análisis de consumo y propuesta ajustada a tu perfil.",
+        "precio": 150000,
+        "estado": "activo",
+        "iconName": "bolt",
+        "iconColor": "#FF6B35",
+        "iconTransform": "rotate(-10deg)",
+        "categoria": "consultoria",
+        "duracion": "2-3 semanas",
+        "createdAt": "2024-01-15T00:00:00Z",
+        "updatedAt": "2024-01-15T00:00:00Z"
+      }
+      ```
+   
+   c. **Para el servicio con id: 2:**
+      - Click en **"Add response"** nuevamente
+      - Regla: `{{params 'id'}} equals '2'`
+      - Body (JSON):
+      ```json
+      {
+        "id": 2,
+        "nombre": "Instalación certificada",
+        "descripcion": "Ejecutada por personal acreditado y normativa vigente.",
+        "precio": 0,
+        "estado": "activo",
+        "iconName": "wrench",
+        "iconColor": "#8B4513",
+        "iconTransform": "rotate(10deg)",
+        "categoria": "instalacion",
+        "duracion": "1-2 días",
+        "createdAt": "2024-01-15T00:00:00Z",
+        "updatedAt": "2024-01-15T00:00:00Z"
+      }
+      ```
+   
+   d. Repetir para los servicios con id: 3, 4, 5, 6 (copiar cada objeto de `mockServices.json`)
 
-**Ejemplo del contenido que debes pegar:**
-```json
-{
-  "id": 1,
-  "nombre": "Estudio energético",
-  "descripcion": "Análisis de consumo y propuesta ajustada a tu perfil.",
-  "precio": 150000,
-  "estado": "activo",
-  "iconName": "bolt",
-  "iconColor": "#FF6B35",
-  "iconTransform": "rotate(-10deg)",
-  "categoria": "consultoria",
-  "duracion": "2-3 semanas",
-  "createdAt": "2024-01-15T00:00:00Z",
-  "updatedAt": "2024-01-15T00:00:00Z"
-}
-```
+#### Opción B: Solución Simple (Solo para desarrollo rápido)
 
-**Nota**: Para una implementación más completa, puedes crear múltiples respuestas con reglas basadas en el parámetro `:id`, pero para desarrollo simple, puedes usar el mismo servicio para todos los IDs.
+Si no quieres configurar reglas, puedes:
+1. Crear la ruta `/api/services/:id`
+2. Poner en el body el servicio con `id: 1`
+3. **Nota**: Esto retornará siempre el mismo servicio sin importar el ID que consultes
+
+**Diferencia clave:**
+- ❌ `/api/services` → Retorna: `[{...}, {...}, {...}]` (array con corchetes `[]`)
+- ✅ `/api/services/:id` → Retorna: `{...}` (un solo objeto, SIN corchetes)
+
+**💡 Tip**: Si usas la Opción A con reglas, cuando consultes:
+- `http://localhost:3001/api/services/1` → Retorna servicio id: 1
+- `http://localhost:3001/api/services/2` → Retorna servicio id: 2
+- `http://localhost:3001/api/services/3` → Retorna servicio id: 3
+- etc.
 
 ---
 
@@ -143,6 +192,12 @@ Esta guía te ayudará a configurar Mockoon paso a paso para simular la API de s
 
 ### Paso 5: Crear Ruta GET /api/plans/:id (Plan por ID)
 
+⚠️ **IMPORTANTE**: Esta ruta retorna **UN SOLO plan** (un objeto), NO la lista completa.
+
+Para que funcione correctamente con diferentes IDs, sigue el mismo proceso que en el Paso 3:
+
+#### Opción A: Configurar Reglas (Recomendado)
+
 1. Click en **"Add route"**
 2. Configurar:
    - **Method**: `GET`
@@ -150,9 +205,27 @@ Esta guía te ayudará a configurar Mockoon paso a paso para simular la API de s
    - **Status Code**: `200`
 3. En **Headers**:
    - `Content-Type: application/json`
-4. En **Body**:
-   - Seleccionar tipo: **"JSON"**
-   - Copiar y pegar **UN plan** de `mockPlans.json` (por ejemplo, el plan con `id: 1`):
+4. **Configurar múltiples respuestas con reglas:**
+   
+   Para cada plan (id: 1, 2, 3, 4, 5):
+   
+   a. Click en **"Add response"**
+   
+   b. **Para el plan con id: 1:**
+      - Regla: `{{params 'id'}} equals '1'`
+      - Body (JSON): Copiar el plan con id: 1 de `mockPlans.json`
+   
+   c. Repetir para los planes con id: 2, 3, 4, 5
+
+#### Opción B: Solución Simple
+
+1. Crear la ruta `/api/plans/:id`
+2. Poner en el body el plan con `id: 1`
+3. **Nota**: Esto retornará siempre el mismo plan sin importar el ID
+
+**Diferencia clave:**
+- ❌ `/api/plans` → Retorna: `[{...}, {...}, {...}]` (array con corchetes `[]`)
+- ✅ `/api/plans/:id` → Retorna: `{...}` (un solo objeto, SIN corchetes)
 
 **Ejemplo del contenido que debes pegar:**
 ```json
@@ -187,6 +260,99 @@ Esta guía te ayudará a configurar Mockoon paso a paso para simular la API de s
   "createdAt": "2024-01-15T00:00:00Z",
   "updatedAt": "2024-01-15T00:00:00Z"
 }
+```
+
+---
+
+## 🔧 Configuración Avanzada: Reglas en Mockoon
+
+### ¿Cómo funcionan las reglas?
+
+Las reglas permiten que Mockoon retorne diferentes respuestas según el valor del parámetro `:id` en la URL.
+
+### Ejemplo práctico para `/api/services/:id`:
+
+1. **Crear la ruta base**: `GET /api/services/:id`
+
+2. **Agregar primera respuesta (id: 1)**:
+   - Click en "Add response" dentro de la ruta
+   - En "Rules", agregar: `{{params 'id'}} equals '1'`
+   - En "Body", pegar el servicio con id: 1
+
+3. **Agregar segunda respuesta (id: 2)**:
+   - Click en "Add response" nuevamente
+   - Regla: `{{params 'id'}} equals '2'`
+   - Body: pegar el servicio con id: 2
+
+4. **Repetir para todos los servicios** (id: 3, 4, 5, 6)
+
+5. **Agregar respuesta por defecto (opcional)**:
+   - Si consultas un ID que no existe (ej: id: 99), puedes agregar una respuesta sin regla que retorne un error 404
+
+### Sintaxis de reglas en Mockoon:
+
+- `{{params 'id'}} equals '1'` → Cuando el parámetro `id` es igual a "1"
+- `{{params 'id'}} equals '2'` → Cuando el parámetro `id` es igual a "2"
+- etc.
+
+**Nota**: El valor siempre es un string, por eso usas `'1'` con comillas.
+
+### Orden de evaluación:
+
+Mockoon evalúa las reglas de arriba hacia abajo. La primera regla que coincida será la respuesta que se retorne.
+
+---
+
+## 🔧 Configuración Avanzada: Reglas en Mockoon
+
+### ¿Cómo funcionan las reglas?
+
+Las reglas permiten que Mockoon retorne diferentes respuestas según el valor del parámetro `:id` en la URL.
+
+### Ejemplo práctico para `/api/services/:id`:
+
+1. **Crear la ruta base**: `GET /api/services/:id`
+
+2. **Agregar primera respuesta (id: 1)**:
+   - Click en **"Add response"** dentro de la ruta (no "Add route")
+   - En **"Rules"**, agregar: `{{params 'id'}} equals '1'`
+   - En **"Body"**, pegar el servicio con id: 1 (solo el objeto, sin corchetes)
+
+3. **Agregar segunda respuesta (id: 2)**:
+   - Click en **"Add response"** nuevamente (en la misma ruta)
+   - Regla: `{{params 'id'}} equals '2'`
+   - Body: pegar el servicio con id: 2
+
+4. **Repetir para todos los servicios** (id: 3, 4, 5, 6)
+
+5. **Agregar respuesta por defecto (opcional)**:
+   - Si consultas un ID que no existe (ej: id: 99), puedes agregar una respuesta sin regla que retorne un error 404:
+     - Status: `404`
+     - Body: `{"error": "Servicio no encontrado"}`
+
+### Sintaxis de reglas en Mockoon:
+
+- `{{params 'id'}} equals '1'` → Cuando el parámetro `id` es igual a "1"
+- `{{params 'id'}} equals '2'` → Cuando el parámetro `id` es igual a "2"
+- etc.
+
+**Nota**: El valor siempre es un string, por eso usas `'1'` con comillas simples.
+
+### Orden de evaluación:
+
+Mockoon evalúa las reglas de arriba hacia abajo. La primera regla que coincida será la respuesta que se retorne. Si ninguna regla coincide, retornará la primera respuesta sin regla (o un error si no hay ninguna).
+
+### 📸 Visualización en Mockoon:
+
+```
+GET /api/services/:id
+├── Response 1 (Rules: {{params 'id'}} equals '1')
+│   └── Body: { servicio con id: 1 }
+├── Response 2 (Rules: {{params 'id'}} equals '2')
+│   └── Body: { servicio con id: 2 }
+├── Response 3 (Rules: {{params 'id'}} equals '3')
+│   └── Body: { servicio con id: 3 }
+└── ... (más respuestas)
 ```
 
 ---
