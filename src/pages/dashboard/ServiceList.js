@@ -2,63 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Card, Spinner, Alert, Badge } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-    faBolt, 
-    faWrench, 
-    faChartLine, 
-    faBriefcase,
-    faLightbulb,
-    faTools
-} from '@fortawesome/free-solid-svg-icons';
 import { getIconByName } from '../../utils/iconMapper';
-
-// Datos mock temporales - se reemplazarán con API cuando esté disponible
-const mockServices = [
-    {
-        id: 1,
-        nombre: "Estudio energético",
-        descripcion: "Análisis de consumo y propuesta ajustada a tu perfil.",
-        precio: 150000,
-        estado: "activo",
-        iconName: "bolt",
-        iconColor: "#FF6B35",
-        categoria: "consultoria",
-        duracion: "2-3 semanas"
-    },
-    {
-        id: 2,
-        nombre: "Instalación certificada",
-        descripcion: "Ejecutada por personal acreditado y normativa vigente.",
-        precio: 0,
-        estado: "activo",
-        iconName: "wrench",
-        iconColor: "#8B4513",
-        categoria: "instalacion",
-        duracion: "1-2 días"
-    },
-    {
-        id: 3,
-        nombre: "Monitoreo",
-        descripcion: "Seguimiento de rendimiento y alertas preventivas.",
-        precio: 50000,
-        estado: "activo",
-        iconName: "chart-line",
-        iconColor: "#9370DB",
-        categoria: "monitoreo",
-        duracion: "Continuo"
-    },
-    {
-        id: 4,
-        nombre: "Mantención",
-        descripcion: "Planes periódicos para extender la vida útil del sistema.",
-        precio: 80000,
-        estado: "activo",
-        iconName: "briefcase",
-        iconColor: "#FF69B4",
-        categoria: "mantencion",
-        duracion: "Anual"
-    }
-];
+import { getServices } from '../../services/api';
 
 const ServiceList = () => {
     const [services, setServices] = useState([]);
@@ -72,12 +17,9 @@ const ServiceList = () => {
                 setLoading(true);
                 setError(null);
                 
-                // TODO: Reemplazar con llamada a API cuando esté disponible
-                // const servicesData = await getServices();
-                
-                // Por ahora usar datos mock
-                await new Promise(resolve => setTimeout(resolve, 500)); // Simular carga
-                setServices(mockServices);
+                // Llamada a la API
+                const servicesData = await getServices();
+                setServices(servicesData);
             } catch (err) {
                 console.error('Error al cargar servicios:', err);
                 setError(err.message || 'Error al cargar los servicios');

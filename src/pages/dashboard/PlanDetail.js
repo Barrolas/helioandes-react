@@ -3,89 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Container, Card, Spinner, Alert, Badge, Button, Row, Col, ListGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-
-// Datos mock temporales - se reemplazarán con API cuando esté disponible
-const mockPlans = [
-    {
-        id: 1,
-        nombre: "Básico",
-        potencia: "3-5 kW",
-        badge: "Básico",
-        descripcion: "Plan ideal para hogares pequeños con consumo moderado",
-        precioContado: 2500000,
-        estado: "activo",
-        caracteristicas: [
-            "Estudio energético",
-            "Instalación estándar",
-            "Monitoreo básico",
-            "Garantía 5 años"
-        ],
-        incluye: [
-            "Paneles solares 3-5 kW",
-            "Inversor básico",
-            "Instalación estándar",
-            "Sistema de monitoreo básico"
-        ],
-        noIncluye: [
-            "Baterías",
-            "Mantención extendida",
-            "Soporte premium"
-        ]
-    },
-    {
-        id: 2,
-        nombre: "Optimizado",
-        potencia: "10-15 kW",
-        badge: "Optimizado",
-        descripcion: "Solución completa para hogares grandes y pequeñas empresas",
-        precioContado: 6500000,
-        estado: "activo",
-        caracteristicas: [
-            "Estudio avanzado",
-            "Instalación optimizada",
-            "Monitoreo avanzado",
-            "Garantía 10 años"
-        ],
-        incluye: [
-            "Paneles solares 10-15 kW",
-            "Inversor de alta eficiencia",
-            "Instalación optimizada",
-            "Sistema de monitoreo avanzado",
-            "Mantención anual incluida"
-        ],
-        noIncluye: [
-            "Baterías",
-            "Soporte 24/7"
-        ]
-    },
-    {
-        id: 3,
-        nombre: "Autónomo",
-        potencia: "Híbrido + Baterías",
-        badge: "Autónomo",
-        descripcion: "Sistema completo con almacenamiento para máxima independencia energética",
-        precioContado: 12000000,
-        estado: "activo",
-        caracteristicas: [
-            "Diseño off-grid",
-            "Almacenamiento",
-            "Soporte preferente",
-            "Garantía 15 años"
-        ],
-        incluye: [
-            "Paneles solares configurables",
-            "Sistema de baterías",
-            "Inversor híbrido",
-            "Instalación especializada",
-            "Sistema de monitoreo premium",
-            "Mantención bianual incluida",
-            "Soporte técnico preferente"
-        ],
-        noIncluye: [
-            "Instalación en ubicaciones remotas (costo adicional)"
-        ]
-    }
-];
+import { getPlanById } from '../../services/api';
 
 const PlanDetail = () => {
     const { id } = useParams();
@@ -100,18 +18,9 @@ const PlanDetail = () => {
                 setLoading(true);
                 setError(null);
                 
-                // TODO: Reemplazar con llamada a API cuando esté disponible
-                // const planData = await getPlanById(id);
-                
-                // Por ahora usar datos mock
-                await new Promise(resolve => setTimeout(resolve, 300)); // Simular carga
-                const foundPlan = mockPlans.find(p => p.id === parseInt(id));
-                
-                if (!foundPlan) {
-                    throw new Error('Plan no encontrado');
-                }
-                
-                setPlan(foundPlan);
+                // Llamada a la API
+                const planData = await getPlanById(id);
+                setPlan(planData);
             } catch (err) {
                 console.error('Error al cargar plan:', err);
                 setError(err.message || 'Error al cargar el plan');

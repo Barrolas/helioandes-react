@@ -4,54 +4,7 @@ import { Container, Card, Spinner, Alert, Badge, Button, Row, Col } from 'react-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { getIconByName } from '../../utils/iconMapper';
-
-// Datos mock temporales - se reemplazarán con API cuando esté disponible
-const mockServices = [
-    {
-        id: 1,
-        nombre: "Estudio energético",
-        descripcion: "Análisis de consumo y propuesta ajustada a tu perfil.",
-        precio: 150000,
-        estado: "activo",
-        iconName: "bolt",
-        iconColor: "#FF6B35",
-        categoria: "consultoria",
-        duracion: "2-3 semanas"
-    },
-    {
-        id: 2,
-        nombre: "Instalación certificada",
-        descripcion: "Ejecutada por personal acreditado y normativa vigente.",
-        precio: 0,
-        estado: "activo",
-        iconName: "wrench",
-        iconColor: "#8B4513",
-        categoria: "instalacion",
-        duracion: "1-2 días"
-    },
-    {
-        id: 3,
-        nombre: "Monitoreo",
-        descripcion: "Seguimiento de rendimiento y alertas preventivas.",
-        precio: 50000,
-        estado: "activo",
-        iconName: "chart-line",
-        iconColor: "#9370DB",
-        categoria: "monitoreo",
-        duracion: "Continuo"
-    },
-    {
-        id: 4,
-        nombre: "Mantención",
-        descripcion: "Planes periódicos para extender la vida útil del sistema.",
-        precio: 80000,
-        estado: "activo",
-        iconName: "briefcase",
-        iconColor: "#FF69B4",
-        categoria: "mantencion",
-        duracion: "Anual"
-    }
-];
+import { getServiceById } from '../../services/api';
 
 const ServiceDetail = () => {
     const { id } = useParams();
@@ -66,18 +19,9 @@ const ServiceDetail = () => {
                 setLoading(true);
                 setError(null);
                 
-                // TODO: Reemplazar con llamada a API cuando esté disponible
-                // const serviceData = await getServiceById(id);
-                
-                // Por ahora usar datos mock
-                await new Promise(resolve => setTimeout(resolve, 300)); // Simular carga
-                const foundService = mockServices.find(s => s.id === parseInt(id));
-                
-                if (!foundService) {
-                    throw new Error('Servicio no encontrado');
-                }
-                
-                setService(foundService);
+                // Llamada a la API
+                const serviceData = await getServiceById(id);
+                setService(serviceData);
             } catch (err) {
                 console.error('Error al cargar servicio:', err);
                 setError(err.message || 'Error al cargar el servicio');

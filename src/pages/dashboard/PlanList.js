@@ -1,55 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Card, Spinner, Alert, Badge, Button } from 'react-bootstrap';
-
-// Datos mock temporales - se reemplazarán con API cuando esté disponible
-const mockPlans = [
-    {
-        id: 1,
-        nombre: "Básico",
-        potencia: "3-5 kW",
-        badge: "Básico",
-        descripcion: "Plan ideal para hogares pequeños con consumo moderado",
-        precioContado: 2500000,
-        estado: "activo",
-        caracteristicas: [
-            "Estudio energético",
-            "Instalación estándar",
-            "Monitoreo básico",
-            "Garantía 5 años"
-        ]
-    },
-    {
-        id: 2,
-        nombre: "Optimizado",
-        potencia: "10-15 kW",
-        badge: "Optimizado",
-        descripcion: "Solución completa para hogares grandes y pequeñas empresas",
-        precioContado: 6500000,
-        estado: "activo",
-        caracteristicas: [
-            "Estudio avanzado",
-            "Instalación optimizada",
-            "Monitoreo avanzado",
-            "Garantía 10 años"
-        ]
-    },
-    {
-        id: 3,
-        nombre: "Autónomo",
-        potencia: "Híbrido + Baterías",
-        badge: "Autónomo",
-        descripcion: "Sistema completo con almacenamiento para máxima independencia energética",
-        precioContado: 12000000,
-        estado: "activo",
-        caracteristicas: [
-            "Diseño off-grid",
-            "Almacenamiento",
-            "Soporte preferente",
-            "Garantía 15 años"
-        ]
-    }
-];
+import { getPlans } from '../../services/api';
 
 const PlanList = () => {
     const [plans, setPlans] = useState([]);
@@ -63,12 +15,9 @@ const PlanList = () => {
                 setLoading(true);
                 setError(null);
                 
-                // TODO: Reemplazar con llamada a API cuando esté disponible
-                // const plansData = await getPlans();
-                
-                // Por ahora usar datos mock
-                await new Promise(resolve => setTimeout(resolve, 500)); // Simular carga
-                setPlans(mockPlans);
+                // Llamada a la API
+                const plansData = await getPlans();
+                setPlans(plansData);
             } catch (err) {
                 console.error('Error al cargar planes:', err);
                 setError(err.message || 'Error al cargar los planes');
