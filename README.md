@@ -39,6 +39,7 @@ Una aplicación web React para dimensionar sistemas de energía solar, calcular 
 ### Prerrequisitos
 - Node.js (versión 14 o superior)
 - npm o yarn
+- Mockoon (para desarrollo local con API mock)
 
 ### Instalación
 ```bash
@@ -54,6 +55,21 @@ npm install
 # Iniciar servidor de desarrollo
 npm start
 ```
+
+### Configuración de API (Desarrollo)
+Para que la aplicación funcione correctamente, necesitas tener Mockoon corriendo:
+
+1. **Instalar Mockoon**: Descargar desde [mockoon.com](https://mockoon.com)
+2. **Configurar Environment**:
+   - Puerto: `3001`
+   - Rutas necesarias:
+     - `GET /api/services` - Lista de servicios
+     - `GET /api/services/:id` - Detalle de servicio
+     - `GET /api/plans` - Lista de planes
+     - `GET /api/plans/:id` - Detalle de plan
+3. **Iniciar Mockoon**: El servidor debe estar corriendo en `http://localhost:3001`
+
+**Nota**: Sin Mockoon corriendo, la aplicación mostrará mensajes de error al intentar cargar servicios y planes.
 
 ## 📁 Estructura del Proyecto
 
@@ -102,6 +118,8 @@ helioandes-react/
 - **Instalación certificada**: Personal acreditado y normativa vigente
 - **Monitoreo**: Seguimiento de rendimiento y alertas
 - **Mantención**: Planes periódicos para extender vida útil
+- **Integración con API**: Los servicios se obtienen dinámicamente desde `GET /api/services`
+- **Filtrado automático**: Solo se muestran servicios con `estado: "activo"` en la landing page
 
 ### 💡 **Soluciones**
 - **Hogar 3-5 kW**: Balance ideal entre costo y ahorro
@@ -112,6 +130,8 @@ helioandes-react/
 - **Contado**: Descuento por pago al contado
 - **Financiamiento**: Opciones de pago a plazos
 - **Leasing**: Modalidad de arrendamiento
+- **Integración con API**: Los planes se obtienen dinámicamente desde `GET /api/plans`
+- **Filtrado automático**: Solo se muestran planes con `estado: "activo"` en la landing page
 
 ### 💬 **Testimonios**
 - Experiencias reales de clientes
@@ -157,14 +177,107 @@ Panel de administración para gestionar servicios y planes de energía solar con
 - Información mostrada: nombre, potencia, descripción, precio, características, incluye/no incluye
 
 #### **🔌 Integración con API**
-- Los datos se obtienen desde una API REST (Mockoon en desarrollo)
-- Endpoints utilizados:
-  - `GET /api/services` - Lista de servicios
-  - `GET /api/services/:id` - Detalle de servicio
-  - `GET /api/plans` - Lista de planes
-  - `GET /api/plans/:id` - Detalle de plan
-- Manejo de estados de carga y errores
-- Filtrado automático de elementos activos en la landing page
+
+##### **Endpoints Implementados**
+La aplicación consume datos desde una API REST. En desarrollo se utiliza Mockoon como servidor mock.
+
+**Base URL**: `http://localhost:3001`
+
+**Endpoints de Servicios**:
+- `GET /api/services` - Obtiene lista completa de servicios
+  - Retorna: Array de objetos servicio
+  - Uso: Landing page (filtra activos) y Dashboard (muestra todos)
+- `GET /api/services/:id` - Obtiene detalle de un servicio específico
+  - Parámetros: `id` (número)
+  - Retorna: Objeto servicio único
+  - Uso: Página de detalle en dashboard
+
+**Endpoints de Planes**:
+- `GET /api/plans` - Obtiene lista completa de planes
+  - Retorna: Array de objetos plan
+  - Uso: Landing page (filtra activos) y Dashboard (muestra todos)
+- `GET /api/plans/:id` - Obtiene detalle de un plan específico
+  - Parámetros: `id` (número)
+  - Retorna: Objeto plan único
+  - Uso: Página de detalle en dashboard
+
+##### **Estructura de Datos**
+
+**Servicio**:
+```json
+{
+  "id": 1,
+  "nombre": "Estudio Energético",
+  "descripcion": "Análisis detallado...",
+  "precio": 150000,
+  "duracion": "2-3 semanas",
+  "categoria": "Consultoría",
+  "estado": "activo",
+  "iconName": "lightbulb",
+  "iconColor": "#FF6B35"
+}
+```
+
+**Plan**:
+```json
+{
+  "id": 1,
+  "nombre": "Básico",
+  "potencia": "3-5 kW",
+  "descripcion": "Plan ideal para...",
+  "precioContado": 2500000,
+  "badge": "Básico",
+  "estado": "activo",
+  "caracteristicas": ["Estudio energético", "..."],
+  "incluye": ["Instalación estándar", "..."],
+  "noIncluye": ["Baterías", "..."]
+}
+```
+
+##### **Configuración de Mockoon**
+Para desarrollo local, se requiere Mockoon corriendo en el puerto 3001:
+1. Instalar Mockoon desde [mockoon.com](https://mockoon.com)
+2. Crear un nuevo environment
+3. Configurar las rutas mencionadas arriba
+4. Iniciar el servidor en el puerto 3001
+
+##### **Manejo de Estados**
+- **Loading**: Spinner y mensaje mientras se cargan los datos
+- **Error**: Mensajes descriptivos si falla la conexión o el servidor no responde
+- **Empty**: Mensaje cuando no hay datos disponibles
+- **Filtrado**: En la landing page se muestran solo elementos con `estado: "activo"`
+
+##### **Componentes que Consumen la API**
+- `src/components/sections/Servicios.js` - Landing page (filtra solo activos)
+- `src/components/sections/Planes.js` - Landing page (filtra solo activos)
+- `src/pages/dashboard/ServiceList.js` - Dashboard (muestra todos)
+- `src/pages/dashboard/ServiceDetail.js` - Dashboard (detalle individual)
+- `src/pages/dashboard/PlanList.js` - Dashboard (muestra todos)
+- `src/pages/dashboard/PlanDetail.js` - Dashboard (detalle individual)
+
+##### **Estado Actual de la Implementación**
+
+**✅ Implementado**:
+- ✅ Landing page con consumo de API para servicios y planes
+- ✅ Dashboard administrativo completo
+- ✅ Listado y detalle de servicios
+- ✅ Listado y detalle de planes
+- ✅ Filtrado automático de elementos activos en landing page
+- ✅ Manejo de estados de carga y error
+- ✅ Sidebar colapsable con iconos
+- ✅ Navegación con breadcrumbs
+- ✅ Diseño responsive
+
+**🔧 Configuración Requerida**:
+- Mockoon corriendo en puerto 3001 (desarrollo)
+- Endpoints configurados según especificación arriba
+- Datos JSON con estructura definida
+
+**📝 Notas**:
+- Los datos se obtienen dinámicamente desde la API
+- No se usan archivos JSON locales (carpeta `data` eliminada)
+- La landing page muestra solo elementos con `estado: "activo"`
+- El dashboard muestra todos los elementos (activos e inactivos)
 
 #### **🎯 Acceso al Dashboard**
 - Botón "Admin" en la barra de navegación principal
