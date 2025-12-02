@@ -764,4 +764,4 @@ Este proyecto está desarrollado para fines educativos y de presentación acadé
 
 ---
 
-**Desarrollado por Nicolás Barra || Nicole Chávez**
+**Desarrollado por Nicolás Barra || Nicole Chávez || Matias Ampuero**
