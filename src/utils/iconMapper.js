@@ -35,5 +35,19 @@ export const getIconByName = (iconName) => {
   return iconMap[iconName] || null;
 };
 
+/**
+ * Mapea un array de servicios agregando los iconos de FontAwesome
+ * @param {Array} services - Array de servicios con iconName
+ * @returns {Array} Array de servicios con icon agregado
+ */
+export const mapServicesWithIcons = (services) => {
+  if (!Array.isArray(services)) return [];
+  
+  return services.map(service => ({
+    ...service,
+    icon: getIconByName(service.iconName),
+  }));
+};
+
 export default getIconByName;
 
