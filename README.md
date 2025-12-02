@@ -8,6 +8,7 @@ Una aplicación web React para dimensionar sistemas de energía solar, calcular 
 - [🚀 Instalación y Configuración](#-instalación-y-configuración)
 - [📁 Estructura del Proyecto](#-estructura-del-proyecto)
 - [⚡ Funcionalidades Principales](#-funcionalidades-principales)
+- [📊 Dashboard Administrativo](#-dashboard-administrativo)
 - [🧮 Calculadora Integral](#-calculadora-integral)
 - [📝 Formulario de Contacto](#-formulario-de-contacto)
 - [🎨 Componentes UI](#-componentes-ui)
@@ -121,6 +122,54 @@ helioandes-react/
 - Preguntas frecuentes sobre energía solar
 - Información técnica y comercial
 - Resolución de dudas comunes
+
+## 📊 Dashboard Administrativo
+
+### **Funcionalidades**
+Panel de administración para gestionar servicios y planes de energía solar con diseño personalizado usando los colores de HelioAndes.
+
+### **Características del Dashboard**
+
+#### **🎨 Diseño Personalizado**
+- Sidebar colapsable que muestra solo iconos cuando está cerrado
+- Diseño responsive para desktop y móvil
+- Paleta de colores consistente con HelioAndes
+- Transiciones suaves y animaciones
+
+#### **📱 Navegación**
+- **Sidebar**: Navegación lateral con iconos y tooltips
+  - Dashboard Home
+  - Gestión de Servicios
+  - Gestión de Planes
+- **Topbar**: Barra superior con breadcrumbs y botón de volver
+- **Breadcrumbs**: Indicador de ubicación actual en el dashboard
+
+#### **📋 Módulos Disponibles**
+
+##### **Servicios**
+- **Lista de Servicios** (`/dashboard/services`): Grid de cards con todos los servicios
+- **Detalle de Servicio** (`/dashboard/services/:id`): Vista detallada de un servicio específico
+- Información mostrada: nombre, descripción, precio, duración, categoría, estado
+
+##### **Planes**
+- **Lista de Planes** (`/dashboard/plans`): Grid de cards con todos los planes
+- **Detalle de Plan** (`/dashboard/plans/:id`): Vista detallada de un plan específico
+- Información mostrada: nombre, potencia, descripción, precio, características, incluye/no incluye
+
+#### **🔌 Integración con API**
+- Los datos se obtienen desde una API REST (Mockoon en desarrollo)
+- Endpoints utilizados:
+  - `GET /api/services` - Lista de servicios
+  - `GET /api/services/:id` - Detalle de servicio
+  - `GET /api/plans` - Lista de planes
+  - `GET /api/plans/:id` - Detalle de plan
+- Manejo de estados de carga y errores
+- Filtrado automático de elementos activos en la landing page
+
+#### **🎯 Acceso al Dashboard**
+- Botón "Admin" en la barra de navegación principal
+- Ruta: `/dashboard`
+- Diseño coherente con el resto de la aplicación
 
 ## 🧮 Calculadora Integral
 
@@ -564,6 +613,17 @@ const imagePath = process.env.NODE_ENV === 'production'
   - **@fortawesome/free-regular-svg-icons 7.1.0**: Iconos regulares
   - **@fortawesome/free-brands-svg-icons 7.1.0**: Iconos de marcas
   - **@fortawesome/react-fontawesome 3.1.0**: Componente React para FontAwesome
+
+### **Routing y Navegación**
+- **React Router DOM 7.9.6**: Manejo de rutas y navegación
+  - Rutas para landing page y dashboard
+  - Rutas anidadas para módulos del dashboard
+  - Configuración de basename para GitHub Pages
+
+### **HTTP Client**
+- **Axios 1.13.2**: Cliente HTTP para consumo de APIs
+  - Integración con Mockoon para desarrollo
+  - Manejo de errores y estados de carga
 
 ### **Notificaciones y Alertas**
 - **SweetAlert2 11.26.3**: Librería para alertas y notificaciones elegantes
