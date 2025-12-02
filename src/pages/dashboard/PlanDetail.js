@@ -16,7 +16,7 @@ const PlanDetail = () => {
         return (
             <Container className="py-5">
                 <h2>Plan no encontrado</h2>
-                <Link to="/dashboard/plans">
+                <Link to="/dashboard/planes">
                     <Button variant="secondary">Volver</Button>
                 </Link>
             </Container>
@@ -39,7 +39,7 @@ const PlanDetail = () => {
                         ))}
                     </ListGroup>
 
-                    <Link to="/dashboard/plans">
+                    <Link to="/dashboard/planes">
                         <Button variant="secondary">Volver a la lista</Button>
                     </Link>
                 </Card.Body>

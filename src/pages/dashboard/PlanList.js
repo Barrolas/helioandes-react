@@ -27,7 +27,7 @@ const PlanList = () => {
                                     </ul>
                                 </Card.Text>
                                 <div className="mt-auto text-center">
-                                    <Link to={`/dashboard/plans/${plan.id}`}>
+                                    <Link to={`/dashboard/planes/${plan.id}`}>
                                         <Button variant="outline-primary">Ver Detalles</Button>
                                     </Link>
                                 </div>
