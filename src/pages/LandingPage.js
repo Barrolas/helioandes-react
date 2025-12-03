@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavbarInicio, HeroInicio, Servicios, Soluciones, Calculadoralntegral, Planes, Testimonios, FAQ, Contacto, FooterInicio } from '../components/index.js';
-import '../App.css';
 
 const LandingPage = () => {
     return (

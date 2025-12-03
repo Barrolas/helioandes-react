@@ -49,5 +49,3 @@ export const mapServicesWithIcons = (services) => {
   }));
 };
 
-export default getIconByName;
-

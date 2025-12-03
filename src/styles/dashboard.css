@@ -557,3 +557,145 @@
     color: var(--helio-primary);
     width: 20px;
 }
+
+/* Utility Classes para reemplazar estilos inline */
+.dashboard-error-info {
+    background-color: #d1ecf1;
+    border-color: #17a2b8;
+    color: #0c5460;
+}
+
+.dashboard-error-info h4 {
+    color: #0c5460;
+}
+
+.dashboard-error-warning {
+    background-color: #fff3cd;
+    border-color: #ffc107;
+    color: #856404;
+}
+
+.dashboard-error-warning h4 {
+    color: #856404;
+}
+
+.dashboard-icon-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard-icon-primary {
+    color: var(--helio-primary);
+}
+
+.dashboard-icon-warning {
+    color: #ffc107;
+}
+
+.dashboard-list-unstyled {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dashboard-list-item {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--helio-bg-light);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--helio-text-medium);
+}
+
+.dashboard-list-item:last-child {
+    border-bottom: none;
+}
+
+.dashboard-list-item-feature {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--helio-text-medium);
+}
+
+.dashboard-list-item-feature:not(:last-child) {
+    border-bottom: 1px solid var(--helio-bg-light);
+}
+
+.dashboard-text-muted {
+    color: var(--helio-text-medium);
+}
+
+.dashboard-text-muted-lg {
+    color: var(--helio-text-medium);
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.dashboard-text-muted-md {
+    color: var(--helio-text-medium);
+    font-size: 0.9rem;
+}
+
+.dashboard-text-muted-xl {
+    color: var(--helio-text-medium);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+.dashboard-text-primary {
+    color: var(--helio-primary);
+}
+
+.dashboard-text-primary-lg {
+    color: var(--helio-primary);
+    margin-top: 0.5rem;
+}
+
+.dashboard-text-primary-h4 {
+    color: var(--helio-primary);
+    margin-bottom: 1rem;
+}
+
+.dashboard-mt-1 {
+    margin-top: 1rem;
+}
+
+.dashboard-badge-lg {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+}
+
+.dashboard-badge-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard-section-title-primary {
+    color: var(--helio-primary);
+}
+
+.dashboard-section-title-warning {
+    color: #ffc107;
+}
+
+.dashboard-sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.dashboard-margin-0 {
+    margin: 0;
+}
