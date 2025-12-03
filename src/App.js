@@ -7,17 +7,10 @@ import ServiceList from './pages/dashboard/ServiceList';
 import ServiceDetail from './pages/dashboard/ServiceDetail';
 import PlanList from './pages/dashboard/PlanList';
 import PlanDetail from './pages/dashboard/PlanDetail';
-import './App.css';
 
 function App() {
-  // Configurar basename solo para producción (GitHub Pages)
-  // En desarrollo, basename será undefined (usa "/")
-  const basename = process.env.NODE_ENV === 'production' 
-    ? '/helioandes-react' 
-    : undefined;
-
   return (
-    <Router basename={basename}>
+    <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
 

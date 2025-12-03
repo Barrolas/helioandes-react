@@ -54,8 +54,8 @@ const PlanDetail = () => {
 
     if (!plan) {
         return (
-            <div className="dashboard-error" style={{ backgroundColor: '#fff3cd', borderColor: '#ffc107', color: '#856404' }}>
-                <h4 style={{ color: '#856404' }}>Plan no encontrado</h4>
+            <div className="dashboard-error dashboard-error-warning">
+                <h4>Plan no encontrado</h4>
                 <p>El plan solicitado no existe.</p>
                 <button className="dashboard-btn" onClick={() => navigate('/dashboard/plans')}>
                     Volver a la lista
@@ -68,16 +68,8 @@ const PlanDetail = () => {
         <div className="dashboard-detail-card">
             <div className="dashboard-detail-header">
                 <div className="dashboard-detail-info">
-                    <div style={{ 
-                        display: 'flex', 
-                        alignItems: 'center', 
-                        gap: '1rem',
-                        marginBottom: '0.5rem'
-                    }}>
-                        <span className="dashboard-badge dashboard-badge-success" style={{ 
-                            padding: '0.5rem 1rem',
-                            fontSize: '1rem'
-                        }}>
+                    <div className="dashboard-badge-container">
+                        <span className="dashboard-badge dashboard-badge-success dashboard-badge-lg">
                             {plan.badge || plan.nombre}
                         </span>
                         <span className={`dashboard-badge ${plan.estado === 'activo' ? 'dashboard-badge-success' : 'dashboard-badge-secondary'}`}>
@@ -85,7 +77,7 @@ const PlanDetail = () => {
                         </span>
                     </div>
                     <h2 className="dashboard-detail-title">{plan.nombre}</h2>
-                    <p style={{ color: 'var(--helio-text-medium)', fontSize: '1.1rem', marginTop: '0.5rem' }}>
+                    <p className="dashboard-text-muted-xl">
                         {plan.potencia}
                     </p>
                 </div>
@@ -93,14 +85,14 @@ const PlanDetail = () => {
 
             <div className="dashboard-detail-section">
                 <h3 className="dashboard-detail-section-title">Descripción</h3>
-                <p style={{ color: 'var(--helio-text-medium)', lineHeight: '1.8', fontSize: '1.05rem' }}>
+                <p className="dashboard-text-muted-lg">
                     {plan.descripcion}
                 </p>
             </div>
 
             <div className="dashboard-detail-section">
                 <h3 className="dashboard-detail-section-title">Precio</h3>
-                <h2 style={{ color: 'var(--helio-primary)', marginTop: '0.5rem' }}>
+                <h2 className="dashboard-text-primary-lg">
                     {formatPrice(plan.precioContado)}
                 </h2>
             </div>
@@ -111,7 +103,7 @@ const PlanDetail = () => {
                     <ul className="dashboard-detail-list">
                         {plan.caracteristicas.map((caracteristica, index) => (
                             <li key={index} className="dashboard-detail-list-item">
-                                <span style={{ color: 'var(--helio-primary)' }}>✓</span>
+                                <span className="dashboard-text-primary">✓</span>
                                 <div>{caracteristica}</div>
                             </li>
                         ))}
@@ -121,13 +113,13 @@ const PlanDetail = () => {
 
             {plan.incluye && plan.incluye.length > 0 && (
                 <div className="dashboard-detail-section">
-                    <h3 className="dashboard-detail-section-title" style={{ color: 'var(--helio-primary)' }}>
+                    <h3 className="dashboard-detail-section-title dashboard-section-title-primary">
                         ✓ Incluye
                     </h3>
                     <ul className="dashboard-detail-list">
                         {plan.incluye.map((item, index) => (
                             <li key={index} className="dashboard-detail-list-item">
-                                <span style={{ color: 'var(--helio-primary)' }}>✓</span>
+                                <span className="dashboard-text-primary">✓</span>
                                 <div>{item}</div>
                             </li>
                         ))}
@@ -137,13 +129,13 @@ const PlanDetail = () => {
 
             {plan.noIncluye && plan.noIncluye.length > 0 && (
                 <div className="dashboard-detail-section">
-                    <h3 className="dashboard-detail-section-title" style={{ color: '#ffc107' }}>
+                    <h3 className="dashboard-detail-section-title dashboard-section-title-warning">
                         ✗ No Incluye
                     </h3>
                     <ul className="dashboard-detail-list">
                         {plan.noIncluye.map((item, index) => (
                             <li key={index} className="dashboard-detail-list-item">
-                                <span style={{ color: '#ffc107' }}>✗</span>
+                                <span className="dashboard-icon-warning">✗</span>
                                 <div>{item}</div>
                             </li>
                         ))}

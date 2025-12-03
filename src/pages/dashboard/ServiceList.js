@@ -56,8 +56,8 @@ const ServiceList = () => {
 
         if (services.length === 0) {
             return (
-                <div className="dashboard-error" style={{ backgroundColor: '#d1ecf1', borderColor: '#17a2b8', color: '#0c5460' }}>
-                    <h4 style={{ color: '#0c5460' }}>No hay servicios disponibles</h4>
+                <div className="dashboard-error dashboard-error-info">
+                    <h4>No hay servicios disponibles</h4>
                     <p>No se encontraron servicios en el sistema.</p>
                 </div>
             );
@@ -71,16 +71,12 @@ const ServiceList = () => {
                         <div key={service.id} className="dashboard-card">
                             <div className="dashboard-card-header">
                                 {icon && (
-                                    <div style={{ 
-                                        display: 'flex', 
-                                        alignItems: 'center', 
-                                        gap: '1rem',
-                                        marginBottom: '0.5rem'
-                                    }}>
+                                    <div className="dashboard-icon-container">
                                         <FontAwesomeIcon 
                                             icon={icon} 
                                             size="2x" 
-                                            style={{ color: service.iconColor || 'var(--helio-primary)' }} 
+                                            className="dashboard-icon-primary"
+                                            style={{ color: service.iconColor || undefined }} 
                                         />
                                         <h3 className="dashboard-card-title">{service.nombre}</h3>
                                     </div>
@@ -89,29 +85,14 @@ const ServiceList = () => {
                             </div>
                             <div className="dashboard-card-body">
                                 <p className="dashboard-card-description">{service.descripcion}</p>
-                                <div style={{ marginTop: '1rem' }}>
-                                    <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                                        <li style={{ 
-                                            padding: '0.5rem 0',
-                                            borderBottom: '1px solid var(--helio-bg-light)',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            gap: '0.5rem',
-                                            fontSize: '0.9rem',
-                                            color: 'var(--helio-text-medium)'
-                                        }}>
-                                            <span style={{ color: 'var(--helio-primary)' }}>$</span>
+                                <div className="dashboard-mt-1">
+                                    <ul className="dashboard-list-unstyled">
+                                        <li className="dashboard-list-item">
+                                            <span className="dashboard-text-primary">$</span>
                                             <strong>Precio:</strong> {formatPrice(service.precio)}
                                         </li>
-                                        <li style={{ 
-                                            padding: '0.5rem 0',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            gap: '0.5rem',
-                                            fontSize: '0.9rem',
-                                            color: 'var(--helio-text-medium)'
-                                        }}>
-                                            <span style={{ color: 'var(--helio-primary)' }}>⏱</span>
+                                        <li className="dashboard-list-item-feature">
+                                            <span className="dashboard-text-primary">⏱</span>
                                             <strong>Duración:</strong> {service.duracion}
                                         </li>
                                     </ul>
