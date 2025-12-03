@@ -235,11 +235,19 @@ La aplicación consume datos desde una API REST. En desarrollo se utiliza Mockoo
 ```
 
 ##### **Configuración de Mockoon**
-Para desarrollo local, se requiere Mockoon corriendo en el puerto 3001:
+Para desarrollo local, se requiere Mockoon corriendo en el puerto 3001. El proyecto incluye un archivo de environment completo listo para usar:
+
+**Archivo de Environment:**
+- `src/data/helio-andes.json` - Environment completo de Mockoon con todas las rutas configuradas
+
+**Pasos para configurar Mockoon:**
 1. Instalar Mockoon desde [mockoon.com](https://mockoon.com)
-2. Crear un nuevo environment
-3. Configurar las rutas mencionadas arriba
-4. Iniciar el servidor en el puerto 3001
+2. Abrir Mockoon y hacer clic en **"Import/Export"** → **"Import from file"**
+3. Seleccionar el archivo `src/data/helio-andes.json`
+4. El environment "HelioAndes API" se cargará automáticamente con todas las rutas configuradas
+5. Hacer clic en **"Start"** para iniciar el servidor en el puerto 3001
+
+**Nota:** El archivo `helio-andes.json` contiene todas las rutas necesarias (`/api/services`, `/api/services/:id`, `/api/plans`, `/api/plans/:id`) con sus respectivas respuestas JSON, por lo que no es necesario configurar las rutas manualmente.
 
 ##### **Manejo de Estados**
 - **Loading**: Spinner y mensaje mientras se cargan los datos
