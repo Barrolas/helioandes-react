@@ -1,0 +1,514 @@
+{
+  "uuid": "b79a690a-efb4-429e-abcc-843e82c32795",
+  "lastMigration": 33,
+  "name": "HelioAndes API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3001,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "6ef36147-b951-41eb-95ee-7c5b8525be92",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/services",
+      "responses": [
+        {
+          "uuid": "b29d211d-000c-4e19-94d5-4216f9dc8fa0",
+          "body": "[\r\n  {\r\n    \"id\": 1,\r\n    \"nombre\": \"Estudio energético\",\r\n    \"descripcion\": \"Análisis de consumo y propuesta ajustada a tu perfil.\",\r\n    \"precio\": 150000,\r\n    \"estado\": \"activo\",\r\n    \"iconName\": \"bolt\",\r\n    \"iconColor\": \"#FF6B35\",\r\n    \"iconTransform\": \"rotate(-10deg)\",\r\n    \"categoria\": \"consultoria\",\r\n    \"duracion\": \"2-3 semanas\",\r\n    \"createdAt\": \"2024-01-15T00:00:00Z\",\r\n    \"updatedAt\": \"2024-01-15T00:00:00Z\"\r\n  },\r\n  {\r\n    \"id\": 2,\r\n    \"nombre\": \"Instalación certificada\",\r\n    \"descripcion\": \"Ejecutada por personal acreditado y normativa vigente.\",\r\n    \"precio\": 0,\r\n    \"estado\": \"activo\",\r\n    \"iconName\": \"wrench\",\r\n    \"iconColor\": \"#8B4513\",\r\n    \"iconTransform\": \"rotate(10deg)\",\r\n    \"categoria\": \"instalacion\",\r\n    \"duracion\": \"1-2 días\",\r\n    \"createdAt\": \"2024-01-15T00:00:00Z\",\r\n    \"updatedAt\": \"2024-01-15T00:00:00Z\"\r\n  },\r\n  {\r\n    \"id\": 3,\r\n    \"nombre\": \"Monitoreo\",\r\n    \"descripcion\": \"Seguimiento de rendimiento y alertas preventivas.\",\r\n    \"precio\": 50000,\r\n    \"estado\": \"activo\",\r\n    \"iconName\": \"chart-line\",\r\n    \"iconColor\": \"#9370DB\",\r\n    \"iconTransform\": null,\r\n    \"categoria\": \"monitoreo\",\r\n    \"duracion\": \"Continuo\",\r\n    \"createdAt\": \"2024-01-15T00:00:00Z\",\r\n    \"updatedAt\": \"2024-01-15T00:00:00Z\"\r\n  },\r\n  {\r\n    \"id\": 4,\r\n    \"nombre\": \"Mantención\",\r\n    \"descripcion\": \"Planes periódicos para extender la vida útil del sistema.\",\r\n    \"precio\": 80000,\r\n    \"estado\": \"activo\",\r\n    \"iconName\": \"briefcase\",\r\n    \"iconColor\": \"#FF69B4\",\r\n    \"iconTransform\": null,\r\n    \"categoria\": \"mantencion\",\r\n    \"duracion\": \"Anual\",\r\n    \"createdAt\": \"2024-01-15T00:00:00Z\",\r\n    \"updatedAt\": \"2024-01-15T00:00:00Z\"\r\n  },\r\n  {\r\n    \"id\": 5,\r\n    \"nombre\": \"Asesoría técnica\",\r\n    \"descripcion\": \"Consultoría especializada para optimización de sistemas solares.\",\r\n    \"precio\": 120000,\r\n    \"estado\": \"activo\",\r\n    \"iconName\": \"lightbulb\",\r\n    \"iconColor\": \"#FFD700\",\r\n    \"iconTransform\": null,\r\n    \"categoria\": \"consultoria\",\r\n    \"duracion\": \"1 semana\",\r\n    \"createdAt\": \"2024-01-20T00:00:00Z\",\r\n    \"updatedAt\": \"2024-01-20T00:00:00Z\"\r\n  },\r\n  {\r\n    \"id\": 6,\r\n    \"nombre\": \"Reparación de emergencia\",\r\n    \"descripcion\": \"Servicio de reparación urgente disponible 24/7.\",\r\n    \"precio\": 200000,\r\n    \"estado\": \"inactivo\",\r\n    \"iconName\": \"tools\",\r\n    \"iconColor\": \"#DC143C\",\r\n    \"iconTransform\": null,\r\n    \"categoria\": \"reparacion\",\r\n    \"duracion\": \"24 horas\",\r\n    \"createdAt\": \"2024-01-25T00:00:00Z\",\r\n    \"updatedAt\": \"2024-01-25T00:00:00Z\"\r\n  }\r\n]\r\n\r\n",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "537dfb20-ba7e-49c0-8bef-2b1b3064b92e",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/services/1",
+      "responses": [
+        {
+          "uuid": "94134ef8-5067-4de9-959d-e9e9a17c4ff0",
+          "body": "\r\n  {\r\n    \"id\": 1,\r\n    \"nombre\": \"Estudio energético\",\r\n    \"descripcion\": \"Análisis de consumo y propuesta ajustada a tu perfil.\",\r\n    \"precio\": 150000,\r\n    \"estado\": \"activo\",\r\n    \"iconName\": \"bolt\",\r\n    \"iconColor\": \"#FF6B35\",\r\n    \"iconTransform\": \"rotate(-10deg)\",\r\n    \"categoria\": \"consultoria\",\r\n    \"duracion\": \"2-3 semanas\",\r\n    \"createdAt\": \"2024-01-15T00:00:00Z\",\r\n    \"updatedAt\": \"2024-01-15T00:00:00Z\"\r\n  }\r\n",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "f1aa2c8e-976a-4694-bb03-8c75b0f7f229",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/services/2",
+      "responses": [
+        {
+          "uuid": "ad21f6b6-8545-43b3-892d-531f2d1adcfd",
+          "body": "\r\n  {\r\n    \"id\": 2,\r\n    \"nombre\": \"Instalación certificada\",\r\n    \"descripcion\": \"Ejecutada por personal acreditado y normativa vigente.\",\r\n    \"precio\": 0,\r\n    \"estado\": \"activo\",\r\n    \"iconName\": \"wrench\",\r\n    \"iconColor\": \"#8B4513\",\r\n    \"iconTransform\": \"rotate(10deg)\",\r\n    \"categoria\": \"instalacion\",\r\n    \"duracion\": \"1-2 días\",\r\n    \"createdAt\": \"2024-01-15T00:00:00Z\",\r\n    \"updatedAt\": \"2024-01-15T00:00:00Z\"\r\n  }",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "d84a76e0-5b30-44f7-a7b7-717ac21fa140",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/services/3",
+      "responses": [
+        {
+          "uuid": "9b646bd4-7f5c-40c4-819d-d1b48405b678",
+          "body": "  {\r\n    \"id\": 3,\r\n    \"nombre\": \"Monitoreo\",\r\n    \"descripcion\": \"Seguimiento de rendimiento y alertas preventivas.\",\r\n    \"precio\": 50000,\r\n    \"estado\": \"activo\",\r\n    \"iconName\": \"chart-line\",\r\n    \"iconColor\": \"#9370DB\",\r\n    \"iconTransform\": null,\r\n    \"categoria\": \"monitoreo\",\r\n    \"duracion\": \"Continuo\",\r\n    \"createdAt\": \"2024-01-15T00:00:00Z\",\r\n    \"updatedAt\": \"2024-01-15T00:00:00Z\"\r\n  }",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "bd9febba-87ba-4152-a1b6-6d4b62e2d545",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/services/4",
+      "responses": [
+        {
+          "uuid": "38cf1a78-eb09-42f1-83a8-212c06007f3e",
+          "body": "{\r\n    \"id\": 4,\r\n    \"nombre\": \"Mantención\",\r\n    \"descripcion\": \"Planes periódicos para extender la vida útil del sistema.\",\r\n    \"precio\": 80000,\r\n    \"estado\": \"activo\",\r\n    \"iconName\": \"briefcase\",\r\n    \"iconColor\": \"#FF69B4\",\r\n    \"iconTransform\": null,\r\n    \"categoria\": \"mantencion\",\r\n    \"duracion\": \"Anual\",\r\n    \"createdAt\": \"2024-01-15T00:00:00Z\",\r\n    \"updatedAt\": \"2024-01-15T00:00:00Z\"\r\n  }",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "a02d5cb1-89a6-4473-9036-de7ce87dfcfc",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/services/5",
+      "responses": [
+        {
+          "uuid": "760d2477-48d5-42a9-a1e0-24ca12c1882f",
+          "body": "  {\r\n    \"id\": 5,\r\n    \"nombre\": \"Asesoría técnica\",\r\n    \"descripcion\": \"Consultoría especializada para optimización de sistemas solares.\",\r\n    \"precio\": 120000,\r\n    \"estado\": \"activo\",\r\n    \"iconName\": \"lightbulb\",\r\n    \"iconColor\": \"#FFD700\",\r\n    \"iconTransform\": null,\r\n    \"categoria\": \"consultoria\",\r\n    \"duracion\": \"1 semana\",\r\n    \"createdAt\": \"2024-01-20T00:00:00Z\",\r\n    \"updatedAt\": \"2024-01-20T00:00:00Z\"\r\n  }",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "02d644c3-09d4-47ee-ab74-3f9f1f4e18d1",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/services/6",
+      "responses": [
+        {
+          "uuid": "bf967f3c-118f-4842-a30b-ec295d81f604",
+          "body": "{\r\n    \"id\": 6,\r\n    \"nombre\": \"Reparación de emergencia\",\r\n    \"descripcion\": \"Servicio de reparación urgente disponible 24/7.\",\r\n    \"precio\": 200000,\r\n    \"estado\": \"inactivo\",\r\n    \"iconName\": \"tools\",\r\n    \"iconColor\": \"#DC143C\",\r\n    \"iconTransform\": null,\r\n    \"categoria\": \"reparacion\",\r\n    \"duracion\": \"24 horas\",\r\n    \"createdAt\": \"2024-01-25T00:00:00Z\",\r\n    \"updatedAt\": \"2024-01-25T00:00:00Z\"\r\n  }",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "a30605e8-a256-4882-b266-9fdbdd047c8e",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/plans/",
+      "responses": [
+        {
+          "uuid": "45a96c00-be28-4631-97d6-2962c1590515",
+          "body": "[\r\n  {\r\n    \"id\": 1,\r\n    \"nombre\": \"Básico\",\r\n    \"potencia\": \"3-5 kW\",\r\n    \"badge\": \"Básico\",\r\n    \"descripcion\": \"Plan ideal para hogares pequeños con consumo moderado\",\r\n    \"precioMensual\": 0,\r\n    \"precioAnual\": 0,\r\n    \"precioContado\": 2500000,\r\n    \"estado\": \"activo\",\r\n    \"caracteristicas\": [\r\n      \"Estudio energético\",\r\n      \"Instalación estándar\",\r\n      \"Monitoreo básico\",\r\n      \"Garantía 5 años\"\r\n    ],\r\n    \"incluye\": [\r\n      \"Paneles solares 3-5 kW\",\r\n      \"Inversor básico\",\r\n      \"Instalación estándar\",\r\n      \"Sistema de monitoreo básico\"\r\n    ],\r\n    \"noIncluye\": [\r\n      \"Baterías\",\r\n      \"Mantención extendida\",\r\n      \"Soporte premium\"\r\n    ],\r\n    \"duracionContrato\": \"Sin contrato\",\r\n    \"createdAt\": \"2024-01-15T00:00:00Z\",\r\n    \"updatedAt\": \"2024-01-15T00:00:00Z\"\r\n  },\r\n  {\r\n    \"id\": 2,\r\n    \"nombre\": \"Optimizado\",\r\n    \"potencia\": \"10-15 kW\",\r\n    \"badge\": \"Optimizado\",\r\n    \"descripcion\": \"Solución completa para hogares grandes y pequeñas empresas\",\r\n    \"precioMensual\": 0,\r\n    \"precioAnual\": 0,\r\n    \"precioContado\": 6500000,\r\n    \"estado\": \"activo\",\r\n    \"caracteristicas\": [\r\n      \"Estudio avanzado\",\r\n      \"Instalación optimizada\",\r\n      \"Monitoreo avanzado\",\r\n      \"Garantía 10 años\"\r\n    ],\r\n    \"incluye\": [\r\n      \"Paneles solares 10-15 kW\",\r\n      \"Inversor de alta eficiencia\",\r\n      \"Instalación optimizada\",\r\n      \"Sistema de monitoreo avanzado\",\r\n      \"Mantención anual incluida\"\r\n    ],\r\n    \"noIncluye\": [\r\n      \"Baterías\",\r\n      \"Soporte 24/7\"\r\n    ],\r\n    \"duracionContrato\": \"Sin contrato\",\r\n    \"createdAt\": \"2024-01-15T00:00:00Z\",\r\n    \"updatedAt\": \"2024-01-15T00:00:00Z\"\r\n  },\r\n  {\r\n    \"id\": 3,\r\n    \"nombre\": \"Autónomo\",\r\n    \"potencia\": \"Híbrido + Baterías\",\r\n    \"badge\": \"Autónomo\",\r\n    \"descripcion\": \"Sistema completo con almacenamiento para máxima independencia energética\",\r\n    \"precioMensual\": 0,\r\n    \"precioAnual\": 0,\r\n    \"precioContado\": 12000000,\r\n    \"estado\": \"activo\",\r\n    \"caracteristicas\": [\r\n      \"Diseño off-grid\",\r\n      \"Almacenamiento\",\r\n      \"Soporte preferente\",\r\n      \"Garantía 15 años\"\r\n    ],\r\n    \"incluye\": [\r\n      \"Paneles solares configurables\",\r\n      \"Sistema de baterías\",\r\n      \"Inversor híbrido\",\r\n      \"Instalación especializada\",\r\n      \"Sistema de monitoreo premium\",\r\n      \"Mantención bianual incluida\",\r\n      \"Soporte técnico preferente\"\r\n    ],\r\n    \"noIncluye\": [\r\n      \"Instalación en ubicaciones remotas (costo adicional)\"\r\n    ],\r\n    \"duracionContrato\": \"Sin contrato\",\r\n    \"createdAt\": \"2024-01-15T00:00:00Z\",\r\n    \"updatedAt\": \"2024-01-15T00:00:00Z\"\r\n  },\r\n  {\r\n    \"id\": 4,\r\n    \"nombre\": \"Empresarial\",\r\n    \"potencia\": \"20-50 kW\",\r\n    \"badge\": \"Empresarial\",\r\n    \"descripcion\": \"Solución para empresas medianas con alto consumo energético\",\r\n    \"precioMensual\": 0,\r\n    \"precioAnual\": 0,\r\n    \"precioContado\": 18000000,\r\n    \"estado\": \"activo\",\r\n    \"caracteristicas\": [\r\n      \"Estudio energético empresarial\",\r\n      \"Instalación industrial\",\r\n      \"Monitoreo en tiempo real\",\r\n      \"Garantía extendida 20 años\",\r\n      \"Soporte 24/7\"\r\n    ],\r\n    \"incluye\": [\r\n      \"Paneles solares 20-50 kW\",\r\n      \"Inversores industriales\",\r\n      \"Instalación certificada\",\r\n      \"Sistema de monitoreo empresarial\",\r\n      \"Mantención trimestral\",\r\n      \"Soporte técnico dedicado\",\r\n      \"Reportes de rendimiento mensuales\"\r\n    ],\r\n    \"noIncluye\": [\r\n      \"Baterías (opcional)\",\r\n      \"Instalación en múltiples ubicaciones (costo adicional)\"\r\n    ],\r\n    \"duracionContrato\": \"Sin contrato\",\r\n    \"createdAt\": \"2024-02-01T00:00:00Z\",\r\n    \"updatedAt\": \"2024-02-01T00:00:00Z\"\r\n  },\r\n  {\r\n    \"id\": 5,\r\n    \"nombre\": \"Plan Legacy\",\r\n    \"potencia\": \"5-8 kW\",\r\n    \"badge\": \"Legacy\",\r\n    \"descripcion\": \"Plan antiguo ya no disponible para nuevos clientes\",\r\n    \"precioMensual\": 0,\r\n    \"precioAnual\": 0,\r\n    \"precioContado\": 3000000,\r\n    \"estado\": \"inactivo\",\r\n    \"caracteristicas\": [\r\n      \"Estudio energético básico\",\r\n      \"Instalación estándar\",\r\n      \"Monitoreo básico\"\r\n    ],\r\n    \"incluye\": [\r\n      \"Paneles solares 5-8 kW\",\r\n      \"Inversor estándar\",\r\n      \"Instalación básica\"\r\n    ],\r\n    \"noIncluye\": [\r\n      \"Baterías\",\r\n      \"Mantención\",\r\n      \"Soporte extendido\"\r\n    ],\r\n    \"duracionContrato\": \"Sin contrato\",\r\n    \"createdAt\": \"2023-06-01T00:00:00Z\",\r\n    \"updatedAt\": \"2024-01-10T00:00:00Z\"\r\n  }\r\n]\r\n\r\n",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "58fd75db-ebe5-4db2-9d40-003d8e544aaf",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/plans/2",
+      "responses": [
+        {
+          "uuid": "6ebfa05a-44df-4577-bcf7-fbaface22e12",
+          "body": "{\r\n    \"id\": 2,\r\n    \"nombre\": \"Optimizado\",\r\n    \"potencia\": \"10-15 kW\",\r\n    \"badge\": \"Optimizado\",\r\n    \"descripcion\": \"Solución completa para hogares grandes y pequeñas empresas\",\r\n    \"precioMensual\": 0,\r\n    \"precioAnual\": 0,\r\n    \"precioContado\": 6500000,\r\n    \"estado\": \"activo\",\r\n    \"caracteristicas\": [\r\n      \"Estudio avanzado\",\r\n      \"Instalación optimizada\",\r\n      \"Monitoreo avanzado\",\r\n      \"Garantía 10 años\"\r\n    ],\r\n    \"incluye\": [\r\n      \"Paneles solares 10-15 kW\",\r\n      \"Inversor de alta eficiencia\",\r\n      \"Instalación optimizada\",\r\n      \"Sistema de monitoreo avanzado\",\r\n      \"Mantención anual incluida\"\r\n    ],\r\n    \"noIncluye\": [\r\n      \"Baterías\",\r\n      \"Soporte 24/7\"\r\n    ],\r\n    \"duracionContrato\": \"Sin contrato\",\r\n    \"createdAt\": \"2024-01-15T00:00:00Z\",\r\n    \"updatedAt\": \"2024-01-15T00:00:00Z\"\r\n  }",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "70491f87-9a32-406d-a5d8-debaa574d297",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/plans/3",
+      "responses": [
+        {
+          "uuid": "f49675a5-2ed2-4207-91e8-4371b5658508",
+          "body": "{\r\n    \"id\": 3,\r\n    \"nombre\": \"Autónomo\",\r\n    \"potencia\": \"Híbrido + Baterías\",\r\n    \"badge\": \"Autónomo\",\r\n    \"descripcion\": \"Sistema completo con almacenamiento para máxima independencia energética\",\r\n    \"precioMensual\": 0,\r\n    \"precioAnual\": 0,\r\n    \"precioContado\": 12000000,\r\n    \"estado\": \"activo\",\r\n    \"caracteristicas\": [\r\n      \"Diseño off-grid\",\r\n      \"Almacenamiento\",\r\n      \"Soporte preferente\",\r\n      \"Garantía 15 años\"\r\n    ],\r\n    \"incluye\": [\r\n      \"Paneles solares configurables\",\r\n      \"Sistema de baterías\",\r\n      \"Inversor híbrido\",\r\n      \"Instalación especializada\",\r\n      \"Sistema de monitoreo premium\",\r\n      \"Mantención bianual incluida\",\r\n      \"Soporte técnico preferente\"\r\n    ],\r\n    \"noIncluye\": [\r\n      \"Instalación en ubicaciones remotas (costo adicional)\"\r\n    ],\r\n    \"duracionContrato\": \"Sin contrato\",\r\n    \"createdAt\": \"2024-01-15T00:00:00Z\",\r\n    \"updatedAt\": \"2024-01-15T00:00:00Z\"\r\n  }",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "4aef7008-5a0c-4b9c-956c-4591d1ff63eb",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/plans/4",
+      "responses": [
+        {
+          "uuid": "0929ff94-3342-436a-9bc5-b51abe4728c1",
+          "body": "  {\r\n    \"id\": 4,\r\n    \"nombre\": \"Empresarial\",\r\n    \"potencia\": \"20-50 kW\",\r\n    \"badge\": \"Empresarial\",\r\n    \"descripcion\": \"Solución para empresas medianas con alto consumo energético\",\r\n    \"precioMensual\": 0,\r\n    \"precioAnual\": 0,\r\n    \"precioContado\": 18000000,\r\n    \"estado\": \"activo\",\r\n    \"caracteristicas\": [\r\n      \"Estudio energético empresarial\",\r\n      \"Instalación industrial\",\r\n      \"Monitoreo en tiempo real\",\r\n      \"Garantía extendida 20 años\",\r\n      \"Soporte 24/7\"\r\n    ],\r\n    \"incluye\": [\r\n      \"Paneles solares 20-50 kW\",\r\n      \"Inversores industriales\",\r\n      \"Instalación certificada\",\r\n      \"Sistema de monitoreo empresarial\",\r\n      \"Mantención trimestral\",\r\n      \"Soporte técnico dedicado\",\r\n      \"Reportes de rendimiento mensuales\"\r\n    ],\r\n    \"noIncluye\": [\r\n      \"Baterías (opcional)\",\r\n      \"Instalación en múltiples ubicaciones (costo adicional)\"\r\n    ],\r\n    \"duracionContrato\": \"Sin contrato\",\r\n    \"createdAt\": \"2024-02-01T00:00:00Z\",\r\n    \"updatedAt\": \"2024-02-01T00:00:00Z\"\r\n  }",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "6f1657b2-cadc-481a-be58-d8f1e9950de1",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/plans/5",
+      "responses": [
+        {
+          "uuid": "ce2aa71d-15aa-4d9b-9208-c2d23501f8f6",
+          "body": "{\r\n    \"id\": 5,\r\n    \"nombre\": \"Plan Legacy\",\r\n    \"potencia\": \"5-8 kW\",\r\n    \"badge\": \"Legacy\",\r\n    \"descripcion\": \"Plan antiguo ya no disponible para nuevos clientes\",\r\n    \"precioMensual\": 0,\r\n    \"precioAnual\": 0,\r\n    \"precioContado\": 3000000,\r\n    \"estado\": \"inactivo\",\r\n    \"caracteristicas\": [\r\n      \"Estudio energético básico\",\r\n      \"Instalación estándar\",\r\n      \"Monitoreo básico\"\r\n    ],\r\n    \"incluye\": [\r\n      \"Paneles solares 5-8 kW\",\r\n      \"Inversor estándar\",\r\n      \"Instalación básica\"\r\n    ],\r\n    \"noIncluye\": [\r\n      \"Baterías\",\r\n      \"Mantención\",\r\n      \"Soporte extendido\"\r\n    ],\r\n    \"duracionContrato\": \"Sin contrato\",\r\n    \"createdAt\": \"2023-06-01T00:00:00Z\",\r\n    \"updatedAt\": \"2024-01-10T00:00:00Z\"\r\n  }\r\n\r\n\r\n",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "90a235ca-7aac-42ff-b068-bf4c3604e686",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/plans/1",
+      "responses": [
+        {
+          "uuid": "3cbbd780-49cf-4311-b552-746c997508e9",
+          "body": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"Básico\",\r\n    \"potencia\": \"3-5 kW\",\r\n    \"badge\": \"Básico\",\r\n    \"descripcion\": \"Plan ideal para hogares pequeños con consumo moderado\",\r\n    \"precioMensual\": 0,\r\n    \"precioAnual\": 0,\r\n    \"precioContado\": 2500000,\r\n    \"estado\": \"activo\",\r\n    \"caracteristicas\": [\r\n      \"Estudio energético\",\r\n      \"Instalación estándar\",\r\n      \"Monitoreo básico\",\r\n      \"Garantía 5 años\"\r\n    ],\r\n    \"incluye\": [\r\n      \"Paneles solares 3-5 kW\",\r\n      \"Inversor básico\",\r\n      \"Instalación estándar\",\r\n      \"Sistema de monitoreo básico\"\r\n    ],\r\n    \"noIncluye\": [\r\n      \"Baterías\",\r\n      \"Mantención extendida\",\r\n      \"Soporte premium\"\r\n    ],\r\n    \"duracionContrato\": \"Sin contrato\",\r\n    \"createdAt\": \"2024-01-15T00:00:00Z\",\r\n    \"updatedAt\": \"2024-01-15T00:00:00Z\"\r\n  }",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "6ef36147-b951-41eb-95ee-7c5b8525be92"
+    },
+    {
+      "type": "route",
+      "uuid": "537dfb20-ba7e-49c0-8bef-2b1b3064b92e"
+    },
+    {
+      "type": "route",
+      "uuid": "f1aa2c8e-976a-4694-bb03-8c75b0f7f229"
+    },
+    {
+      "type": "route",
+      "uuid": "d84a76e0-5b30-44f7-a7b7-717ac21fa140"
+    },
+    {
+      "type": "route",
+      "uuid": "bd9febba-87ba-4152-a1b6-6d4b62e2d545"
+    },
+    {
+      "type": "route",
+      "uuid": "a02d5cb1-89a6-4473-9036-de7ce87dfcfc"
+    },
+    {
+      "type": "route",
+      "uuid": "02d644c3-09d4-47ee-ab74-3f9f1f4e18d1"
+    },
+    {
+      "type": "route",
+      "uuid": "a30605e8-a256-4882-b266-9fdbdd047c8e"
+    },
+    {
+      "type": "route",
+      "uuid": "90a235ca-7aac-42ff-b068-bf4c3604e686"
+    },
+    {
+      "type": "route",
+      "uuid": "58fd75db-ebe5-4db2-9d40-003d8e544aaf"
+    },
+    {
+      "type": "route",
+      "uuid": "70491f87-9a32-406d-a5d8-debaa574d297"
+    },
+    {
+      "type": "route",
+      "uuid": "4aef7008-5a0c-4b9c-956c-4591d1ff63eb"
+    },
+    {
+      "type": "route",
+      "uuid": "6f1657b2-cadc-481a-be58-d8f1e9950de1"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [],
+  "callbacks": []
+}
