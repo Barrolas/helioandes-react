@@ -58,8 +58,8 @@ const ServiceDetail = () => {
 
     if (!service) {
         return (
-            <div className="dashboard-error" style={{ backgroundColor: '#fff3cd', borderColor: '#ffc107', color: '#856404' }}>
-                <h4 style={{ color: '#856404' }}>Servicio no encontrado</h4>
+            <div className="dashboard-error dashboard-error-warning">
+                <h4>Servicio no encontrado</h4>
                 <p>El servicio solicitado no existe.</p>
                 <button className="dashboard-btn" onClick={() => navigate('/dashboard/services')}>
                     Volver a la lista
@@ -77,7 +77,7 @@ const ServiceDetail = () => {
                     <div className="dashboard-detail-icon">
                         <FontAwesomeIcon 
                             icon={icon} 
-                            style={{ color: 'var(--helio-primary)' }} 
+                            className="dashboard-icon-primary"
                         />
                     </div>
                 )}
@@ -102,7 +102,7 @@ const ServiceDetail = () => {
 
             <div className="dashboard-detail-section">
                 <h3 className="dashboard-detail-section-title">Descripción</h3>
-                <p style={{ color: 'var(--helio-text-medium)', lineHeight: '1.8', fontSize: '1.05rem' }}>
+                <p className="dashboard-text-muted-lg">
                     {service.descripcion}
                 </p>
             </div>

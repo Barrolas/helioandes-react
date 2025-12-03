@@ -53,8 +53,8 @@ const PlanList = () => {
 
         if (plans.length === 0) {
             return (
-                <div className="dashboard-error" style={{ backgroundColor: '#d1ecf1', borderColor: '#17a2b8', color: '#0c5460' }}>
-                    <h4 style={{ color: '#0c5460' }}>No hay planes disponibles</h4>
+                <div className="dashboard-error dashboard-error-info">
+                    <h4>No hay planes disponibles</h4>
                     <p>No se encontraron planes en el sistema.</p>
                 </div>
             );
@@ -66,29 +66,21 @@ const PlanList = () => {
                     <div key={plan.id} className="dashboard-card">
                         <div className="dashboard-card-header">
                             <h3 className="dashboard-card-title">{plan.nombre}</h3>
-                            <p style={{ margin: 0, color: 'var(--helio-text-medium)', fontSize: '0.9rem' }}>
+                            <p className="dashboard-text-muted-md dashboard-margin-0">
                                 {plan.potencia}
                             </p>
                         </div>
                         <div className="dashboard-card-body">
                             <p className="dashboard-card-description">{plan.descripcion}</p>
-                            <div style={{ marginTop: '1rem' }}>
-                                <h4 style={{ color: 'var(--helio-primary)', marginBottom: '1rem' }}>
+                            <div className="dashboard-mt-1">
+                                <h4 className="dashboard-text-primary-h4">
                                     {formatPrice(plan.precioContado)}
                                 </h4>
                                 {plan.caracteristicas && plan.caracteristicas.length > 0 && (
-                                    <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                                    <ul className="dashboard-list-unstyled">
                                         {plan.caracteristicas.slice(0, 4).map((caracteristica, index) => (
-                                            <li key={index} style={{ 
-                                                padding: '0.5rem 0',
-                                                borderBottom: index < 3 ? '1px solid var(--helio-bg-light)' : 'none',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                gap: '0.5rem',
-                                                fontSize: '0.9rem',
-                                                color: 'var(--helio-text-medium)'
-                                            }}>
-                                                <span style={{ color: 'var(--helio-primary)' }}>✓</span>
+                                            <li key={index} className={index < 3 ? 'dashboard-list-item' : 'dashboard-list-item-feature'}>
+                                                <span className="dashboard-text-primary">✓</span>
                                                 {caracteristica}
                                             </li>
                                         ))}
